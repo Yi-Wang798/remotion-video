@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "fps": 30,
+  "framework": "A lavender wheeled robot approaches and presses a coral button on a mint pedestal. Keep the character, camera and palette consistent; no narration or overlay text.",
+  "characters": [
+    {
+      "id": "robot",
+      "referenceId": "frame-a",
+      "description": "Lavender round robot with cream face screen, purple wheels and yellow antenna"
+    }
+  ],
+  "references": [
+    {
+      "id": "frame-a",
+      "file": "assets/references/frame-a.png",
+      "generatedWith": "built-in-imagegen",
+      "basedOn": []
+    },
+    {
+      "id": "frame-b",
+      "file": "assets/references/frame-b.png",
+      "generatedWith": "built-in-imagegen",
+      "basedOn": [
+        "frame-a"
+      ]
+    }
+  ],
+  "shots": [
+    {
+      "id": "approach",
+      "intent": "Establish the robot and button",
+      "narration": "",
+      "screenText": [],
+      "referenceIds": [
+        "frame-a"
+      ],
+      "from": 0,
+      "durationInFrames": 120,
+      "entryState": "Robot left of the button with hand at rest",
+      "action": "Robot rolls to the pedestal",
+      "exitState": "Robot stands beside the button",
+      "transitionOut": "Continuous camera and pose into reach"
+    },
+    {
+      "id": "press",
+      "intent": "Show the hand contacting and depressing the button",
+      "narration": "",
+      "screenText": [],
+      "referenceIds": [
+        "frame-a",
+        "frame-b"
+      ],
+      "from": 120,
+      "durationInFrames": 120,
+      "entryState": "Robot beside the button, hand at rest",
+      "action": "Reach and depress the button; hold contact",
+      "exitState": "Button depressed with a soft glow",
+      "transitionOut": "Hold the final state"
+    }
+  ],
+  "reviews": {
+    "segments": [],
+    "final": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "remotion-video",
+  "version": "2.0.1",
+  "description": "Image-led video authoring with connected keyframes, coherent motion, segment reviews and concise copy.",
+  "skills": "./skills/",
+  "keywords": [
+    "video",
+    "remotion",
+    "remotion-bits",
+    "animation",
+    "science"
+  ],
+  "interface": {
+    "displayName": "Remotion Video",
+    "shortDescription": "先做连贯分镜，再分段制作、审查与导出视频",
+    "longDescription": "先搭框架，使用内置生图保持角色和风格一致，再设计衔接与动作。分段制作并进行视觉检查，最后检查文字、旁白和视觉连贯性。",
+    "category": "Design",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "制作一段科普视频：先用内置生图制作连贯分镜，再分段制作和检查，最后导出成片。"
+    ],
+    "brandColor": "#4F7CFF"
+  }
+}

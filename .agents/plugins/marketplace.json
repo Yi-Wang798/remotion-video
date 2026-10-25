@@ -1,0 +1,10 @@
+{
+  "name": "remotion-video-marketplace",
+  "interface": {"displayName": "Remotion Video"},
+  "plugins": [{
+    "name": "remotion-video",
+    "source": {"source": "local", "path": "./"},
+    "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+    "category": "Design"
+  }]
+}

@@ -1,0 +1,36 @@
+{
+  "installed_on": "2026-10-24",
+  "sources": [
+    {
+      "url": "https://github.com/remotion-dev/skills",
+      "commit": "6c67adcd9cdbe6eb84d76342da89b225f9161cb2",
+      "localSkill": "remotion-best-practices",
+      "skillPath": "skills/remotion-best-practices"
+    },
+    {
+      "url": "https://github.com/av/remotion-bits",
+      "commit": "de35fda84b7b6acbe549a0b302a82ef211e8ef1e",
+      "localSkill": "remotion-bits",
+      "skillPath": "skills/remotion-bits"
+    }
+  ],
+  "runtime_versions": {
+    "remotion": "4.0.538",
+    "remotion-bits": "0.2.1",
+    "react": "18.3.1"
+  },
+  "writing_sources": [
+    {
+      "url": "https://github.com/op7418/Humanizer-zh",
+      "local_version": "0.1.0",
+      "license": "MIT",
+      "use": "adapted writing guidance"
+    },
+    {
+      "url": "https://github.com/blader/humanizer",
+      "local_version": "2.8.2",
+      "license": "MIT",
+      "use": "adapted writing guidance"
+    }
+  ]
+}
