@@ -1,33 +1,26 @@
 # Motion and review
 
-Give every shot an entry state, action and exit state. Use motion to express that change. Choose acceleration, settling, anticipation and camera movement around it instead of making every object oscillate. Contacts must stay connected after docking or joining. Keep body parts anchored to their parent.
+Give each shot an entry state, action and exit state. Use acceleration, anticipation and settling around that action. Keep contacts connected, body parts anchored and shapes consistent. Reuse geometry across shots. Check symmetry, outlines, joints, spacing, clipping, paths and changing objects at cuts. Effects and camera motion should leave the subject and captions clear.
 
-Reuse geometry and assets across shots. Check intended symmetry, outlines, joints, small characters inside containers and text clearance. Effects support the subject: particles must not obscure the event, and camera movement must leave the whole subject and captions visible. Connect cuts through compatible positions, direction or a planned transition.
+## Review effort
 
-## Project plan
+`light`: render a complete preview with `review.mjs --all`. Inspect the preview and frames at important states, cuts and the ending. Add samples around fast actions. Record one final text/narration/visual-continuity pass.
 
-`project.mjs init --project <absolute-directory>` creates `video-plan.json` and working directories without overwriting existing work. Fill it while making the video:
+`segments`: render each shot with `--shot <id>`. Inspect representative frames plus the motion preview or a sufficiently dense timed sequence. Check adjoining cuts. Record each segment, assemble the film, then make the same complete pass. Complex direct-code scenes may also use this level.
 
-- `framework`: story, audience and visual approach.
-- `references`: `id`, `file`, `generatedWith` and `basedOn` IDs; recurring characters point to stable chosen images.
-- `shots`: `id`, `intent`, `narration`, `screenText`, `referenceIds`, `from`, `durationInFrames`, `entryState`, `action`, `exitState`, `transitionOut`.
-- `reviews.segments`: `shotId`, `status`, `sourceRevision`, `frames`, `preview`, `findings`, `checkedAt`.
-- `reviews.final`: `status`, `sourceRevision`, `preview`, `text`, `narration`, `visualContinuity`, `findings`, `checkedAt`.
+Default samples cover start, early/middle/late states, exit and neighboring cuts. Add absolute frame numbers with `--samples 43,44,45` for contacts or rapid events. Render success creates `pending` evidence. After viewing, copy the evidence into `plan.reviews.segments` or `plan.reviews.final`, set the observed results to `pass`, and record dated concrete findings. The final record includes `text`, `narration`, `visualContinuity`, `frames` and `preview`. For a silent video, record that there is no narration track when checking that field.
 
-Run `project.mjs revision --project <project>` for a SHA-256 over `src/`, `public/`, chosen reference file contents and the plan's framework, characters, references and shots. Review records do not affect it. A source or asset change makes reviews stale. Inspect the affected segment and its connections, then update the relevant records. Unchanged shots may be carried forward with a finding explaining why they are unaffected. Do not mark reviews current without checking their scope.
+## Dependencies and revisions
 
-## Segment loop
+Version 2 plans support:
 
-1. Render the segment preview and frames with `review.mjs`. Default samples cover early, middle and exit states plus nearby cuts. Add samples around contact, assembly, overlap and fast effects.
-2. Actually open the frames. Play the short preview or inspect a sufficiently dense frame sequence across the movement. One middle frame does not establish motion quality.
-3. Inspect proportions, joints, identity, spacing, clipping, stretching, labels, trajectories, pauses and timing.
-4. Compare the adjoining cut: direction, position, pose and changing objects through the transition.
-5. Fix a visible defect, render the changed interval and inspect again. Record concrete findings, evidence paths and the result. Pass a good segment without inventing extra changes.
+- `sharedDependencies`: common source, fonts, audio and design tokens used throughout the video.
+- Each shot's `dependencies`: source, art, clip and audio files used by that shot.
+- Each shot's `referenceIds` and `metricIds`: artwork and data used by that shot.
+- Each segment review's `shotRevision`: hash of the shot, its files and data, shared values and immediate neighbors. `review.mjs` generates this hash.
 
-Helpers gather evidence. The agent performs visual judgment; scripts never mark a pass because a render succeeded.
+Declare dependencies completely, including imports. A change invalidates that shot and adjacent cut reviews; a shared design change invalidates all segments. Without explicit shot dependencies, the helper conservatively tracks all `src/` and `public/` files. `project.mjs affected --project <project>` lists stale passed segments. Version 1 records retain their global hash behavior.
 
-## Complete pass
+The full source revision covers source files, assets, framework, artwork, data and timing; any such change invalidates the final pass. A full hash also includes explicitly declared dependencies outside `src/` and `public/`. Review findings do not change source hashes. Do not refresh a hash just to silence a stale review: inspect the affected interval again.
 
-Assemble passed segments. Make a simple complete pass for words, narration and visual continuity, including captions at actual speed and the ending. Repair a demonstrated problem and recheck that interval. Keep this pass focused rather than starting an unrelated redesign.
-
-Run `project.mjs check-final` before delivery. It verifies assets, evidence, current review records and text/narration/continuity outcomes. It does not certify aesthetics or imply frame-by-frame human inspection.
+Run `project.mjs check-final` before delivery. It checks evidence files, current review records, data arithmetic and outcomes. Visual judgment comes from inspecting the actual rendered frames and motion. Repair a demonstrated problem and recheck the changed scope; finish once the result passes.

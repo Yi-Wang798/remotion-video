@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "taskKind": "diagram",
+  "workflow": "direct",
+  "reviewLevel": "light",
+  "fps": 30,
+  "framework": "A point follows a circular orbit; a radius and trace show the geometry.",
+  "design": {
+    "palette": [
+      "#101E38",
+      "#FAF7F0",
+      "#2B877F",
+      "#C97948"
+    ],
+    "typography": "Arial / Microsoft YaHei",
+    "spacing": 8,
+    "outlines": 3
+  },
+  "characters": [],
+  "references": [],
+  "dataSources": [],
+  "metrics": [],
+  "sharedDependencies": [],
+  "shots": [
+    {
+      "id": "orbit",
+      "from": 0,
+      "durationInFrames": 180,
+      "intent": "Draw the circle, then move the dot around it.",
+      "entryState": "Empty composition",
+      "action": "Draw the circle, then move the dot around it.",
+      "exitState": "Hold the final state",
+      "transitionOut": "Hold to ending",
+      "narration": "",
+      "screenText": [],
+      "dependencies": [
+        "src/index.tsx",
+        "src/scene.py",
+        "public/clips/orbit.mp4"
+      ],
+      "engine": "manim"
+    }
+  ],
+  "reviews": {
+    "segments": [],
+    "final": null
+  }
+}

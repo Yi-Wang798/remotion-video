@@ -21,18 +21,25 @@ try{
   run(process.execPath,[npm,'ci','--cache',path.join(runtime,'.npm-cache'),'--no-fund','--no-audit'],runtime);
  }
  const upstream=JSON.parse(fs.readFileSync(path.join(root,'UPSTREAM.json'),'utf8'));
- for(const source of upstream.sources){
+ const withAt=args.indexOf('--with'),groups=new Set(['core',...(withAt<0?[]:(args[withAt+1]||'').split(','))]);
+ for(const group of groups)if(!['core','manim','shotcraft'].includes(group))throw new Error('Unknown guide group: '+group);
+ for(const source of upstream.sources.filter(s=>groups.has(s.group||'core'))){
   const target=path.join(root,'vendor',source.localSkill);
-  if(fs.existsSync(path.join(target,'SKILL.md')))continue;
+  const stamp=path.join(target,'.source.json');
+  if(fs.existsSync(stamp)){const previous=JSON.parse(fs.readFileSync(stamp,'utf8'));if(previous.commit===source.commit&&previous.schema===2)continue;}
   const checkout=path.join(runtime,'.upstream',source.commit);
   fs.mkdirSync(checkout,{recursive:true});
   if(!fs.existsSync(path.join(checkout,'.git')))run('git',['init',checkout]);
-  run('git',['-C',checkout,'fetch','--depth','1',source.url+'.git',source.commit]);
+  run('git',['-C',checkout,'fetch','--filter=blob:none','--depth','1',source.url+'.git',source.commit]);
+  if(source.paths)run('git',['-C',checkout,'sparse-checkout','set','--no-cone',...source.paths.map(p=>'/'+p)]);
   run('git',['-C',checkout,'checkout','--detach','FETCH_HEAD']);
   fs.mkdirSync(path.dirname(target),{recursive:true});
-  fs.cpSync(path.join(checkout,source.skillPath),target,{recursive:true});
+  if(source.paths){for(const item of source.paths){const rel=item.replace(/\/$/,'');const dest=path.join(target,rel);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.cpSync(path.join(checkout,rel),dest,{recursive:true});}}
+  else fs.cpSync(path.join(checkout,source.skillPath),target,{recursive:true});
+  for(const name of ['LICENSE','LICENSE.md','LICENSE.txt','NOTICE','NOTICE.md']){const from=path.join(checkout,name);if(fs.existsSync(from)&&!fs.existsSync(path.join(target,name)))fs.copyFileSync(from,path.join(target,name));}
+  fs.writeFileSync(stamp,JSON.stringify({schema:2,commit:source.commit,url:source.url})+'\n');
  }
  const previous=runtimeConfig();
  fs.writeFileSync(path.join(root,'runtime.local.json'),JSON.stringify({...previous,path:runtime},null,2)+'\n');
- console.log(JSON.stringify({runtime,dependencies:ready?'reused':'installed',guides:'ready'},null,2));
+ console.log(JSON.stringify({runtime,dependencies:ready?'reused':'installed',guides:[...groups]},null,2));
 }catch(e){console.error(e.message);process.exitCode=1;}

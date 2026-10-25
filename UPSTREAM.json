@@ -12,12 +12,53 @@
       "commit": "de35fda84b7b6acbe549a0b302a82ef211e8ef1e",
       "localSkill": "remotion-bits",
       "skillPath": "skills/remotion-bits"
+    },
+    {
+      "group": "manim",
+      "url": "https://github.com/adithya-s-k/manim_skill",
+      "commit": "cef045011722d285692e3381d12d4d637da56e18",
+      "localSkill": "manimce-best-practices",
+      "skillPath": "skills/manimce-best-practices"
+    },
+    {
+      "group": "manim",
+      "url": "https://github.com/Yusuke710/manim-skill",
+      "commit": "a0048d9e265499038f34a9aa58ff16d306b5034c",
+      "localSkill": "manim-narration",
+      "skillPath": "skills/manim-skill"
+    },
+    {
+      "group": "shotcraft",
+      "url": "https://github.com/Vincentwei1021/video-shotcraft",
+      "commit": "43bd349a136651865ecfa6ea1cf012f6e957d304",
+      "localSkill": "video-shotcraft",
+      "paths": [
+        "LICENSE",
+        "SKILL.md",
+        "references/aesthetic-rules.md",
+        "references/final-review.md",
+        "references/shots/ATTRIBUTION.md",
+        "references/shots/data/",
+        "references/shots/camera/depth-layer-moves.md",
+        "references/shots/typography/type-assembly-moves.md",
+        "references/shots/typography/title-demote-to-label.md",
+        "references/shots/transition/line-carry-transition.md",
+        "references/shots/rhythm/sakuga-timing-shift.md",
+        "demos/README.md",
+        "demos/_fixtures/",
+        "demos/data/",
+        "demos/camera/depth-layer-moves/",
+        "demos/typography/type-assembly-moves/",
+        "demos/typography/title-demote-to-label/",
+        "demos/transition/line-carry-transition/"
+      ]
     }
   ],
   "runtime_versions": {
     "remotion": "4.0.538",
     "remotion-bits": "0.2.1",
-    "react": "18.3.1"
+    "react": "18.3.1",
+    "manim": "0.22.0"
   },
   "writing_sources": [
     {
@@ -31,6 +72,23 @@
       "local_version": "2.8.2",
       "license": "MIT",
       "use": "adapted writing guidance"
+    }
+  ],
+  "design_references": [
+    {
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "license": "MIT",
+      "use": "optional local design guidance"
+    },
+    {
+      "url": "https://github.com/pbakaus/impeccable",
+      "license": "Apache-2.0",
+      "use": "optional local layout and typography guidance"
+    },
+    {
+      "url": "https://github.com/DavidHDev/react-bits",
+      "license": "MIT with Commons Clause",
+      "use": "optional local motion reference; components not bundled"
     }
   ]
 }

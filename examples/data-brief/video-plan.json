@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "taskKind": "data",
+  "workflow": "direct",
+  "reviewLevel": "light",
+  "fps": 30,
+  "framework": "Compare two example quarterly revenues, then hold the growth result.",
+  "design": {
+    "palette": [
+      "#101E38",
+      "#FAF7F0",
+      "#2B877F",
+      "#C97948"
+    ],
+    "typography": "Arial / Microsoft YaHei",
+    "spacing": 8,
+    "outlines": 3
+  },
+  "characters": [],
+  "references": [],
+  "dataSources": [
+    {
+      "id": "prior",
+      "kind": "example",
+      "period": "2025 Q1",
+      "unit": "million",
+      "currency": "CNY"
+    },
+    {
+      "id": "latest",
+      "kind": "example",
+      "period": "2026 Q1",
+      "unit": "million",
+      "currency": "CNY"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "previous",
+      "value": 100,
+      "sourceId": "prior"
+    },
+    {
+      "id": "current",
+      "value": 120,
+      "sourceId": "latest"
+    },
+    {
+      "id": "growth",
+      "value": 20,
+      "formula": {
+        "kind": "pctChange",
+        "current": "current",
+        "previous": "previous"
+      }
+    }
+  ],
+  "sharedDependencies": [],
+  "shots": [
+    {
+      "id": "comparison",
+      "from": 0,
+      "durationInFrames": 240,
+      "intent": "Draw bars on a fixed zero baseline; reveal the growth annotation.",
+      "entryState": "Empty composition",
+      "action": "Draw bars on a fixed zero baseline; reveal the growth annotation.",
+      "exitState": "Hold the final state",
+      "transitionOut": "Hold to ending",
+      "narration": "",
+      "screenText": [],
+      "dependencies": [
+        "src/index.tsx"
+      ],
+      "metricIds": [
+        "previous",
+        "current",
+        "growth"
+      ]
+    }
+  ],
+  "reviews": {
+    "segments": [],
+    "final": null
+  },
+  "purpose": "example"
+}

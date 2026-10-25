@@ -1,72 +1,82 @@
 # Remotion Video
 
-English · [中文](README.md)
+Make videos with code, with attention to artwork, motion and words.
 
-A Codex plugin for making videos from a story framework, connected ImageGen keyframes, planned motion and segment reviews. It combines Remotion rendering and Remotion Bits examples with a practical authoring workflow.
+Build data summaries, charts and simple diagrams directly. For custom characters and elaborate scenes, develop connected reference images with built-in ImageGen, then animate the selected designs. Manim can handle mathematical and geometric scenes; Remotion assembles the clips, captions, narration and other shots.
 
-## The v2 workflow
+[中文](README.md)
 
-1. **Outline the story.** Set the subject, audience, narrative progression and approximate duration.
-2. **Generate connected keyframes.** Establish character and style references. Reuse selected images and the relevant previous frame in later generations to preserve identity, objects, palette, framing and state.
-3. **Refine the motion plan.** Use the actual images to improve the outline, transitions, object actions and effects.
-4. **Build and inspect segments.** Render a short preview and review frames for each segment. Inspect geometry, contacts, spacing, trajectories and adjacent cuts. Repair the affected section before continuing.
-5. **Review and deliver the complete video.** Make a simple complete pass for words, narration and visual continuity. Export when it passes and keep editable source and selected assets.
+## What it does
 
-Built-in ImageGen is the default. Codex calls the image tool during authoring; setup scripts do not call an image API. Revisions can reuse existing suitable images. When the user delegates creative decisions, the workflow does not ask for approval at every stage.
+- Chooses a direct or image-led workflow for the subject. Both can appear in one video.
+- Shares palette, typography, spacing, outlines and character parts across shots. Optional local UI/UX Pro Max, Impeccable and React Bits skills provide design references.
+- Uses Remotion Bits components and examples, with an optional Shotcraft pack for data, typography, camera and transition recipes with code.
+- Reviews actual renders. Simple videos get a complete preview and key frames; complex shots get segment reviews during production. Dependency tracking keeps revisions focused on affected shots and adjacent cuts.
+- Records data sources, periods, units and currencies, and checks differences and percentage changes.
+- Applies Humanizer and Humanizer ZH writing principles to remove filler and keep scripts clear.
 
-## Installation
+## Install
 
-Requires Codex, Node.js 22 or newer, npm and Git. The local integration has been verified on Windows.
+Add this repository as a Codex plugin marketplace, then install `remotion-video`. For a local checkout:
 
-```sh
-git clone https://github.com/Yi-Wang798/remotion-video.git
-cd remotion-video
-node scripts/setup.mjs
-codex plugin marketplace add .
+```text
+codex plugin marketplace add <repository-directory>
 codex plugin add remotion-video@remotion-video-marketplace
 ```
 
-Update an existing installation rather than enabling two copies. The current local installation continues to use the Personal marketplace.
+With Node.js installed, prepare the runtime from the repository directory:
 
-Setup installs pinned rendering dependencies, downloads pinned upstream guides and writes a local `runtime.local.json`. The default runtime is `.local/share/remotion-video/runtime` in the user's home directory. To choose another directory:
-
-```sh
-node scripts/setup.mjs --runtime /absolute/path/to/video-runtime
+```text
+node scripts/setup.mjs --runtime <absolute-runtime-directory>
 node scripts/video.mjs doctor
 ```
 
-Use `--reuse` to verify an existing matching runtime. `REMOTION_VIDEO_RUNTIME` and `REMOTION_VIDEO_BROWSER` override local settings. Runtime locations, browser paths, project media and credentials stay out of Git. Each authored project still needs its own `package.json` and dependencies, with matching Remotion package versions.
+Keep the runtime and video projects in their own directories so plugin upgrades are straightforward. Use matching project dependencies: copy `runtime/package.json` and its lock file into a project, then run `npm ci`. Rendering uses Chrome; set `browserExecutable` in the local `runtime.local.json` if needed. Pins are recorded in [UPSTREAM.json](UPSTREAM.json).
 
-## Example request
+For optional guides and Manim:
 
-> Use remotion-video to explain how a bacteriophage infects a bacterium. Generate consistent characters and connected keyframes first, then build and inspect each segment. Choose the style and duration, export an MP4 and keep the source.
-
-Keep useful titles, necessary labels and captions. Do not automatically add production footers such as “AI-generated illustration” or obvious explanations of the medium. Preserve facts that matter to understanding the subject.
-
-## Review helpers
-
-```sh
-node scripts/project.mjs init --project /absolute/project
-node scripts/project.mjs revision --project /absolute/project
-node scripts/review.mjs --project /absolute/project --shot shot-01 --composition MyVideo
-node scripts/project.mjs check --project /absolute/project
-node scripts/project.mjs check-final --project /absolute/project
-node --test tests/project.test.mjs
+```text
+node scripts/setup.mjs --with manim,shotcraft
+node scripts/video.mjs manim setup
+node scripts/video.mjs manim doctor
 ```
 
-The project plan records the framework, image provenance and reference relationships, shot states, segment reviews and final review. `review.mjs` exports staged frames, nearby cut boundaries and a motion preview. Its result starts as `pending`; the agent must inspect the evidence before recording a pass.
+Manim runs in an isolated Python environment and needs Python 3.11 or newer. Formula scenes may also use LaTeX. Ordinary Remotion charts and videos need Node.js and a browser.
 
-The check commands verify file existence, review records, source/asset revisions and the final text, narration and continuity outcomes. They do not equate a successful render with good visual design. See the [motion and review guide](skills/remotion-video/references/motion-and-review.md) for fields and usage.
+## Make a video
 
-## Attribution and licenses
+Tell Codex the subject, audience and available data or artwork. You can delegate style and duration:
 
-| Source | Use |
-|---|---|
-| [Remotion](https://github.com/remotion-dev/remotion) | Video framework, preview and rendering |
-| [Remotion Agent Skills](https://github.com/remotion-dev/skills) | Authoring and API guidance downloaded at pinned commits |
-| [Remotion Bits](https://github.com/av/remotion-bits) | Animation components, example lookup and usage guidance |
-| [Humanizer ZH by op7418](https://github.com/op7418/Humanizer-zh) | Adapted Chinese writing principles |
-| [Humanizer by blader](https://github.com/blader/humanizer) | Adapted English and general editing principles |
-| OpenAI built-in ImageGen | Reference artwork generation and editing in the host |
+> Make a clean 20-second animation from these quarterly figures. Focus on revenue growth.
 
-Original workflow material and helper scripts are [MIT licensed](LICENSE). Upstream projects retain their own licenses. See [NOTICE.md](NOTICE.md), `licenses/` and [UPSTREAM.json](UPSTREAM.json). This is a personal integration, not an official joint product. Upstream guides are downloaded from their sources during setup rather than redistributed in Git. The Remotion runtime retains its own license.
+> Explain how a bacteriophage kills a bacterium, with cute characters and connected motion. Choose the duration.
+
+To initialize a plan manually:
+
+```text
+node scripts/project.mjs init --project <project> --kind data
+node scripts/project.mjs init --project <another-project> --kind illustration
+```
+
+Auto routing follows the need for custom artwork. Override it with `--workflow direct|designed` and `--review light|segments`. See [production routing](skills/remotion-video/references/routing.md).
+
+## Examples and review
+
+- [Data brief](examples/data-brief): a direct-code bar chart and growth comparison using example data.
+- [Geometric motion](examples/manim-orbit): a Manim trajectory clip assembled with a Remotion title.
+- [Button story](examples/button-story): character motion built from two connected design images.
+
+```text
+node scripts/review.mjs --project <project> --composition <id> --all
+node scripts/review.mjs --project <project> --composition <id> --shot <shot-id>
+node scripts/project.mjs affected --project <project>
+node scripts/project.mjs check-final --project <project>
+node scripts/video.mjs export --project <project> src/index.tsx <id> renders/final.mp4
+node --test tests/*.test.mjs
+```
+
+`export` checks the current review records before rendering the final video. After generating previews and frames, the authoring agent inspects them and records findings alongside the video source. Explicit shot dependencies let local changes invalidate only the related reviews. See [motion and review](skills/remotion-video/references/motion-and-review.md).
+
+## Credits
+
+This project combines Remotion and Remotion Bits with methods from Manim, video-shotcraft, the Humanizer projects and local design skills. Authors, pinned sources, uses and licenses are listed in [NOTICE.md](NOTICE.md) and [UPSTREAM.json](UPSTREAM.json). Original scripts and documentation use the [MIT license](LICENSE).

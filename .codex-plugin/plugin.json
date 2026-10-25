@@ -1,26 +1,29 @@
 {
   "name": "remotion-video",
-  "version": "2.0.1",
-  "description": "Image-led video authoring with connected keyframes, coherent motion, segment reviews and concise copy.",
+  "version": "3.0.0",
+  "description": "Video authoring with adaptive workflows, Remotion, optional Manim and Shotcraft guides, and visual review.",
   "skills": "./skills/",
   "keywords": [
     "video",
     "remotion",
     "remotion-bits",
     "animation",
-    "science"
+    "science",
+    "manim",
+    "data-visualization",
+    "shotcraft"
   ],
   "interface": {
     "displayName": "Remotion Video",
-    "shortDescription": "先做连贯分镜，再分段制作、审查与导出视频",
-    "longDescription": "先搭框架，使用内置生图保持角色和风格一致，再设计衔接与动作。分段制作并进行视觉检查，最后检查文字、旁白和视觉连贯性。",
+    "shortDescription": "按内容选择制作方式，统一画面风格，检查后导出视频",
+    "longDescription": "数据与简单图解直接制作；复杂角色动画先做连贯分镜。结合 Remotion、可选 Manim 与 Shotcraft 镜头参考，按视频复杂度检查画面、动作、文字与旁白。",
     "category": "Design",
     "capabilities": [
       "Interactive",
       "Write"
     ],
     "defaultPrompt": [
-      "制作一段科普视频：先用内置生图制作连贯分镜，再分段制作和检查，最后导出成片。"
+      "制作一段科普视频，按内容选择合适的画面和动画方式，检查成片后导出。"
     ],
     "brandColor": "#4F7CFF"
   }

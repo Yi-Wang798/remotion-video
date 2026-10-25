@@ -2,6 +2,7 @@ runtime.json
 runtime.local.json
 vendor/
 node_modules/
+.cache/
 .runtime/
 artifacts/
 *.log
@@ -11,3 +12,4 @@ __pycache__/
 !.env.example
 examples/*/reviews/
 examples/*/renders/
+examples/*/public/clips/

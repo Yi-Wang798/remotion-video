@@ -1,81 +1,82 @@
 # Remotion Video
 
-[English](README.en.md) · 中文
+用代码做视频，也把画面、动作和文字一起做好。
 
-一个用于 Codex 的视频制作插件。先搭框架，用内置生图工具制作相互关联的关键分镜，再完善衔接和动作，分段制作、检查和修正，最后导出完整视频。
+简单的数据播报、图表和流程图可以直接制作。需要新角色和复杂场景时，先用内置生图确定关键画面，再做连贯的动作与转场。数学和几何动画可以交给 Manim，最后在 Remotion 中合成字幕、旁白和其他镜头。
 
-Remotion 负责代码动画与渲染，Remotion Bits 提供动效组件。插件把视觉设计、制作和审查组织成同一个入口。
+[English](README.en.md)
 
-## v2 的制作流程
+## 能做什么
 
-1. **基本框架**：确定讲什么、给谁看、故事怎样展开和大致片长。
-2. **连贯的关键分镜**：先建立角色与风格参考，后续生图继续引用选定图片和前一个相关画面，保持角色、物件、色彩、构图与状态一致。
-3. **完善动作逻辑**：根据实际生成的图片调整框架，设计镜头之间如何衔接、画面中什么在动，以及特效怎样配合动作。
-4. **分段制作与视觉检查**：每段生成短预览和检查帧，实际查看造型、连接、间距、运动路径和前后镜头。发现问题后修正对应部分，再继续制作。
-5. **完整检查与交付**：通看文字、旁白和视觉是否连贯；通过就导出，有问题就修改。保留源码和使用的素材。
-
-默认使用内置 ImageGen。生图由 Codex 在制作过程中调用，安装脚本不会自行调用图像 API。已有合适素材的修改任务可以复用原图；不要求每次重新生成。
-
-用户说“你自己决定”时，插件按流程自主完成，不会在每个阶段反复要求确认。
+- **按内容选流程**：直接制作或先做分镜；同一视频可以混用。
+- **保持画面统一**：共用配色、字体、间距、线条和角色部件，参考本地 UI/UX Pro Max、Impeccable、React Bits 的设计方法。
+- **找到合适的动作**：Remotion Bits 提供组件与示例；可选 Shotcraft 参考包补充数据、文字、运镜和转场的镜头卡与代码。
+- **检查实际成片**：简单视频看完整预览和关键帧；复杂镜头边做边检查，改动后复查相关镜头与相邻切点。
+- **核对数据**：记录来源、报告期、单位和币种，检查差值与增长率。
+- **把话说清楚**：参考 Humanizer 和 Humanizer ZH，删掉套话、自夸和无用的制作说明。
 
 ## 安装
 
-需要 Codex、Node.js 22 或更新版本、npm 和 Git。当前版本的本地集成在 Windows 上验证。
+在 Codex 插件市场中添加本仓库，然后安装 `remotion-video`。也可以从本地仓库注册：
 
-```powershell
-git clone https://github.com/Yi-Wang798/remotion-video.git
-cd remotion-video
-node scripts/setup.mjs
-codex plugin marketplace add .
+```text
+codex plugin marketplace add <repository-directory>
 codex plugin add remotion-video@remotion-video-marketplace
 ```
 
-已有同一个插件时更新现有安装，避免同时安装两份。当前电脑沿用 Personal 插件库中的安装。
+安装 Node.js 后，在仓库目录准备运行环境：
 
-`setup.mjs` 安装固定版本的渲染依赖，下载固定提交的上游指南，并写入本机 `runtime.local.json`。依赖目录默认位于用户目录下的 `.local/share/remotion-video/runtime`；也可指定：
-
-```powershell
-node scripts/setup.mjs --runtime "D:/video-runtime"
+```text
+node scripts/setup.mjs --runtime <absolute-runtime-directory>
 node scripts/video.mjs doctor
 ```
 
-使用 `--reuse` 可验证并复用已有的匹配依赖。`REMOTION_VIDEO_RUNTIME` 和 `REMOTION_VIDEO_BROWSER` 可覆盖本机设置。运行环境、浏览器路径、项目素材和账户凭据不会写进仓库。项目本身仍需要自己的 `package.json` 和依赖，Remotion 相关包应保持相同版本。
+运行环境与视频项目各自放在独立目录，方便升级插件。项目使用与运行环境相同版本的依赖，可复制 `runtime/package.json` 与锁文件到项目后运行 `npm ci`。渲染使用 Chrome；可在本地 `runtime.local.json` 配置 `browserExecutable`。版本记录在 [UPSTREAM.json](UPSTREAM.json)。
 
-## 使用
+需要更多镜头参考时：
 
-例如：
-
-> 用 remotion-video 做一段介绍噬菌体如何感染细菌的科普视频。先生成角色和连贯分镜，再分段制作与检查。风格和片长由你决定，导出 MP4 并保留源码。
-
-默认只保留有用的标题、必要标签和字幕。不会主动添加“拟人化科普动画”“非真实显微影像”等制作说明；科学内容中影响理解的事实仍会保留。
-
-## 检查工具
-
-```powershell
-node scripts/project.mjs init --project "D:/videos/example"
-node scripts/project.mjs revision --project "D:/videos/example"
-node scripts/review.mjs --project "D:/videos/example" --shot shot-01 --composition MyVideo
-node scripts/project.mjs check --project "D:/videos/example"
-node scripts/project.mjs check-final --project "D:/videos/example"
+```text
+node scripts/setup.mjs --with manim,shotcraft
+node scripts/video.mjs manim setup
+node scripts/video.mjs manim doctor
 ```
 
-`video-plan.json` 记录框架、图片来源和引用关系、镜头状态，以及分段与最终检查结果。`review.mjs` 导出阶段帧、相邻剪切点和该段短预览，结果初始为 `pending`。实际查看后才记录通过。
+Manim 使用独立 Python 环境，需要 Python 3.11 或更新版本；公式排版按所用场景准备 LaTeX。普通图表和 Remotion 视频只需 Node.js 与浏览器。
 
-`check` 和 `check-final` 检查素材是否存在、审查记录是否完整、源码和素材是否已改变，以及最终文字、旁白和视觉连贯性是否通过。它们不会根据“能渲染”自动判定画面好看。完整字段见 [制作与审查说明](skills/remotion-video/references/motion-and-review.md)。
+## 开始制作
 
-```powershell
-node --test tests/project.test.mjs
+直接告诉 Codex 想讲什么、给谁看，以及已有的数据或素材。风格与时长也可以交给它决定，例如：
+
+> 用这份季度数据做一段 20 秒动画，重点讲收入变化，画面简洁。
+
+> 做一段噬菌体杀死细菌的科普，角色可爱、动作连贯，时长你决定。
+
+手动建项目时：
+
+```text
+node scripts/project.mjs init --project <project> --kind data
+node scripts/project.mjs init --project <another-project> --kind illustration
 ```
 
-## 来源与许可
+`auto` 会根据是否需要新美术选择流程。可以用 `--workflow direct|designed` 和 `--review light|segments` 调整。详细说明见 [制作路径](skills/remotion-video/references/routing.md)。
 
-| 来源 | 本插件中的用途 |
-|---|---|
-| [Remotion](https://github.com/remotion-dev/remotion) | 视频框架、预览与渲染 |
-| [Remotion Agent Skills](https://github.com/remotion-dev/skills) | 制作与 API 指南，安装时下载固定提交 |
-| [Remotion Bits](https://github.com/av/remotion-bits) | 动效组件、示例检索与使用指南 |
-| [Humanizer ZH · op7418](https://github.com/op7418/Humanizer-zh) | 中文写作规则参考 |
-| [Humanizer · blader](https://github.com/blader/humanizer) | 英文及通用写作规则参考 |
-| OpenAI 内置 ImageGen | 在宿主中生成和编辑参考画面 |
+## 示例与检查
 
-原创建作流程与辅助脚本使用 [MIT License](LICENSE)。各上游项目保持各自许可，详见 [引用与许可声明](NOTICE.md)、`licenses/` 和固定版本记录 [UPSTREAM.json](UPSTREAM.json)。本项目是个人集成，不代表上述项目的官方联合产品。上游指南不随 Git 仓库重新分发；安装脚本从来源下载。Remotion 运行时使用其自身许可。
+- [数据摘要](examples/data-brief)：直接制作的柱状图与增长率，使用示例数据。
+- [几何运动](examples/manim-orbit)：Manim 渲染轨迹，再由 Remotion 组合标题与画面。
+- [按钮故事](examples/button-story)：沿用两张关联设计图，制作角色动作。
+
+```text
+node scripts/review.mjs --project <project> --composition <id> --all
+node scripts/review.mjs --project <project> --composition <id> --shot <shot-id>
+node scripts/project.mjs affected --project <project>
+node scripts/project.mjs check-final --project <project>
+node scripts/video.mjs export --project <project> src/index.tsx <id> renders/final.mp4
+node --test tests/*.test.mjs
+```
+
+`export` 会先检查当前版本的审查记录，再导出成片。预览和抽帧生成后，由制作代理实际查看并填写检查结果。检查记录与视频源文件一起保存；镜头依赖明确时，局部修改只会使相关检查失效。见 [动作与检查](skills/remotion-video/references/motion-and-review.md)。
+
+## 来源
+
+本项目组合了 Remotion、Remotion Bits 的制作能力，并参考 Manim、video-shotcraft、Humanizer 系列及本地设计技能。作者、固定提交、使用方式与许可见 [NOTICE.md](NOTICE.md) 和 [UPSTREAM.json](UPSTREAM.json)。原创脚本与文档采用 [MIT 许可](LICENSE)。

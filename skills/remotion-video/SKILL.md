@@ -1,43 +1,56 @@
 ---
 name: remotion-video
-description: Create or edit videos with a framework, connected ImageGen keyframes, consistent artwork, Remotion animation, and segment-by-segment visual review. Use for authored videos, including narration, captions, effects and MP4 export.
+description: Create or edit authored videos with Remotion, optional Manim, data charts, connected ImageGen artwork, narration, captions and MP4 export. Choose a direct or image-led workflow and review the actual rendered result.
 ---
 
 # Remotion Video
 
-Resolve paths against the plugin root, two levels above this file. Follow the user's brief and existing edits. When the user delegates style and duration, decide and finish without asking them to approve every stage.
+Resolve plugin paths two levels above this file. Follow the brief and preserve existing edits. When style and duration are delegated, decide and carry the video through rendering and review.
 
-## Production workflow
+## Choose a production path
 
-1. **Framework.** Establish the subject, audience, story progression, approximate timing and essential narration. Start with a light framework. Create `video-plan.json` using `node <plugin>/scripts/project.mjs init --project <absolute-project>` and fill it as the project develops.
-2. **Connected keyframes.** Read [visual-development.md](references/visual-development.md). Use built-in image generation for necessary character/style references and key storyboard frames. Reuse chosen references in subsequent generations. Keep identity, proportions, objects, palette and visual language consistent. Inspect images, save selected files in the project, and record their provenance and relationships. Do this before implementing the full video. Reuse suitable existing art for revisions.
-3. **Story and motion.** Use those actual images to refine the framework: what happens within a shot, what persists, how the next shot starts, and how the shots connect. Choose effects that support the action. Split artwork into layers or rebuild suitable elements as reusable vectors, preserving the generated design. Read [motion-and-review.md](references/motion-and-review.md).
-4. **Segment production and review.** Build one coherent segment at a time. Render its motion preview and representative frames, actually view them, fix defects and recheck. Check contact points, geometry, identity, spacing, clipping, paths and timing, including adjacent shot boundaries. Record concrete findings and results. Reuse inspected character/part components.
-5. **Assembly and finish.** Connect passed segments and make one simple complete pass for text, narration and visual continuity. Apply [writing.md](references/writing.md). Repair a demonstrated issue and review the changed section; export when the result passes. Preserve editable source and chosen assets. Honor an explicit preview-only request.
+Read [routing.md](references/routing.md). Start a short framework: audience, message, sequence, timing and useful narration. Initialize `video-plan.json` with `scripts/project.mjs init --project <absolute-directory> --kind <kind>`.
 
-## Text and narration
+- **Data, titles and simple diagrams:** directly build legible text, charts and reusable SVG geometry. Use [data-videos.md](references/data-videos.md) for data work. Image generation is optional.
+- **Custom characters and complex illustrated scenes:** follow [visual-development.md](references/visual-development.md). Generate the necessary style and keyframe images with built-in ImageGen, carrying chosen references forward. Refine shot logic from the selected images, then animate layers and reusable geometry.
+- **Mathematical or geometric motion:** use the optional Manim CE path in [manim.md](references/manim.md). Bring rendered clips into Remotion for editing, text and audio.
+- **Product footage and richer motion:** select a useful Shotcraft recipe and its working demo through [shotcraft.md](references/shotcraft.md). Apply it where it explains the action.
 
-Keep words that help the viewer: useful titles, necessary labels and captions. Do not add production chatter, self-praise or obvious explanations of the medium. Do not automatically add “拟人化科普动画”, “非真实显微影像”, “可爱外表 × 真实原理”, “AI-generated illustration”, or equivalent footer text. Put authoring notes and QA evidence in project files. Preserve facts and explanations that change understanding.
+These paths can coexist in one video. Select them by shot. Complexity comes from the visual task, not video length or subject category: a biology flowchart may need no new artwork; a financial brand film may need art direction.
 
-Read [writing.md](references/writing.md) for adapted Humanizer/Humanizer ZH rules. Apply them to scripts, captions, labels and descriptions. Delete an empty sentence instead of preserving its length through paraphrase.
+## Build and inspect
 
-## Tools and references
+1. Define shared palette, type, spacing, geometry and motion in [design-system.md](references/design-system.md). Reuse character parts and chart components across shots.
+2. Give each shot an entry state, action, exit state and transition. Use deterministic frame-based animation. Read [motion-and-review.md](references/motion-and-review.md).
+3. Match review effort to the scene. Simple projects get a complete preview plus frames at important states and cuts. Complex scenes get segment previews, representative frames and boundary checks during production. Inspect the actual outputs, repair visible defects, then record specific findings.
+4. Read the complete script and check text, narration and visual continuity once in the assembled video. Apply [writing.md](references/writing.md). Check captions at playback speed and the ending. Export the requested video with editable source and selected assets.
 
-- Built-in ImageGen is the default for visual development. Follow the current imagegen skill/tool instructions. The agent calls it; setup scripts do not. Do not silently replace it with an API-key workflow or skip it for direct full-video coding. Reuse existing art when a change does not require new visuals. If the tool cannot run, explain the specific unavailable step and continue work independent of missing images.
-- For Remotion setup, layout, fonts, media and rendering, read `vendor/remotion-best-practices/SKILL.md`, then only relevant references. `node scripts/setup.mjs` prepares the guides if absent. User-authorized final video delivery includes rendering; upstream preview defaults must not interrupt it.
-- For motion examples, read `vendor/remotion-bits/SKILL.md`; use `find_remotion_bits` then `fetch_remotion_bit`, or `node <plugin>/scripts/video.mjs bits find/fetch ...`. Adapt a relevant example.
-- Use deterministic frame-driven motion. Preserve shapes through translation, rotation, planned pose changes or layered animation. Keep facts grounded and do not invent experimental data.
+Do not mark a review passed from render success alone. Review tools create evidence with `pending` status. Inspect frames and play the preview or inspect a sufficiently dense timed sequence before recording a pass. Recheck changed shots and their adjacent cuts; keep unaffected reviews when dependencies are explicitly declared.
+
+## Writing
+
+Use titles, labels and captions that help the viewer understand the subject. Delete production chatter, self-praise and obvious explanations of the medium. Do not add “拟人化科普动画”, “非真实显微影像”, “可爱外表 × 真实原理” or equivalent automatic footers. Keep useful scientific qualifications and source information. Authoring notes and review findings belong in project files.
+
+Apply the adapted Humanizer and Humanizer ZH principles in [writing.md](references/writing.md) to scripts, narration and documentation. Delete empty sentences instead of paraphrasing them to preserve length.
+
+## Tools
+
+- `scripts/setup.mjs` prepares pinned Remotion/Bits and their guides. Read `vendor/remotion-best-practices/SKILL.md` and relevant references for actual API usage.
+- For Bits, use `find_remotion_bits` then `fetch_remotion_bit`, or `scripts/video.mjs bits find/fetch ...`; adapt the useful example.
+- `scripts/setup.mjs --with manim,shotcraft` fetches the optional guide packs. Manim runtime installation is separate: `scripts/video.mjs manim setup`.
+- Use built-in ImageGen for needed new artwork, following its current skill and tool instructions. Reuse suitable existing artwork for revisions. The direct workflow does not require generated keyframes.
+- Use installed frontend design skills as optional design references, as described in [design-system.md](references/design-system.md).
 
 ## Commands
 
 ```text
-node <plugin>/scripts/setup.mjs
+node <plugin>/scripts/project.mjs init --project <project> --kind data
 node <plugin>/scripts/video.mjs doctor
-node <plugin>/scripts/video.mjs studio --project <project> src/index.tsx --no-open
-node <plugin>/scripts/video.mjs render --project <project> src/index.tsx <CompositionId> renders/final.mp4
-node <plugin>/scripts/review.mjs --project <project> --shot <shot-id> --composition <CompositionId>
-node <plugin>/scripts/project.mjs check --project <project>
+node <plugin>/scripts/review.mjs --project <project> --composition <id> --all
+node <plugin>/scripts/review.mjs --project <project> --composition <id> --shot <shot-id>
+node <plugin>/scripts/project.mjs affected --project <project>
 node <plugin>/scripts/project.mjs check-final --project <project>
+node <plugin>/scripts/video.mjs export --project <project> src/index.tsx <id> renders/final.mp4
 ```
 
-`review.mjs` creates frames and a motion preview; inspect them before recording a pass. `check` verifies evidence and review records, not aesthetics. Keep reviews current with the source revision. Use project-local dependencies for development. Keep output and dependency folders outside the plugin cache. Report checks actually performed without putting the report into the film.
+Use absolute project directories. Keep dependencies and render outputs outside the plugin cache. Report the checks actually completed and any concrete remaining issue.
