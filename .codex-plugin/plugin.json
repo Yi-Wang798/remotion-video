@@ -1,7 +1,7 @@
 {
   "name": "remotion-video",
-  "version": "3.0.0",
-  "description": "Video authoring with adaptive workflows, Remotion, optional Manim and Shotcraft guides, and visual review.",
+  "version": "3.1.0",
+  "description": "Audience-led video design, rough previews, Remotion animation, optional Manim and Shotcraft guides, and visual review.",
   "skills": "./skills/",
   "keywords": [
     "video",
@@ -15,15 +15,15 @@
   ],
   "interface": {
     "displayName": "Remotion Video",
-    "shortDescription": "按内容选择制作方式，统一画面风格，检查后导出视频",
-    "longDescription": "数据与简单图解直接制作；复杂角色动画先做连贯分镜。结合 Remotion、可选 Manim 与 Shotcraft 镜头参考，按视频复杂度检查画面、动作、文字与旁白。",
+    "shortDescription": "先设计观看过程，再预演、制作和检查视频",
+    "longDescription": "为数据简报、科普、故事、产品演示和氛围短片设计合适的开场、视觉推进和收尾。先检查简易分镜，再制作动画，最后核对整片节奏、画面、字幕与旁白。",
     "category": "Design",
     "capabilities": [
       "Interactive",
       "Write"
     ],
     "defaultPrompt": [
-      "制作一段科普视频，按内容选择合适的画面和动画方式，检查成片后导出。"
+      "制作一段视频，先设计让人愿意继续看的镜头和节奏，用简易分镜预演，再完成动画、检查并导出。"
     ],
     "brandColor": "#4F7CFF"
   }

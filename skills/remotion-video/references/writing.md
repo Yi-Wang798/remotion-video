@@ -6,7 +6,7 @@ Use direct verbs and concrete objects. Explain what happens in this scene. Prese
 
 Read the script as speech for its intended audience. Vary sentence length with the thought. Keep humor and personality where they fit. Avoid forced excitement, formulaic introductions, repeated three-item lists, decorative English subtitles and rhetorical “not X, but Y” constructions.
 
-Every sentence should explain, identify or advance the story. Delete production chatter, self-praise and obvious descriptions of the medium. Do not automatically add:
+Every sentence should explain, identify or advance the intended experience. Match the opening to the purpose: a direct result can suit a briefing; a developing event can suit a story. Atmosphere may use silence and sparse text. Keep humor, suspense and questions where they belong rather than applying them to every format. Delete production chatter, self-praise and obvious descriptions of the medium. Do not automatically add:
 
 - 拟人化科普动画 / 非真实显微影像 / AI-generated illustration.
 - 可爱外表 × 真实原理 or a generic “让科学原理动起来” slogan.

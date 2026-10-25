@@ -1,6 +1,6 @@
 # Data videos
 
-Start from the user's files or authoritative releases. For “recent” figures, retrieve the current release and record its date and reporting period. Read the source rather than inferring numbers from an animated chart.
+Use the shared creative plan to decide the important comparison, opening result and supported takeaway. A stable chart can be the complete setting when its visible states develop the comparison. Inspect its initial, comparison and result layouts as a compact design preview. Start from the user's files or authoritative releases. For “recent” figures, retrieve the current release and record its date and reporting period. Read the source rather than inferring numbers from an animated chart.
 
 Each `dataSources` item has `id`, `period`, `unit`, optional `currency`, and a `url` or project-relative `file` snapshot. Each raw metric has `id`, numeric `value`, and `sourceId`. Derived metrics use `formula: {kind: "difference" | "pctChange", current: "id", previous: "id"}`. For percentage change, the value is expressed as percent (20 means 20%). Source periods distinguish YoY from QoQ; state the comparison in the script and labels. The helper checks arithmetic and unit/currency compatibility; read the source to verify accounting definitions and the intended periods.
 

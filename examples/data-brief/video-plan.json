@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "taskKind": "data",
   "workflow": "direct",
   "reviewLevel": "light",
@@ -75,12 +75,31 @@
         "previous",
         "current",
         "growth"
-      ]
+      ],
+      "visual": {
+        "setup": "revenue-chart",
+        "view": "front",
+        "scale": "full-chart",
+        "focus": "Two values on the same zero baseline",
+        "reveal": "Reveal the final comparison and percentage change",
+        "role": "Support the headline with the values that produce it"
+      }
     }
   ],
   "reviews": {
+    "design": null,
     "segments": [],
     "final": null
   },
-  "purpose": "example"
+  "purpose": "example",
+  "creative": {
+    "profile": "briefing",
+    "previewMode": "compact",
+    "audience": "Viewers checking example quarterly revenues",
+    "promise": "Understand the revenue comparison and its growth rate",
+    "opening": "Lead with the 20 percent revenue growth result",
+    "progression": "Build both bars on one zero baseline, then reveal the difference",
+    "payoff": "Hold 100, 120 and the growth rate together for reading",
+    "dependencies": []
+  }
 }

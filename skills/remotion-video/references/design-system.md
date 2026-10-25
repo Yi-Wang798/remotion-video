@@ -1,6 +1,6 @@
 # A shared visual language
 
-Choose one palette, type scale, spacing scale, outline weight, corner radius, shadow treatment and motion vocabulary. Record the choices in `plan.design`; implement them in a shared source file and list it in `sharedDependencies`. Carry the same values into Manim and any imported artwork.
+Choose one palette, type scale, spacing scale, outline weight, corner radius, shadow treatment and motion vocabulary. Record the choices in `plan.design`; implement them in a shared source file and list it in `sharedDependencies`. Carry compatible values into Manim and imported artwork. Shared tokens establish a visual language; individual shots can change composition, lighting, staging and accent emphasis. Titles and captions appear where useful rather than occupying the same template in every shot.
 
 Build intentional symmetry with a common coordinate system, centered anchors and reusable components. Keep limb joints attached to the parent. Preserve aspect ratio for sprites and clips. Align optical centers as well as bounding boxes. Reserve space for captions and test the final target aspect ratio. A vertical version needs a new composition, not just a center crop.
 

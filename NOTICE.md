@@ -2,7 +2,7 @@
 
 ## Original work
 
-The adaptive production workflow, review helpers, setup wrapper and bilingual documentation are maintained by Yi-Wang798. Their original portions are covered by the root MIT license. This license does not replace any upstream license.
+The adaptive production workflow, creative design and preview review helpers, setup wrapper and bilingual documentation are maintained by Yi-Wang798. Their original portions are covered by the root MIT license. This license does not replace any upstream license.
 
 ## Remotion and official Agent Skills
 

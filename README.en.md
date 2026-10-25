@@ -1,6 +1,6 @@
 # Remotion Video
 
-Make videos with code, with attention to artwork, motion and words.
+Design a reason to keep watching, then build the images, movement and sound.
 
 Build data summaries, charts and simple diagrams directly. For custom characters and elaborate scenes, develop connected reference images with built-in ImageGen, then animate the selected designs. Manim can handle mathematical and geometric scenes; Remotion assembles the clips, captions, narration and other shots.
 
@@ -8,8 +8,11 @@ Build data summaries, charts and simple diagrams directly. For custom characters
 
 ## What it does
 
+- Plans an opening, visual progression and payoff for the purpose: data brief, explanation, story, demonstration or atmosphere.
+- Checks a rough sequence before detailed work. Simple videos use ordered layout frames; complex videos use a timed animatic to find weak or repetitive passages early.
+
 - Chooses a direct or image-led workflow for the subject. Both can appear in one video.
-- Shares palette, typography, spacing, outlines and character parts across shots. Optional local UI/UX Pro Max, Impeccable and React Bits skills provide design references.
+- Shares palette, typography, spacing, outlines and character parts while choosing framing, viewpoint, scale and staging for each shot. Optional local UI/UX Pro Max, Impeccable and React Bits skills provide design references.
 - Uses Remotion Bits components and examples, with an optional Shotcraft pack for data, typography, camera and transition recipes with code.
 - Reviews actual renders. Simple videos get a complete preview and key frames; complex shots get segment reviews during production. Dependency tracking keeps revisions focused on affected shots and adjacent cuts.
 - Records data sources, periods, units and currencies, and checks differences and percentage changes.
@@ -54,11 +57,11 @@ Tell Codex the subject, audience and available data or artwork. You can delegate
 To initialize a plan manually:
 
 ```text
-node scripts/project.mjs init --project <project> --kind data
+node scripts/project.mjs init --project <project> --kind data --profile briefing
 node scripts/project.mjs init --project <another-project> --kind illustration
 ```
 
-Auto routing follows the need for custom artwork. Override it with `--workflow direct|designed` and `--review light|segments`. See [production routing](skills/remotion-video/references/routing.md).
+Auto routing follows the need for custom artwork. Override it with `--workflow direct|designed` and `--review light|segments`. Choose expression with `--profile` and preview effort with `--preview compact|animatic`. New projects use version 3 plans; existing version 1/2 projects keep their prior checks. See [production routing](skills/remotion-video/references/routing.md) and [shot design](skills/remotion-video/references/creative-direction.md).
 
 ## Examples and review
 
@@ -67,6 +70,9 @@ Auto routing follows the need for custom artwork. Override it with `--workflow d
 - [Button story](examples/button-story): character motion built from two connected design images.
 
 ```text
+node scripts/project.mjs design --project <project>
+node scripts/review.mjs --project <project> --composition <rough-or-final-id> --design
+node scripts/project.mjs check-design --project <project>
 node scripts/review.mjs --project <project> --composition <id> --all
 node scripts/review.mjs --project <project> --composition <id> --shot <shot-id>
 node scripts/project.mjs affected --project <project>
@@ -75,7 +81,7 @@ node scripts/video.mjs export --project <project> src/index.tsx <id> renders/fin
 node --test tests/*.test.mjs
 ```
 
-`export` checks the current review records before rendering the final video. After generating previews and frames, the authoring agent inspects them and records findings alongside the video source. Explicit shot dependencies let local changes invalidate only the related reviews. See [motion and review](skills/remotion-video/references/motion-and-review.md).
+`design` highlights repeated or dominant compositions for inspection. `export` checks current design and final review records before rendering the finished video. After generating previews and frames, the authoring agent inspects them and records findings alongside the video source. Design review checks the planned opening, progression and pace; the complete pass checks their execution along with text, sound and continuity. Explicit shot dependencies keep local rechecks focused. See [motion and review](skills/remotion-video/references/motion-and-review.md).
 
 ## Credits
 

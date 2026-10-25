@@ -7,5 +7,6 @@ An eight-second direct-code example with synthetic quarterly revenue values, 100
 Prepare project dependencies from the plugin's `runtime/package.json` and lock file with `npm ci`, then run:
 
 ```text
+node <plugin>/scripts/review.mjs --project <this-directory> --composition DataBrief --design
 node <plugin>/scripts/review.mjs --project <this-directory> --composition DataBrief --all
 ```
