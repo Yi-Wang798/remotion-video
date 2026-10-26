@@ -1,7 +1,7 @@
 {
   "name": "remotion-video",
-  "version": "3.1.0",
-  "description": "Audience-led video design, rough previews, Remotion animation, optional Manim and Shotcraft guides, and visual review.",
+  "version": "3.2.0",
+  "description": "Connected ImageGen keyframes, vivid art direction, Remotion animation and shot-level visual review.",
   "skills": "./skills/",
   "keywords": [
     "video",
@@ -16,7 +16,7 @@
   "interface": {
     "displayName": "Remotion Video",
     "shortDescription": "先设计观看过程，再预演、制作和检查视频",
-    "longDescription": "为数据简报、科普、故事、产品演示和氛围短片设计合适的开场、视觉推进和收尾。先检查简易分镜，再制作动画，最后核对整片节奏、画面、字幕与旁白。",
+    "longDescription": "为插画科普与角色故事生成关联关键画面，设计鲜明配色、光影材质和连贯动作；简单数据视频直接制作。检查动态预演、分段画面与成片后导出。",
     "category": "Design",
     "capabilities": [
       "Interactive",

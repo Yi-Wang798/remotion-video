@@ -1,5 +1,15 @@
 # Changes
 
+## 3.2.0
+
+- Added version 4 visual-route decisions, generated/existing artwork selection and explicit image-generation requirements.
+- Illustrated plans require connected artwork, rendered asset declarations, timed animatics and segment reviews.
+- Added timed visual beats, useful overlay inventories and shot-level final observations.
+- Added color direction for saturated focal colors, gradients, translucency, lighting and material depth.
+- Disabled unrequested chapter/page and brand decoration; expanded checks for actual rendered text.
+- Kept version 1–3 behavior and simple direct production; added regression tests for route conflicts, missing art and review evidence.
+- Updated bilingual READMEs with Humanizer and documented optional README updates in AGENTS.md.
+
 ## 3.1.0
 
 - Added a shared creative-design stage for every video type, with independent expression profiles and production paths.

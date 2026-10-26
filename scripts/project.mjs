@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {projectFile} from './lib/project-files.mjs';
 import {profiles,hasCreativePlan,validateCreative,designReport} from './lib/creative.mjs';
 import {workflowFor,reviewLevelFor} from './lib/routing.mjs';
+import {visualModes,validateVisualPolicy} from './lib/visual-policy.mjs';
 export {projectFile} from './lib/project-files.mjs';
 export {workflowFor,reviewLevelFor} from './lib/routing.mjs';
 export {profileFor,previewModeFor,designRevision,designReport,validateCreative} from './lib/creative.mjs';
@@ -24,6 +25,7 @@ export function revision(project,plan=loadPlan(project)){
  for(const a of [...(plan.references||[]),...(plan.dataSources||[])])if(a.file)addFile(h,project,a.file);
  for(const file of new Set([...(plan.sharedDependencies||[]),...(plan.shots||[]).flatMap(s=>s.dependencies||[])]))addFile(h,project,file);
  for(const file of plan.creative?.dependencies||[])addFile(h,project,file);
+ for(const file of new Set((plan.shots||[]).flatMap(s=>s.assetFiles||[])))addFile(h,project,file);
  addTree(h,project,'src');addTree(h,project,'public');return h.digest('hex');
 }
 function coreShotRevision(project,plan,s){
@@ -31,6 +33,7 @@ function coreShotRevision(project,plan,s){
  for(const file of plan.sharedDependencies||[])addFile(h,project,file);
  if(s.dependencies?.length)for(const file of s.dependencies)addFile(h,project,file);else{addTree(h,project,'src');addTree(h,project,'public');}
  for(const id of s.referenceIds||[]){const r=(plan.references||[]).find(r=>r.id===id);h.update(JSON.stringify(r)||'missing-ref');if(r?.file)addFile(h,project,r.file);}
+ for(const file of s.assetFiles||[])addFile(h,project,file);
  const metrics=new Map((plan.metrics||[]).map(m=>[m.id,m])),visited=new Set();
  function addMetric(id){if(visited.has(id))return;visited.add(id);const m=metrics.get(id);h.update(JSON.stringify(m)||'missing-metric');if(!m)return;
   const source=(plan.dataSources||[]).find(d=>d.id===m.sourceId);h.update(JSON.stringify(source)||'');if(source?.file)addFile(h,project,source.file);
@@ -101,6 +104,7 @@ export function validatePlan(project,plan,{final=false}={}){
   for(const id of s.metricIds||[])if(!metricIds.has(id))issues.push(`Shot ${s.id}: unknown metric ${id}`);
   if(s.engine&&!['remotion','manim'].includes(s.engine))issues.push(`Shot ${s.id}: unknown engine`);
   for(const file of [...(plan.sharedDependencies||[]),...(s.dependencies||[])])validFile(file,`Shot ${s.id} dependency`);
+  for(const file of s.assetFiles||[])validFile(file,`Shot ${s.id} artwork asset`);
   if(reviewLevelFor(plan)==='segments'){
    const r=plan.reviews?.segments?.find(r=>r.shotId===s.id);
    if(!r||r.status!=='pass')issues.push(`Shot ${s.id}: visual review not passed`);
@@ -114,6 +118,7 @@ export function validatePlan(project,plan,{final=false}={}){
   if(/(拟人化科普动画|非真实显微影像|可爱外表\s*[×x]\s*真实原理|AI-generated illustration)/i.test([s.narration,...(s.screenText||[])].filter(Boolean).join('\n')))issues.push(`Shot ${s.id}: remove production boilerplate from audience copy`);
  }
  if(final){const r=plan.reviews?.final;
+  issues.push(...validateVisualPolicy(project,plan,{final:true}).filter(i=>!issues.includes(i)));
   if(hasCreativePlan(plan)&&r?.engagement!=='pass')issues.push('Complete engagement review missing');
   if(!r||r.status!=='pass'||r.text!=='pass'||r.narration!=='pass'||r.visualContinuity!=='pass')issues.push('Complete text/narration/visual-continuity pass missing');
   else{if(r.sourceRevision!==rev)issues.push('Final review is stale');if(!r.checkedAt||!r.findings?.length)issues.push('Final review needs dated findings');validFile(r.preview,'Final preview');if((plan.version||1)>=2){if(!r.frames?.length)issues.push('Final review frames missing');for(const p of r.frames||[])validFile(p,'Final review frame');}}
@@ -126,10 +131,15 @@ function main(){
  if(mode==='init'){
   if(fs.existsSync(file))throw new Error('video-plan.json exists; edit it in place');
   const taskKind=get('--kind','general'),workflow=get('--workflow','auto'),reviewLevel=get('--review','auto'),profile=get('--profile','auto'),previewMode=get('--preview','auto');
+  const visualMode=get('--visual',({data:'data',diagram:'schematic'}[taskKind]||'illustrated'));
+  const artwork=get('--artwork',visualMode==='illustrated'?'built-in-imagegen':'none');
+  if(!visualModes.includes(visualMode)||!['built-in-imagegen','existing','none'].includes(artwork))throw new Error('Invalid visual mode or artwork route');
+  if(args.includes('--require-imagegen')&&artwork!=='built-in-imagegen')throw new Error('--require-imagegen needs --artwork built-in-imagegen');
+  if(visualMode==='illustrated'&&(workflow==='direct'||reviewLevel==='light'||previewMode==='compact'||artwork==='none'))throw new Error('Illustrated videos need artwork, designed workflow, segment reviews and an animatic');
   if(!['general','data','diagram','illustration','product'].includes(taskKind)||!['auto','direct','designed'].includes(workflow)||!['auto','light','segments'].includes(reviewLevel))throw new Error('Invalid task kind, workflow or review level');
   if(!profiles.includes(profile)||!['auto','compact','animatic'].includes(previewMode))throw new Error('Invalid creative profile or preview mode');
   for(const d of ['src','assets','reviews','renders'])fs.mkdirSync(path.join(project,d),{recursive:true});
-  fs.writeFileSync(file,JSON.stringify({version:3,fps:30,taskKind,workflow,reviewLevel,framework:'',creative:{profile,previewMode,audience:'',promise:'',opening:'',progression:'',payoff:'',dependencies:[]},design:{palette:{},typography:{},spacing:{},outlines:{}},sharedDependencies:[],characters:[],references:[],dataSources:[],metrics:[],shots:[],reviews:{design:null,segments:[],final:null}},null,2)+'\n');console.log(file);
+  fs.writeFileSync(file,JSON.stringify({version:4,fps:30,taskKind,workflow,reviewLevel,framework:'',creative:{profile,previewMode,visualMode,visualReason:'',artwork,imageGenerationRequired:args.includes('--require-imagegen'),audience:'',promise:'',opening:'',progression:'',payoff:'',dependencies:[]},design:{palette:{},colorDirection:{intent:'',contrast:'',sequence:'',material:''},typography:{},spacing:{},outlines:{}},sharedDependencies:[],characters:[],references:[],dataSources:[],metrics:[],shots:[],reviews:{design:null,segments:[],final:null}},null,2)+'\n');console.log(file);
  }else if(mode==='revision'){const plan=loadPlan(project);console.log(get('--shot')?shotRevision(project,plan,get('--shot')):revision(project,plan));}
  else if(['design','check-design'].includes(mode)){
   const plan=loadPlan(project);if(!hasCreativePlan(plan))throw new Error('Add a creative plan to enable design review; existing version 1/2 production checks remain available');

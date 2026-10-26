@@ -15,7 +15,7 @@ Choose the audience and what the video gives them: a useful comparison, a mechan
 | atmosphere | sensory promise → evolving texture, space or tension → release | deliberate duration, restrained movement, sound and visual development |
 | custom | the user's intended experience | choose the visual structure that serves it |
 
-Profiles are independent of software and artwork needs. Combine them where useful and select the dominant intent. A story can use code-native geometry; an illustrated video can be a briefing. Preserve the user's requested form, pace and tone.
+Profiles describe expression; the version 4 visual route in [routing.md](routing.md) governs artwork and review requirements. Profiles are independent of software and artwork needs. Combine them where useful and select the dominant intent. A story can use code-native geometry; an illustrated video can be a briefing. Preserve the user's requested form, pace and tone.
 
 ## Design actual shots
 
@@ -42,7 +42,7 @@ The agent records this review and continues. Routine creative choices do not cre
 
 ## Plan and review records
 
-New plans use `version: 3` and:
+The creative fields introduced in version 3 remain in version 4. Add the visual, color, beat and overlay fields in [production-design.md](production-design.md). The shared creative brief includes:
 
 ```json
 {

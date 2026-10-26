@@ -1,20 +1,26 @@
 {
-  "version": 3,
+  "version": 4,
   "taskKind": "data",
   "workflow": "direct",
   "reviewLevel": "light",
   "fps": 30,
   "framework": "Compare two example quarterly revenues, then hold the growth result.",
   "design": {
-    "palette": [
-      "#101E38",
-      "#FAF7F0",
-      "#2B877F",
-      "#C97948"
-    ],
+    "palette": {
+      "ink": "#19163D",
+      "paper": "#FFF8F0",
+      "teal": "#2363E8",
+      "orange": "#F56B48"
+    },
     "typography": "Arial / Microsoft YaHei",
     "spacing": 8,
-    "outlines": 3
+    "outlines": 3,
+    "colorDirection": {
+      "intent": "A clear financial comparison with vivid bars",
+      "contrast": "Blue current period and coral prior period on warm paper",
+      "sequence": "Bars build before the growth result takes emphasis",
+      "material": "Flat chart fills maintain accurate value reading"
+    }
   },
   "characters": [],
   "references": [],
@@ -82,8 +88,70 @@
         "scale": "full-chart",
         "focus": "Two values on the same zero baseline",
         "reveal": "Reveal the final comparison and percentage change",
-        "role": "Support the headline with the values that produce it"
-      }
+        "role": "Support the headline with the values that produce it",
+        "beats": [
+          {
+            "frame": 0,
+            "kind": "reveal",
+            "event": "Growth headline enters"
+          },
+          {
+            "frame": 20,
+            "kind": "action",
+            "event": "Prior-period bar rises from zero"
+          },
+          {
+            "frame": 35,
+            "kind": "action",
+            "event": "Current-period bar joins on the same scale"
+          },
+          {
+            "frame": 95,
+            "kind": "reveal",
+            "event": "Growth comparison appears"
+          },
+          {
+            "frame": 125,
+            "kind": "hold",
+            "event": "Final values and growth remain together",
+            "reason": "Allow the comparison to be read"
+          }
+        ]
+      },
+      "overlays": [
+        {
+          "text": "收入同比增长 20%",
+          "purpose": "title"
+        },
+        {
+          "text": "2026 Q1 · 人民币百万元",
+          "purpose": "label"
+        },
+        {
+          "text": "0, 40, 80, 120",
+          "purpose": "label"
+        },
+        {
+          "text": "100 / 120",
+          "purpose": "label"
+        },
+        {
+          "text": "2025 Q1 / 2026 Q1",
+          "purpose": "label"
+        },
+        {
+          "text": "+20%",
+          "purpose": "label"
+        },
+        {
+          "text": "同比增长",
+          "purpose": "label"
+        },
+        {
+          "text": "100 → 120",
+          "purpose": "label"
+        }
+      ]
     }
   ],
   "reviews": {
@@ -100,6 +168,10 @@
     "opening": "Lead with the 20 percent revenue growth result",
     "progression": "Build both bars on one zero baseline, then reveal the difference",
     "payoff": "Hold 100, 120 and the growth rate together for reading",
-    "dependencies": []
+    "dependencies": [],
+    "visualMode": "data",
+    "visualReason": "A stable two-bar comparison communicates the entire brief",
+    "artwork": "none",
+    "imageGenerationRequired": false
   }
 }

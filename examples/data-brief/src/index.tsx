@@ -5,13 +5,12 @@ const values=Object.fromEntries(plan.metrics.map(m=>[m.id,m.value]));
 const source=(id:string)=>plan.dataSources.find(s=>s.id===plan.metrics.find(m=>m.id===id)?.sourceId)!;
 const previous=source('previous'),current=source('current');
 const unitLabel=current.currency==='CNY'&&current.unit==='million'?'人民币百万元':`${current.currency || ''} ${current.unit}`.trim();
-const ink='#101E38',paper='#FAF7F0',teal='#2B877F',orange='#C97948';
+const {ink,paper,teal,orange}=plan.design.palette;
 const p=(f:number,a:number,b:number)=>interpolate(f,[a,b],[0,1],{extrapolateLeft:'clamp',extrapolateRight:'clamp',easing:Easing.out(Easing.cubic)});
 const DataBrief=()=>{
  const f=useCurrentFrame(),enter=p(f,0,20),growth=p(f,95,125);
  return <AbsoluteFill style={{background:paper,color:ink,fontFamily:'Arial, Microsoft YaHei, sans-serif'}}><svg width="100%" height="100%" viewBox="0 0 1280 720">
  <g opacity={enter} transform={`translate(0 ${20*(1-enter)})`}>
- <text x="84" y="100" fill={teal} fontSize="20" letterSpacing="3">QUARTERLY REVENUE</text>
  <text x="80" y="160" fill={ink} fontSize="48" fontWeight="700">收入同比增长 {values.growth}%</text>
  <text x="84" y="204" fill="#546076" fontSize="23">{current.period} · {unitLabel}</text>
  </g>

@@ -20,15 +20,17 @@ Check engagement, words, narration and visual continuity in the assembled video.
 
 For version 3, the final record includes `engagement: pass` alongside `text`, `narration`, `visualContinuity`, `status`, `sourceRevision`, `frames`, `preview`, `findings` and `checkedAt`. For a silent video, record that no narration track is intended when reviewing that field. Reuse the current complete preview to refresh a design review if only later timing/design changes need rechecking; one inspection can support both records when it addresses both scopes.
 
+Version 4 also requires the per-shot observations in [production-design.md](production-design.md): actual visual development, artwork match, color/light and overlays. Watch illustrated animatics and segment previews at planned speed. Inspect long holds and looping intervals; particles and camera drift alone do not establish progression. Compare the final rendered artwork with keyframes, and inspect every corner for unplanned small text. Record observed details and time positions, including fixes, rather than copying general pass statements.
+
 ## Revisions and dependencies
 
 - `sharedDependencies`: common source, fonts, audio and visual tokens used throughout the video.
 - Shot `dependencies`: source, art, clip and audio files used by that shot, including imports.
-- Shot `referenceIds` and `metricIds`: artwork and data used by the shot.
+- Shot `referenceIds`, `assetFiles` and `metricIds`: selected artwork, actual rendered assets and data used by the shot.
 - Segment review `shotRevision`: shot, its files/data, shared values and immediate neighbors.
 
 A local source change invalidates that shot and adjacent cut reviews; shared visual changes invalidate all segments. Without explicit shot dependencies, the helper conservatively tracks all `src/` and `public/` files. `project.mjs affected` lists stale passed segments. The full source hash also covers declared dependencies outside those folders; it invalidates the final pass when source, assets, data, creative brief or timing changes.
 
 The separate design hash tracks planned experience, shot timing, selected artwork/data and `creative.dependencies`. Animation implementation can be polished without repeatedly failing the rough design check; the finished result still needs the complete engagement pass. Review notes do not change source/design hashes. Inspect the relevant changed scope before updating a record.
 
-Version 1 records retain their global segment hash. Version 1/2 projects keep their original review schema unless they adopt a creative plan. Run `project.mjs check-final` before delivery. It checks current records, evidence and data arithmetic. Repetition warnings guide judgment and do not independently block export.
+Version 1 records retain their global segment hash. Versions 1–3 retain their existing checks. Substantial redesigns adopt version 4; see [production-design.md](production-design.md). Run `project.mjs check-final` before delivery. It checks current records, evidence and data arithmetic. Repetition warnings guide judgment and do not independently block export.

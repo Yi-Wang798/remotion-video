@@ -41,7 +41,7 @@ try{
   const currentPlan=loadPlan(project),current=design?designRevision(project,currentPlan):all?revision(project,currentPlan):shotRevision(project,currentPlan,id);
   if(design&&revision(project,currentPlan)!==sourceRevision)throw new Error('Source changed during design preview rendering; rerun the preview');
   if(current!==selectedRevision)throw new Error('Selected source changed during review rendering; rerun the interval');
-  const evidence={...(design?{scope:'design',designRevision:selectedRevision,previewMode:previewModeFor(plan)}:all?{scope:'final',text:'pending',narration:'pending',visualContinuity:'pending',...(hasCreativePlan(plan)?{engagement:'pending'}:{})}:{shotId:id,shotRevision:selectedRevision}),status:'pending',sourceRevision,frames,...(preview?{preview:relative(preview)}:{}),findings:[],checkedAt:null};
+  const evidence={...(design?{scope:'design',designRevision:selectedRevision,previewMode:previewModeFor(plan)}:all?{scope:'final',text:'pending',narration:'pending',visualContinuity:'pending',...(hasCreativePlan(plan)?{engagement:'pending'}:{}),...((plan.version||1)>=4?{shotChecks:plan.shots.map(s=>({shotId:s.id,development:'',artwork:'',color:'',overlays:''}))}:{})}:{shotId:id,shotRevision:selectedRevision}),status:'pending',sourceRevision,frames,...(preview?{preview:relative(preview)}:{}),findings:[],checkedAt:null};
   fs.writeFileSync(path.join(folder,'evidence.json'),JSON.stringify(evidence,null,2)+'\n');
   console.log(JSON.stringify(evidence,null,2));
  }finally{await browser.close({silent:true});}

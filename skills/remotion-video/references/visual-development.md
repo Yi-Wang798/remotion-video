@@ -2,6 +2,8 @@
 
 Write the causal or narrative spine before generating images. For each beat, specify the viewer's takeaway and visible action. Keep timing approximate until narration and motion have been tried. Generate the keyframes needed to establish the visual world and explain important changes, rather than a decorative image for every sentence.
 
+For version 4 illustrated work, this stage is required: select the opening and necessary discoveries, scale changes, turns and payoff. Use built-in ImageGen by default or suitable existing art when selected. Follow [production-design.md](production-design.md) for the recorded route and assets. A schematic classification must not replace a requested illustrated film. If required generation is unavailable, explain the blocker and preserve the work rather than silently substituting code drawings.
+
 ## Shared identity
 
 Create a character/style reference with recognizable shapes, proportions, colors, material and line weight. Distinguish identity anchors from shot choices: camera, framing, location, layout, light and physical scale can change with the planned action. Use the same environment when continuity calls for it. Design additional views when a new shot needs them. Record stable character IDs and a short description of what must remain recognizable. For diagrams, fix the meaning of colors and component shapes.
@@ -14,7 +16,7 @@ For each later keyframe, supply the chosen character/style reference and the rel
 
 Prompt starting point:
 
-> Use the attached character/style reference and preceding storyboard frame. Keep [identity, proportions and style anchors]. The next shot shows [visible event and reveal], from [viewpoint] at [scale], in [setting]. Carry forward [objects/state that remain relevant]. Change [framing/staging/light] to serve this shot. Compose for [aspect ratio] with room for [necessary overlay]. No decorative labels or watermark.
+> Use the attached character/style reference and preceding storyboard frame. Keep [identity, proportions and style anchors]. The next shot shows [visible event and reveal], from [viewpoint] at [scale], in [setting]. Carry forward [objects/state that remain relevant]. Change [framing/staging/light] to serve this shot. Use [named color roles, saturation balance, light direction, gradient and material treatment] from the shared color direction. Compose for [aspect ratio] with room for [necessary overlay]. No decorative labels or watermark.
 
 Respect the user's reference and brief rather than imposing a fixed style. Keep a cumulative chain of chosen references; repeating descriptive words in independent prompts does not establish continuity.
 
@@ -26,4 +28,4 @@ Revisit the framework after viewing actual frames. Define what moves, what stays
 
 Use layered image assets where the illustration style matters. Use built-in edits for clean character, foreground and background layers, preserving transparency when needed. Rebuild geometric elements as vectors when that preserves the chosen silhouette and composition. Reuse components for recurring body parts. Do not stretch a complete illustration differently on each axis or hide a continuity error behind a dissolve.
 
-Inspect the selected keyframes as an ordered strip for purposeful changes in view, staging, scale and visible events. Make the compact preview or animatic described in [creative-direction.md](creative-direction.md) before detailed production. Compare the first representative coded shot to its keyframe at matching framing. Resolve obvious differences before building the full video. Text-only or timing-only revisions do not require new images.
+Inspect the selected keyframes as an ordered strip for purposeful changes in view, staging, scale and visible events. Version 4 illustrated films use a timed animatic; other eligible modes can use the compact preview described in [creative-direction.md](creative-direction.md). Compare the first representative rendered shot to its keyframe at matching framing. Resolve obvious differences before building the full video. Text-only or timing-only revisions do not require new images.

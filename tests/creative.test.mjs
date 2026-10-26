@@ -67,10 +67,10 @@ test('missing visual decisions, unsupported profiles and escaping evidence paths
  const {project,plan}=fixture();delete plan.shots[0].visual.reveal;plan.creative.profile='automatic-viral';plan.reviews.design.frames=['../outside.png'];
  const issues=validateCreative(project,plan,{review:true});assert.ok(issues.includes('Unknown creative profile'));assert.ok(issues.some(s=>s.includes('visual.reveal')));assert.ok(issues.some(s=>s.includes('file missing or invalid')));
 });
-test('init creates version 3 with explicit profile/preview overrides and keeps legacy validation available',()=>{
+test('init creates version 4 with explicit profile/preview overrides and keeps legacy validation available',()=>{
  const project=fs.mkdtempSync(path.join(os.tmpdir(),'video-creative-init-'));
  const r=spawnSync(process.execPath,[projectScript,'init','--project',project,'--kind','diagram','--profile','atmosphere','--preview','compact'],{encoding:'utf8'});assert.equal(r.status,0);
- const plan=JSON.parse(fs.readFileSync(path.join(project,'video-plan.json'),'utf8'));assert.equal(plan.version,3);assert.equal(plan.creative.profile,'atmosphere');assert.equal(plan.creative.previewMode,'compact');
+ const plan=JSON.parse(fs.readFileSync(path.join(project,'video-plan.json'),'utf8'));assert.equal(plan.version,4);assert.equal(plan.creative.profile,'atmosphere');assert.equal(plan.creative.previewMode,'compact');
  assert.deepEqual(validateCreative(project,{version:2}),[]);
 });
 test('report CLI keeps warnings nonblocking; check-design checks current evidence',()=>{

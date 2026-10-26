@@ -1,30 +1,26 @@
 # Production routing
 
-Choose three things independently: how to build the visuals, what experience the video offers, and how much review it needs.
+Choose visual treatment from what viewers should see, then select production tools. `taskKind` describes the subject; it does not override the treatment or an explicit image-generation request.
 
-## Production path
+| Visual mode | Use when | Artwork and preview |
+| --- | --- | --- |
+| illustrated | characters, environments, spatial events, microscopic worlds or stylized narratives | connected built-in ImageGen keyframes by default; suitable existing art can be reused; timed animatic and segment reviews |
+| schematic | a simple labeled relationship or process is the intended form | direct code and compact layouts |
+| data | numbers and chart comparisons carry the film | direct code and compact layouts |
+| geometry | formulas, axes and geometric transformations carry the film | Remotion or optional Manim; compact layouts or an animatic as needed |
+| footage | existing clips or recordings carry the film | selected footage; preview effort follows editing complexity |
+| typography | the text itself carries the film | code typography; preview movement at intended speed |
 
-`taskKind` accepts `general`, `data`, `diagram`, `illustration`, `product`. `workflow` accepts `auto`, `direct`, `designed`.
+A playful science explainer with characters and changing scales belongs in `illustrated`, even if it explains a mechanism. A financial brief need not generate illustrations. Honor a deliberately requested diagram, brand palette or minimalist treatment. Read [production-design.md](production-design.md) for plan fields and [creative-direction.md](creative-direction.md) for expression profiles.
 
-| Need | Typical production path |
-| --- | --- |
-| Numbers, titles, charts, simple processes | direct Remotion + SVG |
-| New characters or elaborate illustrated scenes | designed, with connected ImageGen references |
-| Formula, axes or geometric transformations | direct, optionally Manim CE clips assembled in Remotion |
-| Product walkthrough or brand film | direct or designed using suitable footage and assets |
+## Settings and precedence
 
-Auto chooses designed for `needsCustomArt: true` or `taskKind: illustration`, otherwise direct. Explicit workflow choices override it. Paths can coexist in a project; choose `shot.engine: remotion | manim` per shot. A designed project uses chosen references for its shots, including appropriate shared art direction for code-native portions.
+New plans use version 4. `creative.visualMode` selects the table row; `visualReason` explains the choice. `creative.artwork` is `built-in-imagegen`, `existing` or `none`. Record an explicit generation request with `imageGenerationRequired: true`. The request survives task-kind changes and cannot be overridden by direct workflow settings.
 
-## Expression and preview
+`init` defaults general, illustration and product work to illustrated generation. Data defaults to data; diagram defaults to schematic. These are starter choices: read the actual brief, then correct the mode before building. Use `--visual`, `--artwork` and `--require-imagegen` to set them at initialization.
 
-Read [creative-direction.md](creative-direction.md). `creative.profile` accepts `auto`, `briefing`, `explanation`, `story`, `demonstration`, `atmosphere`, `custom`. Auto maps data to briefing, diagram/general to explanation, illustration to story and product to demonstration; choose a better explicit profile when the brief calls for it. A profile guides expression and never forces an engine, generated artwork, a location count or a theatrical story.
+Illustrated plans resolve to `workflow: designed`, `reviewLevel: segments`, `previewMode: animatic`; conflicting explicit settings are rejected. A generation-required plan also resolves to designed. Other modes retain `workflow: auto|direct|designed`, `reviewLevel: auto|light|segments` and `creative.previewMode: auto|compact|animatic`. Auto uses an animatic for designed/segment work, compact otherwise. Increase review effort for dense animation.
 
-`creative.previewMode` accepts `auto`, `compact`, `animatic`. Auto uses animatic for a designed workflow or segment review, and compact otherwise. Override it to match the design problem. A compact preview uses ordered layout frames and the planned sequence; an animatic uses a timed motion preview. Both receive actual design judgment before detailed production.
+Each shot may use `engine: remotion|manim`. Code can animate geometric mechanisms within an illustrated film while sharing its art direction. References need not be newly generated for every shot.
 
-## Production review effort
-
-`reviewLevel` accepts `auto`, `light`, `segments`. Auto uses segments for designed, light for direct. Dense direct-code demonstrations may also need segments. Light means a complete preview and key states/cuts; segments adds local production reviews. Both finish with an assembled engagement/text/narration/continuity pass.
-
-The shared sequence is framework and viewing promise → shot design → necessary artwork or direct rough layout → inspected rough sequence → production → proportional visual checks → complete pass and export. Develop artwork and shot logic together where useful. Final narration can wait until the rough sequence works; use temporary timing for the first preview.
-
-New projects use version 3. Existing version 1/2 plans retain their prior production and export checks. To adopt design review during a redesign, add the `creative` brief, shot `visual` fields and design review record, or update the plan version to 3 and fill those fields. Do not silently rewrite old projects or carry over stale passes.
+Versions 1–3 retain their prior behavior and review records. For a substantial redesign, adopt version 4 and complete its fields; old passes cannot certify a new design. The sequence remains brief → visual route and shot design → necessary artwork → rough preview → production and scoped checks → assembled review → export. No routine user approval gate is added.

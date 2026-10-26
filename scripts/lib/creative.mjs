@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {projectFile} from './project-files.mjs';
 import {workflowFor,reviewLevelFor} from './routing.mjs';
+import {isIllustrated,validateVisualPolicy} from './visual-policy.mjs';
 
 export const profiles=['auto','briefing','explanation','story','demonstration','atmosphere','custom'];
 export const hasCreativePlan=plan=>(plan.version||1)>=3||Boolean(plan.creative);
@@ -11,6 +12,7 @@ export function profileFor(plan){
  return {data:'briefing',diagram:'explanation',illustration:'story',product:'demonstration'}[plan.taskKind]||'explanation';
 }
 export function previewModeFor(plan){
+ if(isIllustrated(plan))return 'animatic';
  const selected=plan.creative?.previewMode;
  if(['compact','animatic'].includes(selected))return selected;
  return reviewLevelFor(plan)==='segments'||workflowFor(plan)==='designed'?'animatic':'compact';
@@ -21,14 +23,14 @@ export function designRevision(project,plan){
  // Story, shot timing, selected artwork and data determine this revision.
  const {dependencies=[],...creative}=plan.creative||{};
  h.update(JSON.stringify({framework:plan.framework,fps:plan.fps,creative,profile:profileFor(plan),previewMode:previewModeFor(plan),workflow:workflowFor(plan),design:plan.design,characters:plan.characters,references:plan.references,dataSources:plan.dataSources,metrics:plan.metrics,shots:(plan.shots||[]).map(({dependencies,...shot})=>shot)}));
- const files=new Set([...dependencies,...(plan.references||[]).map(r=>r.file),...(plan.dataSources||[]).map(s=>s.file)].filter(Boolean));
+ const files=new Set([...dependencies,...(plan.references||[]).map(r=>r.file),...(plan.dataSources||[]).map(s=>s.file),...(plan.shots||[]).flatMap(s=>s.assetFiles||[])].filter(Boolean));
  for(const file of [...files].sort()){h.update(file);try{h.update(fs.readFileSync(projectFile(project,file)));}catch{h.update('missing-file');}}
  return h.digest('hex');
 }
 const nonempty=x=>typeof x==='string'&&Boolean(x.trim());
 export function validateCreative(project,plan,{review=false}={}){
  if(!hasCreativePlan(plan))return [];
- const issues=[],c=plan.creative||{};
+ const issues=validateVisualPolicy(project,plan),c=plan.creative||{};
  const file=(name,label)=>{try{const s=fs.statSync(projectFile(project,name));if(!s.isFile()||!s.size)throw new Error();}catch{issues.push(label+': file missing or invalid');}};
  if(c.profile&&!profiles.includes(c.profile))issues.push('Unknown creative profile');
  if(c.previewMode&&!['auto','compact','animatic'].includes(c.previewMode))issues.push('Unknown creative preview mode');
@@ -69,6 +71,13 @@ export function designReport(project,plan){
  for(let i=1;i<shots.length;i++){
   const a=shots[i-1],b=shots[i];
   if(nonempty(a.visual?.reveal)&&a.visual.reveal.trim()===b.visual?.reveal?.trim())warnings.push({code:'repeated-reveal',shotIds:[a.id,b.id],message:'Adjacent shots declare the same reveal. Check whether one can be shortened or developed.'});
+ }
+ if(isIllustrated(plan))for(const s of shots){
+  const beats=s.visual?.beats||[];
+  for(let i=0;i<beats.length;i++){
+   const b=beats[i],seconds=((beats[i+1]?.frame??s.durationInFrames)-b.frame)/fps;
+   if(seconds>5)warnings.push({code:'long-visual-interval',shotIds:[s.id],frame:b.frame,seconds:Math.round(seconds*100)/100,message:'Inspect this interval at playback speed: does the action develop, or only repeat? A deliberate hold can be retained.'});
+  }
  }
  return {profile:profileFor(plan),previewMode:previewModeFor(plan),designRevision:designRevision(project,plan),seconds:Math.round(total*100)/100,longestRepeatedCompositionSeconds:Math.round(longest*100)/100,dominantCompositionPercent:Math.round(share*100),warnings,issues:validateCreative(project,plan)};
 }

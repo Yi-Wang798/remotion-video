@@ -11,31 +11,31 @@ Resolve plugin paths two levels above this file. Follow the user's brief and pre
 
 Read [creative-direction.md](references/creative-direction.md) for every new video and substantial redesign. Establish the audience, useful or emotional promise, opening, progression and payoff. Choose an expression profile appropriate to the purpose. Plan what viewers will see change, discover, compare or feel; connect shots through that progression.
 
-Read [routing.md](references/routing.md) to choose the production path and review effort independently. Initialize `video-plan.json` with `scripts/project.mjs init --project <absolute-directory> --kind <kind>`. New plans use version 3 and carry the creative decisions alongside the shot list.
+Read [routing.md](references/routing.md) and [production-design.md](references/production-design.md). Choose the visual treatment from the brief before choosing the engine. Character, environment and spatial or microscopic storytelling defaults to connected built-in ImageGen keyframes. Reserve direct code for genuinely schematic, data, geometry or typography work, or footage-based work with suitable assets. A science subject alone does not make a film a schematic. Preserve explicit image-generation requests in the plan. Initialize `video-plan.json` with `scripts/project.mjs init --project <absolute-directory> --kind <kind>`; new plans use version 4.
 
 ## Develop and preview
 
 1. Design each shot's visible event, setup, view, scale, focus, reveal and role in the sequence. `action` and `transitionOut` remain the movement and cut specifications. Review the sequence as a whole before polishing one attractive frame.
-2. Define a shared visual language with [design-system.md](references/design-system.md). Preserve character identity and style while changing framing, staging, setting or scale when the content benefits.
-3. For custom illustrated work, use built-in ImageGen and [visual-development.md](references/visual-development.md) to develop the necessary connected keyframes, then refine the shot logic from those images. Data, text and simple diagrams can be built directly. Use [data-videos.md](references/data-videos.md), [manim.md](references/manim.md) or [shotcraft.md](references/shotcraft.md) when relevant.
-4. Inspect a rough preview before detailed production. `compact` uses ordered layout frames and their planned timing; `animatic` uses a timed motion preview with rough art and temporary narration where useful. Judge whether the opening earns attention, the sequence develops, and holds are readable. Resolve demonstrated weak sections and record the design review. This is an agent work step; ask the user only when their input is needed or requested.
+2. Define a shared visual language with [design-system.md](references/design-system.md). Use vivid focal colors, warm/cool relationships, gradients, translucency and material lighting where they suit the subject; keep text readable and honor a requested restrained style. Plan color and light changes across the sequence. Preserve character identity while changing framing, staging, setting or scale when the content benefits.
+3. For illustrated work, use built-in ImageGen and [visual-development.md](references/visual-development.md) at the opening, necessary discoveries, scale changes, turning points and payoff. Choose the keyframes the film needs, connect their references and refine shot logic from the actual images. Reuse suitable existing artwork when appropriate; do not silently replace requested generation with code or a slideshow. Use [data-videos.md](references/data-videos.md), [manim.md](references/manim.md) or [shotcraft.md](references/shotcraft.md) when relevant.
+4. Inspect a rough preview before detailed production. Illustrated films require a timed animatic and segment reviews. Simple direct work can use compact layout frames. At playback speed, distinguish action development from repeated particles, wing flaps or background movement. Resolve weak sections and record specific observations. This is an agent work step; ask the user only when their input is needed or requested.
 
 ## Produce and finish
 
 Build from the reviewed sequence using deterministic frame-based motion. Read [motion-and-review.md](references/motion-and-review.md). Simple projects get a complete preview and key frames; complex scenes get segment reviews during production. Inspect actual renders for geometry, identity, movement, spacing, captions and cuts. Repair visible problems and recheck the affected scope.
 
-Make one assembled pass for engagement, text, narration and visual continuity. Check whether the finished motion delivers the planned progression and pacing. Apply [writing.md](references/writing.md). Keep useful labels and captions; delete production chatter, self-praise and obvious descriptions of the medium. Authoring notes belong in project files.
+Make one assembled pass for engagement, text, narration and visual continuity. Check the rendered artwork against selected keyframes, color/light, action development and all overlays. Apply [writing.md](references/writing.md). Default to captions and necessary labels or brief titles. Add no unrequested page counters, series headers, repeated title footers or decorative small print. Record actual non-caption text in shot `overlays`; inspect the render for text omitted from the plan. Authoring notes belong in project files.
 
 Review tools create pending evidence. Inspect the output before marking a pass. Repetition reports prompt judgment; they do not impose a scene quota or certify viewer retention. When timing or shot design changes, refresh the affected design review using the changed interval or the current complete preview. Reuse the same inspection for design and final records when it covers both.
 
-Export the requested video and preserve editable source and selected assets. `export` checks the current review records. Version 1/2 projects keep their existing checks; adopt the creative fields when redesigning them.
+Export the requested video and preserve editable source and selected assets. `export` checks the current review records. Versions 1–3 keep their existing checks; use version 4 when substantially redesigning them. [production-design.md](references/production-design.md) defines the added fields.
 
 ## Tools
 
 - `scripts/setup.mjs` prepares pinned Remotion/Bits and their guides. Read relevant API references under `vendor/remotion-best-practices/`.
 - For Bits, use `find_remotion_bits` then `fetch_remotion_bit`, or `scripts/video.mjs bits find/fetch ...`. Adapt the useful example to the shot's purpose.
 - `scripts/setup.mjs --with manim,shotcraft` fetches optional guides. Install the optional Manim runtime with `scripts/video.mjs manim setup`.
-- Use built-in ImageGen for needed artwork, following its current skill/tool instructions. Reuse suitable existing art for revisions. A direct-code project can complete the entire workflow without image generation.
+- Use built-in ImageGen for the selected artwork route, following its current skill/tool instructions. If required generation is unavailable, report the concrete blocker; do not quietly deliver a code-only substitute. Suitable existing art can be reused for revisions.
 - Installed frontend design skills are optional references through [design-system.md](references/design-system.md).
 
 ## Commands

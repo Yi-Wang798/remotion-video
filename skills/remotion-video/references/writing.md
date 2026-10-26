@@ -18,3 +18,5 @@ Keep scientific statements that change understanding. For example, “有些噬�
 Edit the script before recording, then once more against the actual visuals. Do not read every label aloud or add a paragraph explaining an already clear metaphor. After placing captions, check duplication and reading time. Keep names for recurring objects stable.
 
 Inspect the actual overlays as well as `screenText` in the plan to catch leftover template footers. Do not preserve paragraph counts or draft length. Delete an empty sentence instead of expanding it into a different empty sentence. Deliver finished copy; keep draft/audit chatter in the review file.
+
+Use version 4 `overlays` as the complete non-caption text inventory. Page counters, invented series headers, repeated topic footers and decorative microcopy are off by default. Label the object or relationship viewers need to understand; remove the extra sentence that simply repeats the narration. A requested brand or chapter treatment is a deliberate exception, recorded in the plan.
