@@ -24,11 +24,11 @@ Use this contract for version 4 projects. It adds choices to the existing creati
 }
 ```
 
-The example illustrates field structure, not a palette to copy into every film. Follow [design-system.md](design-system.md) for color decisions. Record the user's actual requirement in `imageGenerationRequired`; generated illustration is still the default when the user delegates an illustrated film. `artwork: existing` supports suitable user assets and revision work.
+The example illustrates field structure, not a palette to copy into every film. Follow [design-system.md](design-system.md) for color decisions. Record the user's actual requirement in `imageGenerationRequired`; generated illustration is still the default when the user delegates an illustrated film. `artwork: existing` supports suitable user assets and revision work. `artwork: procedural` supports original code-drawn illustration with source dependencies instead of mandatory raster references; it keeps the illustrated review requirements. A required ImageGen request still takes precedence.
 
 Select keyframes at meaningful visual changes, following [visual-development.md](visual-development.md). Record provenance and `basedOn` links. Later generated images refer to selected references; independent text prompts do not establish continuity. Use as many keyframes as the story needs, without a per-sentence image quota.
 
-Each illustrated shot selects `referenceIds` and records project-relative `assetFiles` used in its rendered scene. These may be backgrounds, transparent character layers, textures or clips prepared from the selected design. Put delivered art under `public/` or declare its source dependencies. The helpers check files, reference relationships and hashes; compare actual renders with the selected art to verify how it is used. A file declaration alone does not demonstrate visible use.
+Each generated/existing illustrated shot selects `referenceIds` and records project-relative `assetFiles` used in its rendered scene. Procedural artwork instead tracks the drawing source in shot dependencies. These may be backgrounds, transparent character layers, textures or clips prepared from the selected design. Put delivered art under `public/` or declare its source dependencies. The helpers check files, reference relationships and hashes; compare actual renders with the selected art to verify how it is used. A file declaration alone does not demonstrate visible use.
 
 ## Timed visual development
 

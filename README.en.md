@@ -2,7 +2,7 @@
 
 Design a reason to keep watching, then build the images, movement and sound.
 
-Build data summaries, charts and simple diagrams directly. Character stories, scene-based explainers and microscopic worlds start with connected keyframes from built-in ImageGen, followed by action within the artwork and transitions between shots. Manim can handle mathematical and geometric scenes; Remotion assembles the clips, captions, narration and other shots.
+Build data summaries, charts and simple diagrams directly. Character stories and microscopic worlds start by testing the difficult action, then preparing the poses, parts and layers it needs. ImageGen can establish artwork and character identity; procedural drawing can handle continuous deformation. Manim can handle mathematical and geometric scenes; Remotion assembles the clips, captions, narration and other shots.
 
 [中文](README.md)
 
@@ -11,9 +11,9 @@ Build data summaries, charts and simple diagrams directly. Character stories, sc
 - Plans an opening, visual progression and payoff for the purpose: data brief, explanation, story, demonstration or atmosphere.
 - Checks a rough sequence before detailed work. Simple videos use ordered layout frames; complex videos use a timed animatic to find weak or repetitive passages early.
 
-- Generates connected artwork at openings, discoveries, scale changes and turning points where needed. Explicit image-generation requests stay part of the production plan.
+- Prepares connected model sheets, expressions, poses, backgrounds and layers for the action. Composition frames guide the design; controllable parts and drawing code make it move. Explicit image-generation requests stay in the plan.
 - Designs vivid focal colors, warm/cool contrast, gradients, translucency and material lighting across the sequence. Characters stay recognizable as views and settings change. Requested brand colors and restrained styles are preserved.
-- Uses Remotion Bits components and examples, with an optional Shotcraft pack for data, typography, camera and transition recipes with code.
+- Includes pose interpolation, two-bone rigs, curved paths, organic contours, sprite pivots and shared camera coordinates. Sound cues use the picture timeline. Two runnable material studies cover soft volume and cut paper; Remotion Bits and optional Shotcraft provide further examples.
 - Reviews actual renders. Simple videos get a complete preview and key frames; complex shots get segment reviews during production. Dependency tracking keeps revisions focused on affected shots and adjacent cuts.
 - Records data sources, periods, units and currencies, and checks differences and percentage changes.
 - Applies Humanizer and Humanizer ZH to remove filler. Captions, useful labels and brief titles are the default; page counters, invented series headers and repeated footers are not added automatically.
@@ -61,13 +61,27 @@ node scripts/project.mjs init --project <project> --kind data --profile briefing
 node scripts/project.mjs init --project <another-project> --kind illustration
 ```
 
-New projects use version 4 plans. Choose the visual form with `--visual illustrated|schematic|data|geometry|footage|typography`. Illustrated films default to generated keyframes, a timed animatic and segment reviews; use `--artwork existing` for suitable supplied art. Add `--require-imagegen` when the brief requests generation. Simple data and diagrams remain direct. Choose expression with `--profile`; other modes can adjust `--workflow`, `--review` and `--preview`. Existing version 1–3 plans keep their prior checks. See [production routing](skills/remotion-video/references/routing.md) and [shot design](skills/remotion-video/references/creative-direction.md).
+New projects use version 4 plans. Choose the visual form with `--visual illustrated|schematic|data|geometry|footage|typography`. Illustrated films default to generated keyframes, a timed animatic and segment reviews; use `--artwork existing` for supplied art or `--artwork procedural` for continuous code-drawn illustration. Add `--require-imagegen` when the brief requests generation. Simple data and diagrams remain direct. Choose expression with `--profile`; other modes can adjust `--workflow`, `--review` and `--preview`. Existing version 1–3 plans keep their prior checks. See [production routing](skills/remotion-video/references/routing.md) and [shot design](skills/remotion-video/references/creative-direction.md).
+
+## Test the action
+
+Build the difficult passage before expanding the film:
+
+```text
+node scripts/motion-kit.mjs install --project <project>
+node scripts/review.mjs --project <project> --composition <id> --shot <shot-id> --study
+node scripts/sound-cues.mjs <project>/timeline.json --out <project>/public/cues.wav
+node scripts/analyze-motion.mjs <preview.mp4> --out <project>/reviews/motion-analysis.json
+```
+
+The study produces a motion clip and frames at 0.2-second intervals. The analyzer reads actual video pixels and highlights near-still or mostly global-motion intervals for inspection. See [motion tools and craft](skills/remotion-video/references/motion-craft.md).
 
 ## Examples and review
 
 - [Data brief](examples/data-brief): a direct-code bar chart and growth comparison using example data.
 - [Geometric motion](examples/manim-orbit): a Manim trajectory clip assembled with a Remotion title.
 - [Button story](examples/button-story): character motion built from two connected design images.
+- [Contact and release](examples/mechanism-motion): continuous approach, attached reach, membrane response, opening, release and arrival, with two materials and synchronized effects.
 
 ```text
 node scripts/project.mjs design --project <project>

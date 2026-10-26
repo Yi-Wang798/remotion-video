@@ -4,6 +4,7 @@ import {projectFile} from './project-files.mjs';
 export const visualModes=['illustrated','schematic','data','geometry','footage','typography'];
 export const usesVisualPolicy=plan=>(plan.version||1)>=4;
 export const isIllustrated=plan=>usesVisualPolicy(plan)&&plan.creative?.visualMode==='illustrated';
+export const isProcedural=plan=>usesVisualPolicy(plan)&&plan.creative?.artwork==='procedural';
 const text=value=>typeof value==='string'&&Boolean(value.trim());
 
 // These checks verify declared choices and evidence, not artistic quality.
@@ -13,7 +14,7 @@ export function validateVisualPolicy(project,plan,{final=false}={}){
  const file=(name,label)=>{try{const stat=fs.statSync(projectFile(project,name));if(!stat.isFile()||!stat.size)throw new Error();}catch{issues.push(label+': file missing or invalid');}};
  if(!visualModes.includes(c.visualMode))issues.push('Choose a visualMode before production');
  if(!text(c.visualReason))issues.push('Explain the visual route in creative.visualReason');
- if(!['built-in-imagegen','existing','none'].includes(c.artwork))issues.push('Choose creative.artwork');
+ if(!['built-in-imagegen','existing','procedural','none'].includes(c.artwork))issues.push('Choose creative.artwork');
  if(typeof c.imageGenerationRequired!=='boolean')issues.push('Record whether the brief requires image generation');
  const requiredArt=c.imageGenerationRequired||c.artwork==='built-in-imagegen';
  if(c.imageGenerationRequired&&c.artwork!=='built-in-imagegen')issues.push('The brief requires built-in ImageGen; do not downgrade the artwork route');
@@ -24,7 +25,7 @@ export function validateVisualPolicy(project,plan,{final=false}={}){
   if(c.previewMode==='compact')issues.push('Illustrated videos require a timed animatic');
   if(plan.reviewLevel==='light')issues.push('Illustrated videos require segment reviews');
   if(c.artwork==='none')issues.push('Illustrated videos need generated or suitable existing artwork');
-  if(!refs.length)issues.push('Illustrated artwork missing');
+  if(!refs.length&&!isProcedural(plan))issues.push('Illustrated artwork missing');
  }
  if(c.artwork==='existing'&&!refs.some(r=>['existing','user'].includes(r.generatedWith)))issues.push('Existing artwork references missing');
  const generated=refs.filter(r=>r.generatedWith==='built-in-imagegen');
@@ -47,7 +48,7 @@ export function validateVisualPolicy(project,plan,{final=false}={}){
    if(['hold','loop'].includes(b.kind)&&!text(b.reason))issues.push(`Shot ${s.id}: explain the purpose of a hold or loop`);
   }
   if(beats?.length&&beats[0].frame!==0)issues.push(`Shot ${s.id}: visual beats must include the entry state at frame 0`);
-  if(isIllustrated(plan)){
+  if(isIllustrated(plan)&&!isProcedural(plan)){
    if(!s.referenceIds?.length)issues.push(`Shot ${s.id}: select artwork references`);
    if(!s.assetFiles?.length)issues.push(`Shot ${s.id}: declare artwork used in the rendered shot`);
   }

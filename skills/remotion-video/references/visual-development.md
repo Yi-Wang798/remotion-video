@@ -2,7 +2,7 @@
 
 Write the causal or narrative spine before generating images. For each beat, specify the viewer's takeaway and visible action. Keep timing approximate until narration and motion have been tried. Generate the keyframes needed to establish the visual world and explain important changes, rather than a decorative image for every sentence.
 
-For version 4 illustrated work, this stage is required: select the opening and necessary discoveries, scale changes, turns and payoff. Use built-in ImageGen by default or suitable existing art when selected. Follow [production-design.md](production-design.md) for the recorded route and assets. A schematic classification must not replace a requested illustrated film. If required generation is unavailable, explain the blocker and preserve the work rather than silently substituting code drawings.
+For generated/existing illustration, develop selected composition references, character identity, key poses and layers. First identify the difficult action using [motion-craft.md](motion-craft.md), so the asset set provides actual controls. Procedural illustrated work can prove its look in code without mandatory generated frames; keep any explicit generation request. Follow [production-design.md](production-design.md) for the recorded route and assets. A schematic classification must not replace a requested illustrated film. If required generation is unavailable, explain the blocker and preserve the work rather than silently substituting code drawings.
 
 ## Shared identity
 

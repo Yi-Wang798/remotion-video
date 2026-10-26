@@ -6,6 +6,8 @@ Give each shot an entry state, action and exit state. Use acceleration, anticipa
 
 Follow [creative-direction.md](creative-direction.md). `review.mjs --design` renders the rough composition's representative frames; animatic mode also renders its timed preview. Compact mode can use the first direct-code layout, without generated artwork or an extra movie render. Inspect the sequence, its planned timing and the viewing promise, then record `reviews.design`. Design findings address progression, useful variation and pace; production findings address the finished visual execution.
 
+Before detailed production, use the short motion study in [motion-craft.md](motion-craft.md) to prove the difficult action with the actual drawing code and shared sound events. The `--study --shot <id>` mode samples at 0.2-second intervals and keeps its pending evidence separate.
+
 ## Production review
 
 `light`: render a complete preview with `review.mjs --all`. Inspect its motion and frames at important states, cuts and the ending. Add samples around fast actions.
@@ -13,6 +15,8 @@ Follow [creative-direction.md](creative-direction.md). `review.mjs --design` ren
 `segments`: render each shot with `--shot <id>`. Inspect representative frames plus the motion preview or a sufficiently dense timed sequence. Check adjoining cuts and record each segment. Then inspect the assembled film.
 
 Default samples cover start, early/middle/late states, exit and neighboring cuts. Add absolute frame numbers with `--samples 43,44,45` for contacts or rapid events. Render success creates `pending` evidence. After viewing, copy the evidence into the corresponding plan review field, set the observed results to `pass`, and record dated concrete findings. Helpers gather evidence; the agent makes the visual and creative judgment.
+
+Run the actual-pixel analyzer in [motion-craft.md](motion-craft.md) for illustrated work. Revisit its intervals at normal speed; do not turn its pixel thresholds into a creativity gate or approve solely because motion exists.
 
 ## Complete pass
 

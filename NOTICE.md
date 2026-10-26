@@ -51,3 +51,12 @@ Image generation is provided by the host's built-in OpenAI ImageGen tool and is 
 - Impeccable by pbakaus and contributors: https://github.com/pbakaus/impeccable , Apache-2.0. Hierarchy, spacing, typography and visual critique.
 - React Bits by DavidHDev and contributors: https://github.com/DavidHDev/react-bits , MIT with Commons Clause. Optional local motion references; its component source is not bundled here.
 - The adapter describes how to use installed skills and translate browser interaction into frame-based video. These projects are not runtime dependencies of this plugin.
+
+
+## Motion craft references
+
+- Huashu / alchaincyf, https://github.com/alchaincyf/huashu-art-motion , reviewed at `8a0d7d72ca65fcce6f8ba82c4a6c8dfe35b8422c`: controllable in-scene movement, style-specific drawing and inspection of actual film pixels.
+- LemoLab / lemomo-ai, https://github.com/lemomo-ai/lemo-opuscar , reviewed at `413a6bd6d78ebd3bdd5abaec9538a26867f890df`: action anticipation/contact/consequence, material studies and a common picture/sound timeline.
+- These informed the directing guidance. The motion kit, sound generator, analyzer and mechanism example here are independently written for this plugin. No upstream engine, sample character, film, artwork or audio is redistributed by this change.
+- Huashu code/documents use MIT with separate restrictions for demo characters and other assets. Lemo code/documents use MIT; sample films/stills use CC BY 4.0 with separate asset/voice exceptions. Consult each upstream before reusing its material.
+- https://github.com/zhuyansen/awesome-claude-video-skills was used to discover and compare approaches, not as an animation dependency.

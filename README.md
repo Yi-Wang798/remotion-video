@@ -2,7 +2,7 @@
 
 先想清楚观众为什么愿意看下去，再把画面、动作和声音做出来。
 
-简单的数据播报、图表和流程图可以直接制作。角色故事、场景叙事和微观科普默认先用内置生图确定关键画面，沿用角色与风格，再做画面里的动作和镜头衔接。数学和几何动画可以交给 Manim，最后在 Remotion 中合成字幕、旁白和其他镜头。
+简单的数据播报、图表和流程图可以直接制作。角色故事、场景叙事和微观科普先试做关键动作，再准备角色、姿态和分层素材。生图可以确定美术与角色，程序绘制可以处理连续形变；两者按镜头需要配合。数学和几何动画可以交给 Manim，最后在 Remotion 中合成字幕、旁白和其他镜头。
 
 [English](README.en.md)
 
@@ -11,9 +11,9 @@
 - **先设计观看过程**：按用途安排开场、视觉推进和收尾。数据简报、机制解释、故事、产品演示、氛围短片各有合适的表达方式。
 - **先预演再精修**：简单视频检查几张顺序布局图；复杂视频先看带时间的简易动态分镜，及早发现单调或拖沓的段落。
 
-- **把生图用在关键处**：开场、重要发现、尺度变化和转折按需生成关联画面。明确要求生图的任务会保留这一流程。
+- **按动作准备美术**：生成关联的角色设定、表情姿势、背景和分层素材。完整关键画面用于确定构图，动作通过可控部件和连续绘制完成。明确要求生图的任务保留这一流程。
 - **设计色彩与光影**：为主体选择鲜明的颜色，安排冷暖对比、渐变、透明叠色和材质光影。色彩随场景发展，角色和风格保持连贯。用户指定的品牌色或简约风格照常保留。
-- **找到合适的动作**：Remotion Bits 提供组件与示例；可选 Shotcraft 参考包补充数据、文字、运镜和转场的镜头卡与代码。
+- **直接使用动作工具**：附带姿态插值、两段关节约束、曲线路径、有机形变、图片部件轴点和镜头坐标。声音事件与画面共用时间表，提供柔光体积和纸片两种可运行样例。Remotion Bits 与可选 Shotcraft 继续补充组件和镜头参考。
 - **检查实际成片**：简单视频看完整预览和关键帧；复杂镜头边做边检查，改动后复查相关镜头与相邻切点。
 - **核对数据**：记录来源、报告期、单位和币种，检查差值与增长率。
 - **把话说清楚**：参考 Humanizer 和 Humanizer ZH，删掉套话和无用的制作说明。默认只留字幕、必要标签和简短标题，不自动添加页码、栏目名与重复页脚。
@@ -61,13 +61,27 @@ node scripts/project.mjs init --project <project> --kind data --profile briefing
 node scripts/project.mjs init --project <another-project> --kind illustration
 ```
 
-新项目使用版本 4 计划，先用 `--visual illustrated|schematic|data|geometry|footage|typography` 选择画面形式。插画视频默认生成关键画面，使用动态预演和分段检查；已有美术可用 `--artwork existing`。用户要求生图时加 `--require-imagegen`。简单数据与图解仍可直接制作。表达方式用 `--profile` 选择，其他模式可按需调整 `--workflow`、`--review` 与 `--preview`。已有版本 1–3 项目保留原检查方式。见 [制作路径](skills/remotion-video/references/routing.md) 和 [镜头设计](skills/remotion-video/references/creative-direction.md)。
+新项目使用版本 4 计划，先用 `--visual illustrated|schematic|data|geometry|footage|typography` 选择画面形式。插画视频默认生成关键画面，使用动态预演和分段检查；已有美术可用 `--artwork existing`，连续程序绘制可用 `--artwork procedural`。用户要求生图时加 `--require-imagegen`。简单数据与图解仍可直接制作。表达方式用 `--profile` 选择，其他模式可按需调整 `--workflow`、`--review` 与 `--preview`。已有版本 1–3 项目保留原检查方式。见 [制作路径](skills/remotion-video/references/routing.md) 和 [镜头设计](skills/remotion-video/references/creative-direction.md)。
+
+## 动作试拍
+
+先把最难的一小段做出来，再展开整片：
+
+```text
+node scripts/motion-kit.mjs install --project <project>
+node scripts/review.mjs --project <project> --composition <id> --shot <shot-id> --study
+node scripts/sound-cues.mjs <project>/timeline.json --out <project>/public/cues.wav
+node scripts/analyze-motion.mjs <preview.mp4> --out <project>/reviews/motion-analysis.json
+```
+
+试拍输出动态预览与每 0.2 秒的抽帧。运动分析读取实际视频，提示近乎静止或主要靠整幅画面移动的区间，再由制作代理查看。见[动作工具与做法](skills/remotion-video/references/motion-craft.md)。
 
 ## 示例与检查
 
 - [数据摘要](examples/data-brief)：直接制作的柱状图与增长率，使用示例数据。
 - [几何运动](examples/manim-orbit)：Manim 渲染轨迹，再由 Remotion 组合标题与画面。
 - [按钮故事](examples/button-story)：沿用两张关联设计图，制作角色动作。
+- [接触与释放](examples/mechanism-motion)：连续展示接近、关节触碰、膜形变、开门、释放与响应，含两种材质和同步音效。
 
 ```text
 node scripts/project.mjs design --project <project>

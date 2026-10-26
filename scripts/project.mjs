@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {projectFile} from './lib/project-files.mjs';
 import {profiles,hasCreativePlan,validateCreative,designReport} from './lib/creative.mjs';
 import {workflowFor,reviewLevelFor} from './lib/routing.mjs';
-import {visualModes,validateVisualPolicy} from './lib/visual-policy.mjs';
+import {visualModes,validateVisualPolicy,isProcedural} from './lib/visual-policy.mjs';
 export {projectFile} from './lib/project-files.mjs';
 export {workflowFor,reviewLevelFor} from './lib/routing.mjs';
 export {profileFor,previewModeFor,designRevision,designReport,validateCreative} from './lib/creative.mjs';
@@ -87,7 +87,7 @@ export function validatePlan(project,plan,{final=false}={}){
  issues.push(...validateCreative(project,plan,{review:final}));
  const refs=plan.references||[],ids=new Set();
  for(const r of refs){if(!r.id||ids.has(r.id))issues.push('Missing or duplicate reference id');ids.add(r.id);validFile(r.file,`Reference ${r.id}`);}
- if(workflowFor(plan)==='designed'&&!refs.length)issues.push('Designed videos need chosen visual references');
+ if(workflowFor(plan)==='designed'&&!refs.length&&!isProcedural(plan))issues.push('Designed videos need chosen visual references');
  const active=new Set(),done=new Set(),byId=new Map(refs.map(r=>[r.id,r]));
  function walk(id){if(active.has(id)){issues.push('Cyclic reference chain: '+id);return;}if(done.has(id)||!byId.has(id))return;active.add(id);for(const parent of byId.get(id).basedOn||[])walk(parent);active.delete(id);done.add(id);}
  for(const r of refs){if(!['built-in-imagegen','existing','user'].includes(r.generatedWith))issues.push(`Reference ${r.id}: missing provenance`);for(const parent of r.basedOn||[])if(!ids.has(parent)||parent===r.id)issues.push(`Reference ${r.id}: invalid parent`);walk(r.id);}
@@ -99,7 +99,7 @@ export function validatePlan(project,plan,{final=false}={}){
   if(!s.id||shotIds.has(s.id))issues.push('Missing or duplicate shot id');shotIds.add(s.id);
   if(!Number.isInteger(s.from)||s.from<end||!Number.isInteger(s.durationInFrames)||s.durationInFrames<1)issues.push(`Shot ${s.id}: invalid or overlapping timing`);end=Math.max(end,(s.from||0)+(s.durationInFrames||0));
   for(const key of ['intent','entryState','action','exitState','transitionOut'])if(!s[key]?.trim())issues.push(`Shot ${s.id}: ${key} missing`);
-  if(workflowFor(plan)==='designed'&&!s.referenceIds?.length)issues.push(`Shot ${s.id}: no visual reference selected`);
+  if(workflowFor(plan)==='designed'&&!s.referenceIds?.length&&!isProcedural(plan))issues.push(`Shot ${s.id}: no visual reference selected`);
   for(const id of s.referenceIds||[])if(!ids.has(id))issues.push(`Shot ${s.id}: unknown reference ${id}`);
   for(const id of s.metricIds||[])if(!metricIds.has(id))issues.push(`Shot ${s.id}: unknown metric ${id}`);
   if(s.engine&&!['remotion','manim'].includes(s.engine))issues.push(`Shot ${s.id}: unknown engine`);
@@ -133,7 +133,7 @@ function main(){
   const taskKind=get('--kind','general'),workflow=get('--workflow','auto'),reviewLevel=get('--review','auto'),profile=get('--profile','auto'),previewMode=get('--preview','auto');
   const visualMode=get('--visual',({data:'data',diagram:'schematic'}[taskKind]||'illustrated'));
   const artwork=get('--artwork',visualMode==='illustrated'?'built-in-imagegen':'none');
-  if(!visualModes.includes(visualMode)||!['built-in-imagegen','existing','none'].includes(artwork))throw new Error('Invalid visual mode or artwork route');
+  if(!visualModes.includes(visualMode)||!['built-in-imagegen','existing','procedural','none'].includes(artwork))throw new Error('Invalid visual mode or artwork route');
   if(args.includes('--require-imagegen')&&artwork!=='built-in-imagegen')throw new Error('--require-imagegen needs --artwork built-in-imagegen');
   if(visualMode==='illustrated'&&(workflow==='direct'||reviewLevel==='light'||previewMode==='compact'||artwork==='none'))throw new Error('Illustrated videos need artwork, designed workflow, segment reviews and an animatic');
   if(!['general','data','diagram','illustration','product'].includes(taskKind)||!['auto','direct','designed'].includes(workflow)||!['auto','light','segments'].includes(reviewLevel))throw new Error('Invalid task kind, workflow or review level');

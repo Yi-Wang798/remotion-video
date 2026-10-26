@@ -1,0 +1,117 @@
+{
+  "version": 4,
+  "fps": 30,
+  "taskKind": "illustration",
+  "workflow": "auto",
+  "reviewLevel": "auto",
+  "framework": "An abstract carrier meets a gate; contact produces opening and release",
+  "creative": {
+    "profile": "demonstration",
+    "previewMode": "animatic",
+    "visualMode": "illustrated",
+    "visualReason": "Continuous deforming geometry and attached contact are the focus",
+    "artwork": "procedural",
+    "imageGenerationRequired": false,
+    "audience": "Animation authors",
+    "promise": "See a complete action and its consequence",
+    "opening": "A carrier approaches",
+    "progression": "Reach, contact, membrane response, opening and release",
+    "payoff": "Payload arrives and the camera reveals the result",
+    "dependencies": [
+      "timeline.json"
+    ]
+  },
+  "design": {
+    "palette": {
+      "background": "#E1F8F4",
+      "subject": "#FFAC4A",
+      "accent": "#25AEB1"
+    },
+    "colorDirection": {
+      "intent": "Bright, tactile and clear",
+      "contrast": "Warm carrier against cool membrane",
+      "sequence": "The warm payload passes into a cool interior",
+      "material": "Soft volume or cut-paper renderer selected by composition"
+    }
+  },
+  "sharedDependencies": [
+    "timeline.json"
+  ],
+  "references": [],
+  "characters": [],
+  "dataSources": [],
+  "metrics": [],
+  "shots": [
+    {
+      "id": "encounter",
+      "from": 0,
+      "durationInFrames": 240,
+      "intent": "Show contact causing a change",
+      "entryState": "Carrier approaches an intact gate",
+      "action": "Attached reach, membrane response, gate separation and payload release",
+      "exitState": "Payload arrives in the interior",
+      "transitionOut": "Pull back to the resolved state",
+      "overlays": [],
+      "screenText": [],
+      "visual": {
+        "setup": "membrane encounter",
+        "view": "side view with motivated push and pull",
+        "scale": "carrier and gate",
+        "focus": "Contact and response",
+        "reveal": "The gate opens and the payload crosses",
+        "role": "Demonstrate one visible cause and consequence",
+        "beats": [
+          {
+            "frame": 0,
+            "kind": "reveal",
+            "event": "Carrier and gate share the space"
+          },
+          {
+            "frame": 8,
+            "kind": "action",
+            "event": "Carrier approaches along a curved path"
+          },
+          {
+            "frame": 42,
+            "kind": "action",
+            "event": "Arm reaches toward the gate"
+          },
+          {
+            "frame": 82,
+            "kind": "action",
+            "event": "Contact deforms the membrane"
+          },
+          {
+            "frame": 94,
+            "kind": "action",
+            "event": "Gate opens"
+          },
+          {
+            "frame": 148,
+            "kind": "action",
+            "event": "Payload crosses the opening"
+          },
+          {
+            "frame": 210,
+            "kind": "reveal",
+            "event": "Arrival response and wider view"
+          }
+        ]
+      },
+      "dependencies": [
+        "src/index.tsx",
+        "src/motion-kit/motion.mjs",
+        "src/motion-kit/events.mjs",
+        "src/motion-kit/components.tsx",
+        "timeline.json",
+        "public/cues.wav"
+      ]
+    }
+  ],
+  "reviews": {
+    "design": null,
+    "segments": [],
+    "final": null
+  },
+  "purpose": "example"
+}

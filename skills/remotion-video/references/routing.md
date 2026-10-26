@@ -4,7 +4,7 @@ Choose visual treatment from what viewers should see, then select production too
 
 | Visual mode | Use when | Artwork and preview |
 | --- | --- | --- |
-| illustrated | characters, environments, spatial events, microscopic worlds or stylized narratives | connected built-in ImageGen keyframes by default; suitable existing art can be reused; timed animatic and segment reviews |
+| illustrated | characters, environments, spatial events, microscopic worlds or stylized narratives | connected generated designs/layers, suitable existing art or a deliberately chosen procedural drawing style; timed animatic and segment reviews |
 | schematic | a simple labeled relationship or process is the intended form | direct code and compact layouts |
 | data | numbers and chart comparisons carry the film | direct code and compact layouts |
 | geometry | formulas, axes and geometric transformations carry the film | Remotion or optional Manim; compact layouts or an animatic as needed |
@@ -15,7 +15,7 @@ A playful science explainer with characters and changing scales belongs in `illu
 
 ## Settings and precedence
 
-New plans use version 4. `creative.visualMode` selects the table row; `visualReason` explains the choice. `creative.artwork` is `built-in-imagegen`, `existing` or `none`. Record an explicit generation request with `imageGenerationRequired: true`. The request survives task-kind changes and cannot be overridden by direct workflow settings.
+New plans use version 4. `creative.visualMode` selects the table row; `visualReason` explains the choice. `creative.artwork` is `built-in-imagegen`, `existing`, `procedural` or `none`. Procedural illustrated work keeps the designed workflow, animatic and segment reviews while using its drawing source in place of raster references. See [motion-craft.md](motion-craft.md). Record an explicit generation request with `imageGenerationRequired: true`. The request survives task-kind changes and cannot be overridden by direct workflow settings.
 
 `init` defaults general, illustration and product work to illustrated generation. Data defaults to data; diagram defaults to schematic. These are starter choices: read the actual brief, then correct the mode before building. Use `--visual`, `--artwork` and `--require-imagegen` to set them at initialization.
 

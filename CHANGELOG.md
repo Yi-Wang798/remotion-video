@@ -1,5 +1,15 @@
 # Changes
 
+## 3.3.0
+
+- Added a copyable motion kit: two-bone rigs, pose interpolation, paths, organic contours, morphing, sprite pivots and camera coordinates.
+- Added a shared frame-event timeline and deterministic local foley synthesis.
+- Added motion-study renders with 0.2-second sampling and a separate pending evidence scope.
+- Added actual-video pixel analysis for near-still and global-motion-dominant intervals; reports are advisory.
+- Added an editable contact-and-release example with soft-volume and cut-paper renderers.
+- Added a deliberate procedural illustration route while preserving explicit ImageGen requirements and legacy checks.
+- Reworked artwork guidance around model sheets, key poses and controllable layers; credited Huashu and Lemo directing references.
+
 ## 3.2.0
 
 - Added version 4 visual-route decisions, generated/existing artwork selection and explicit image-generation requirements.
