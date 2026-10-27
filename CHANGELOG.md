@@ -1,5 +1,14 @@
 # Changes
 
+## 4.0.0
+
+- Bundled pinned Huashu and Lemo drawing libraries, style guides and actual scene source locally, with byte inventories and original licenses.
+- Added a 112-entry local catalog separating upstream implementations, research recipes, known asset gaps and actual wrapper verification.
+- Added one-time native runtime setup, offline browser rendering, benchmark previews and source-preserving project creation.
+- Added a new river scene that reuses the real upstream painting library; native clips can be finished in Remotion.
+- Added native shot provenance and kept data/direct workflows, explicit ImageGen requests and legacy review behavior.
+- Updated both READMEs and source/license notices.
+
 ## 3.3.0
 
 - Added a copyable motion kit: two-bone rigs, pose interpolation, paths, organic contours, morphing, sprite pivots and camera coordinates.

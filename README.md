@@ -1,102 +1,91 @@
 # Remotion Video
 
-先想清楚观众为什么愿意看下去，再把画面、动作和声音做出来。
+用本地绘制代码和素材制作动画，再由 Remotion 合成声音、字幕和镜头。
 
-简单的数据播报、图表和流程图可以直接制作。角色故事、场景叙事和微观科普先试做关键动作，再准备角色、姿态和分层素材。生图可以确定美术与角色，程序绘制可以处理连续形变；两者按镜头需要配合。数学和几何动画可以交给 Manim，最后在 Remotion 中合成字幕、旁白和其他镜头。
+插件内附花叔与 Lemo 的绘制库、风格说明和场景源码。做视频时可以直接读取这些文件，沿用笔触、轮廓和材质的实现，为新题材重新设计角色与动作。需要插画素材时使用内置生图；简单的数据播报、图表和流程图可以直接制作。
 
 [English](README.en.md)
 
-## 能做什么
+## 本地风格库
 
-- **先设计观看过程**：按用途安排开场、视觉推进和收尾。数据简报、机制解释、故事、产品演示、氛围短片各有合适的表达方式。
-- **先预演再精修**：简单视频检查几张顺序布局图；复杂视频先看带时间的简易动态分镜，及早发现单调或拖沓的段落。
+目录收录花叔的 **36 种已有实现、17 条研究配方**，以及 Lemo 的 **59 种风格**。源码固定到具体提交，更新随插件发布，不在每次制作时重新搜索 GitHub。
 
-- **按动作准备美术**：生成关联的角色设定、表情姿势、背景和分层素材。完整关键画面用于确定构图，动作通过可控部件和连续绘制完成。明确要求生图的任务保留这一流程。
-- **设计色彩与光影**：为主体选择鲜明的颜色，安排冷暖对比、渐变、透明叠色和材质光影。色彩随场景发展，角色和风格保持连贯。用户指定的品牌色或简约风格照常保留。
-- **直接使用动作工具**：附带姿态插值、两段关节约束、曲线路径、有机形变、图片部件轴点和镜头坐标。声音事件与画面共用时间表，提供柔光体积和纸片两种可运行样例。Remotion Bits 与可选 Shotcraft 继续补充组件和镜头参考。
-- **检查实际成片**：简单视频看完整预览和关键帧；复杂镜头边做边检查，改动后复查相关镜头与相邻切点。
-- **核对数据**：记录来源、报告期、单位和币种，检查差值与增长率。
-- **把话说清楚**：参考 Humanizer 和 Humanizer ZH，删掉套话和无用的制作说明。默认只留字幕、必要标签和简短标题，不自动添加页码、栏目名与重复页脚。
+风格入口分别记录源码位置、上游状态、素材缺口和本插件的验证情况。部分原始样例需要额外字体、纹理或模型；目录里已有清单。当前试渲染结果见 [验证记录](engines/verification.json)，完整用法见 [本地绘制引擎](skills/remotion-video/references/local-style-backends.md)。
 
-## 安装
+```text
+node scripts/styles.mjs list --backend huashu
+node scripts/styles.mjs show huashu/09_postimp
+node scripts/styles.mjs preview huashu/09_postimp --out <absolute-new-file.mp4> --seconds 3
+```
 
-在 Codex 插件市场中添加本仓库，然后安装 `remotion-video`。也可以从本地仓库注册：
+`preview` 运行上游场景，用来查看画法。制作新内容时，`create` 复制实际引擎和所选风格源码；角色、构图和故事在项目里重新编写。
+
+```text
+node scripts/styles.mjs create --style huashu/09_postimp --project <new-absolute-directory>
+node scripts/project.mjs init --project <same-directory> --kind illustration --artwork procedural
+node scripts/styles.mjs render --project <same-directory> --out <absolute-new-clip.mp4> --seconds 8
+```
+
+新场景需要先完成绘制代码，再渲染。原生镜头完成后放入 Remotion，统一安排剪辑、旁白、音效和字幕。竖屏项目要按竖屏重新布局；输出尺寸与设计画布的比例保持一致。
+
+## 安装与准备
+
+在 Codex 中添加本仓库并安装 `remotion-video`。本地仓库也可以注册为插件市场：
 
 ```text
 codex plugin marketplace add <repository-directory>
 codex plugin add remotion-video@remotion-video-marketplace
 ```
 
-安装 Node.js 后，在仓库目录准备运行环境：
+安装 Node.js、Chrome 或 Edge，以及 ffmpeg 后，准备独立运行环境：
 
 ```text
-node scripts/setup.mjs --runtime <absolute-runtime-directory>
+node scripts/setup.mjs --runtime <absolute-runtime-directory> --with styles
 node scripts/video.mjs doctor
+node scripts/styles.mjs doctor --verify
 ```
 
-运行环境与视频项目各自放在独立目录，方便升级插件。项目使用与运行环境相同版本的依赖，可复制 `runtime/package.json` 与锁文件到项目后运行 `npm ci`。渲染使用 Chrome；可在本地 `runtime.local.json` 配置 `browserExecutable`。版本记录在 [UPSTREAM.json](UPSTREAM.json)。
+已有 Remotion 运行环境时，只需运行 `node scripts/styles-setup.mjs` 补齐原生引擎依赖。首次准备会安装锁定版本的 npm 包，以后直接复用。本地浏览器渲染会阻止外网请求，缺失素材会报出路径。运行环境、项目和输出各自保存，升级插件时方便保留。
 
-需要更多镜头参考时：
+Remotion 项目使用 `runtime/package.json` 与锁文件中的依赖。额外的 Manim 与镜头参考按需准备：
 
 ```text
 node scripts/setup.mjs --with manim,shotcraft
 node scripts/video.mjs manim setup
-node scripts/video.mjs manim doctor
 ```
 
-Manim 使用独立 Python 环境，需要 Python 3.11 或更新版本；公式排版按所用场景准备 LaTeX。普通图表和 Remotion 视频只需 Node.js 与浏览器。
+Manim 使用独立 Python 环境；公式场景按需准备 LaTeX。固定版本与来源见 [UPSTREAM.json](UPSTREAM.json)。
 
-## 开始制作
+## 制作与检查
 
-直接告诉 Codex 想讲什么、给谁看，以及已有的数据或素材。风格与时长也可以交给它决定，例如：
+直接告诉 Codex 题材、受众和已有素材，风格与时长也可以交给它决定。
 
-> 用这份季度数据做一段 20 秒动画，重点讲收入变化，画面简洁。
+> 用本地风格库做一段噬菌体杀死细菌的科普，角色可爱，动作连贯。
 
-> 做一段噬菌体杀死细菌的科普，角色可爱、动作连贯，时长你决定。
+> 用这份季度数据做一段 20 秒动画，重点讲收入变化。
 
-手动建项目时：
+复杂动画先确定镜头推进，再试做关键动作。按画法选择程序绘制、关联生图或两者配合，检查动态预演后展开整片。简单数据视频检查布局与完整预览即可。配色、光影和材质随内容设计；画面文字保留字幕、必要标签和简短标题。
+
+新项目使用版本 4 计划，支持原生引擎镜头与 Remotion、Manim 混合制作。插画路线使用动态预演和分段检查，明确要求生图的任务保留生图流程。已有版本 1–3 计划继续使用原检查方式。
 
 ```text
 node scripts/project.mjs init --project <project> --kind data --profile briefing
-node scripts/project.mjs init --project <another-project> --kind illustration
-```
-
-新项目使用版本 4 计划，先用 `--visual illustrated|schematic|data|geometry|footage|typography` 选择画面形式。插画视频默认生成关键画面，使用动态预演和分段检查；已有美术可用 `--artwork existing`，连续程序绘制可用 `--artwork procedural`。用户要求生图时加 `--require-imagegen`。简单数据与图解仍可直接制作。表达方式用 `--profile` 选择，其他模式可按需调整 `--workflow`、`--review` 与 `--preview`。已有版本 1–3 项目保留原检查方式。见 [制作路径](skills/remotion-video/references/routing.md) 和 [镜头设计](skills/remotion-video/references/creative-direction.md)。
-
-## 动作试拍
-
-先把最难的一小段做出来，再展开整片：
-
-```text
-node scripts/motion-kit.mjs install --project <project>
-node scripts/review.mjs --project <project> --composition <id> --shot <shot-id> --study
-node scripts/sound-cues.mjs <project>/timeline.json --out <project>/public/cues.wav
-node scripts/analyze-motion.mjs <preview.mp4> --out <project>/reviews/motion-analysis.json
-```
-
-试拍输出动态预览与每 0.2 秒的抽帧。运动分析读取实际视频，提示近乎静止或主要靠整幅画面移动的区间，再由制作代理查看。见[动作工具与做法](skills/remotion-video/references/motion-craft.md)。
-
-## 示例与检查
-
-- [数据摘要](examples/data-brief)：直接制作的柱状图与增长率，使用示例数据。
-- [几何运动](examples/manim-orbit)：Manim 渲染轨迹，再由 Remotion 组合标题与画面。
-- [按钮故事](examples/button-story)：沿用两张关联设计图，制作角色动作。
-- [接触与释放](examples/mechanism-motion)：连续展示接近、关节触碰、膜形变、开门、释放与响应，含两种材质和同步音效。
-
-```text
 node scripts/project.mjs design --project <project>
-node scripts/review.mjs --project <project> --composition <rough-or-final-id> --design
+node scripts/review.mjs --project <project> --composition <id> --design
 node scripts/project.mjs check-design --project <project>
 node scripts/review.mjs --project <project> --composition <id> --all
-node scripts/review.mjs --project <project> --composition <id> --shot <shot-id>
-node scripts/project.mjs affected --project <project>
 node scripts/project.mjs check-final --project <project>
 node scripts/video.mjs export --project <project> src/index.tsx <id> renders/final.mp4
 node --test tests/*.test.mjs
 ```
 
-`design` 会提示连续同构图、构图占比集中等情况，供实际查看时参考。`export` 会先检查当前版本的设计审查和成片审查记录，再导出成片。预览和抽帧生成后，由制作代理实际查看并填写检查结果。设计预览检查开场、推进与节奏；成片逐镜头记录动作发展、美术对应、色彩光影与实际文字，并核对声音和衔接。检查结果保存到项目文件中；镜头依赖明确时，局部修改只会使相关检查失效。见 [动作与检查](skills/remotion-video/references/motion-and-review.md)。
+预览和抽帧生成后，由制作代理查看并记录具体问题。复杂镜头在制作中分段检查，最后核对整片文字、声音和衔接。修改源码或素材会使相关检查失效；导出前重新检查受影响的部分。见 [动作与检查](skills/remotion-video/references/motion-and-review.md)。
 
-## 来源
+## 示例与来源
 
-本项目组合了 Remotion、Remotion Bits 的制作能力，并参考 Manim、video-shotcraft、Humanizer 系列及本地设计技能。作者、固定提交、使用方式与许可见 [NOTICE.md](NOTICE.md) 和 [UPSTREAM.json](UPSTREAM.json)。原创脚本与文档采用 [MIT 许可](LICENSE)。
+- [绘画河流](examples/native-river)：新题材短镜头，使用花叔实际笔触库绘制水流和游鱼。
+- [数据摘要](examples/data-brief)：示例数据的柱状图与增长率。
+- [几何运动](examples/manim-orbit)：Manim 轨迹与 Remotion 合成。
+- [接触与释放](examples/mechanism-motion)：关节、形变和共享音效时间线。
+
+绘制引擎来自 [huashu-art-motion](https://github.com/alchaincyf/huashu-art-motion) 与 [lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar)，保留原作者、许可及字体和数据声明。Remotion、Remotion Bits、Manim 与 video-shotcraft 的使用范围和固定来源见 [NOTICE.md](NOTICE.md)。原创脚本与文档采用 [MIT 许可](LICENSE)。

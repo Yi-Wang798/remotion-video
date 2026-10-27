@@ -1,0 +1,1934 @@
+{
+  "schema": 1,
+  "backends": {
+    "huashu": {
+      "url": "https://github.com/alchaincyf/huashu-art-motion",
+      "commit": "8a0d7d72ca65fcce6f8ba82c4a6c8dfe35b8422c",
+      "root": "engines/huashu",
+      "license": "engines/huashu/LICENSE",
+      "fileCount": 370,
+      "bytes": 19906091
+    },
+    "lemo": {
+      "url": "https://github.com/lemomo-ai/lemo-opuscar",
+      "commit": "413a6bd6d78ebd3bdd5abaec9538a26867f890df",
+      "root": "engines/lemo",
+      "license": "engines/lemo/LICENSE",
+      "fileCount": 1794,
+      "bytes": 19193260
+    }
+  },
+  "styles": [
+    {
+      "id": "huashu/01_cave",
+      "backend": "huashu",
+      "name": "洞穴岩画",
+      "guide": "engines/huashu/references/风格配方/01_cave.md",
+      "source": "engines/huashu/scripts/engine/scenes/01_cave.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "01_cave",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/02_egypt",
+      "backend": "huashu",
+      "name": "埃及墓室壁画",
+      "guide": "engines/huashu/references/风格配方/02_egypt.md",
+      "source": "engines/huashu/scripts/engine/scenes/02_egypt.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "02_egypt",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/03_greek",
+      "backend": "huashu",
+      "name": "阿提卡黑绘",
+      "guide": "engines/huashu/references/风格配方/03_greek.md",
+      "source": "engines/huashu/scripts/engine/scenes/03_greek.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "03_greek",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/04_roman",
+      "backend": "huashu",
+      "name": "庞贝马赛克（窄用途）",
+      "guide": "engines/huashu/references/风格配方/04_roman.md",
+      "source": "engines/huashu/scripts/engine/scenes/04_roman.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "04_roman",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/05_gothic",
+      "backend": "huashu",
+      "name": "哥特泥金手抄本",
+      "guide": "engines/huashu/references/风格配方/05_gothic.md",
+      "source": "engines/huashu/scripts/engine/scenes/05_gothic.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "05_gothic",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/06_renaissance",
+      "backend": "huashu",
+      "name": "文艺复兴晕涂",
+      "guide": "engines/huashu/references/风格配方/06_renaissance.md",
+      "source": "engines/huashu/scripts/engine/scenes/06_renaissance.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "06_renaissance",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/08_impressionism",
+      "backend": "huashu",
+      "name": "印象派",
+      "guide": "engines/huashu/references/风格配方/08_impressionism.md",
+      "source": "engines/huashu/scripts/engine/scenes/08_impressionism.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "08_impressionism",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/09_postimp",
+      "backend": "huashu",
+      "name": "梵高",
+      "guide": "engines/huashu/references/风格配方/09_postimp.md",
+      "source": "engines/huashu/scripts/engine/scenes/09_postimp.js",
+      "upstreamStatus": "implemented",
+      "verification": "motion-render-verified",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "09_postimp",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/10_nouveau",
+      "backend": "huashu",
+      "name": "慕夏新艺术",
+      "guide": "engines/huashu/references/风格配方/10_nouveau.md",
+      "source": "engines/huashu/scripts/engine/scenes/10_nouveau.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "10_nouveau",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/11_cubism",
+      "backend": "huashu",
+      "name": "分析立体主义",
+      "guide": "engines/huashu/references/风格配方/11_cubism.md",
+      "source": "engines/huashu/scripts/engine/scenes/11_cubism.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "11_cubism",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/12_bauhaus",
+      "backend": "huashu",
+      "name": "包豪斯（窄用途）",
+      "guide": "engines/huashu/references/风格配方/12_bauhaus.md",
+      "source": "engines/huashu/scripts/engine/scenes/12_bauhaus.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "12_bauhaus",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/13_pop",
+      "backend": "huashu",
+      "name": "利希滕斯坦波普",
+      "guide": "engines/huashu/references/风格配方/13_pop.md",
+      "source": "engines/huashu/scripts/engine/scenes/13_pop.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "13_pop",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/14_8bit",
+      "backend": "huashu",
+      "name": "8-bit 像素",
+      "guide": "engines/huashu/references/风格配方/14_8bit.md",
+      "source": "engines/huashu/scripts/engine/scenes/14_8bit.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "14_8bit",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/15_raytrace",
+      "backend": "huashu",
+      "name": "早期光追 CGI（窄用途）",
+      "guide": "engines/huashu/references/风格配方/15_raytrace.md",
+      "source": "engines/huashu/scripts/engine/scenes/15_raytrace.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "15_raytrace",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/16_2026",
+      "backend": "huashu",
+      "name": "当代扁平插画",
+      "guide": "engines/huashu/references/风格配方/16_2026.md",
+      "source": "engines/huashu/scripts/engine/scenes/16_2026.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "16_2026",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/17_ink",
+      "backend": "huashu",
+      "name": "中国水墨写意",
+      "guide": "engines/huashu/references/风格配方/17_ink.md",
+      "source": "engines/huashu/scripts/engine/scenes/17_ink.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "17_ink",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/18_klimt",
+      "backend": "huashu",
+      "name": "克里姆特金色时期",
+      "guide": "engines/huashu/references/风格配方/18_klimt.md",
+      "source": "engines/huashu/scripts/engine/scenes/18_klimt.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "18_klimt",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/19_munch",
+      "backend": "huashu",
+      "name": "蒙克表现主义",
+      "guide": "engines/huashu/references/风格配方/19_munch.md",
+      "source": "engines/huashu/scripts/engine/scenes/19_munch.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "19_munch",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/20_dunhuang",
+      "backend": "huashu",
+      "name": "敦煌壁画",
+      "guide": "engines/huashu/references/风格配方/20_dunhuang.md",
+      "source": "engines/huashu/scripts/engine/scenes/20_dunhuang.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "20_dunhuang",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/21_kusama",
+      "backend": "huashu",
+      "name": "草间弥生波点",
+      "guide": "engines/huashu/references/风格配方/21_kusama.md",
+      "source": "engines/huashu/scripts/engine/scenes/21_kusama.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "21_kusama",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/22_constructivism",
+      "backend": "huashu",
+      "name": "俄国构成主义（窄用途）",
+      "guide": "engines/huashu/references/风格配方/22_constructivism.md",
+      "source": "engines/huashu/scripts/engine/scenes/22_constructivism.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "22_constructivism",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/23_dali",
+      "backend": "huashu",
+      "name": "达利超现实",
+      "guide": "engines/huashu/references/风格配方/23_dali.md",
+      "source": "engines/huashu/scripts/engine/scenes/23_dali.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "23_dali",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/24_hopper",
+      "backend": "huashu",
+      "name": "霍珀美国现实主义",
+      "guide": "engines/huashu/references/风格配方/24_hopper.md",
+      "source": "engines/huashu/scripts/engine/scenes/24_hopper.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "24_hopper",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/25_ghibli",
+      "backend": "huashu",
+      "name": "吉卜力（既有水彩背景＋整体语言研究）",
+      "guide": "engines/huashu/references/风格配方/25_ghibli.md",
+      "source": "engines/huashu/scripts/engine/scenes/25_ghibli.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "25_ghibli",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/26_vaporwave",
+      "backend": "huashu",
+      "name": "蒸汽波/赛博霓虹",
+      "guide": "engines/huashu/references/风格配方/26_vaporwave.md",
+      "source": "engines/huashu/scripts/engine/scenes/26_vaporwave.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "26_vaporwave",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/27_kirby",
+      "backend": "huashu",
+      "name": "漫威 Kirby 银河时代",
+      "guide": "engines/huashu/references/风格配方/27_kirby.md",
+      "source": "engines/huashu/scripts/engine/scenes/27_kirby.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "27_kirby",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/28_monet",
+      "backend": "huashu",
+      "name": "莫奈睡莲与日本桥",
+      "guide": "engines/huashu/references/风格配方/28_monet.md",
+      "source": "engines/huashu/scripts/engine/scenes/28_monet.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "28_monet",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/29_seurat",
+      "backend": "huashu",
+      "name": "修拉点彩",
+      "guide": "engines/huashu/references/风格配方/29_seurat.md",
+      "source": "engines/huashu/scripts/engine/scenes/29_seurat.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "29_seurat",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/30_matisse",
+      "backend": "huashu",
+      "name": "马蒂斯剪纸",
+      "guide": "engines/huashu/references/风格配方/30_matisse.md",
+      "source": "engines/huashu/scripts/engine/scenes/30_matisse.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "30_matisse",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/31_haring",
+      "backend": "huashu",
+      "name": "凯斯·哈林",
+      "guide": "engines/huashu/references/风格配方/31_haring.md",
+      "source": "engines/huashu/scripts/engine/scenes/31_haring.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "31_haring",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/32_rembrandt",
+      "backend": "huashu",
+      "name": "伦勃朗明暗",
+      "guide": "engines/huashu/references/风格配方/32_rembrandt.md",
+      "source": "engines/huashu/scripts/engine/scenes/32_rembrandt.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "32_rembrandt",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/33_rubberhose",
+      "backend": "huashu",
+      "name": "1930 橡皮管卡通",
+      "guide": "engines/huashu/references/风格配方/33_rubberhose.md",
+      "source": "engines/huashu/scripts/engine/scenes/33_rubberhose.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "33_rubberhose",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/34_shadowpuppet",
+      "backend": "huashu",
+      "name": "中国皮影",
+      "guide": "engines/huashu/references/风格配方/34_shadowpuppet.md",
+      "source": "engines/huashu/scripts/engine/scenes/34_shadowpuppet.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "34_shadowpuppet",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/35_shinkai",
+      "backend": "huashu",
+      "name": "新海诚光影",
+      "guide": "engines/huashu/references/风格配方/35_shinkai.md",
+      "source": "engines/huashu/scripts/engine/scenes/35_shinkai.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "35_shinkai",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/36_picasso_blue",
+      "backend": "huashu",
+      "name": "毕加索蓝色时期",
+      "guide": "engines/huashu/references/风格配方/36_picasso_blue.md",
+      "source": "engines/huashu/scripts/engine/scenes/36_picasso_blue.js",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "36_picasso_blue",
+        "film": "gallery"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/37_rick_morty",
+      "backend": "huashu",
+      "name": "[Rick & Morty](37_rick_morty.md)",
+      "guide": "engines/huashu/references/风格配方/37_rick_morty.md",
+      "source": "engines/huashu/scripts/engine/reference_films/rick_morty",
+      "upstreamStatus": "implemented",
+      "verification": "still-render-verified",
+      "preview": {
+        "kind": "huashu-svg",
+        "entry": "reference_films/rick_morty/index.html?render=1"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/38_giotto",
+      "backend": "huashu",
+      "name": "38_giotto · 乔托：体块与叙事关系",
+      "guide": "engines/huashu/references/风格配方/38_giotto.md",
+      "source": "engines/huashu/scripts/engine/scenes/38_giotto.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "38_giotto",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/39_piero",
+      "backend": "huashu",
+      "name": "39_piero · 皮耶罗：几何秩序与清明体积",
+      "guide": "engines/huashu/references/风格配方/39_piero.md",
+      "source": "engines/huashu/scripts/engine/scenes/39_piero.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "39_piero",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/40_raphael",
+      "backend": "huashu",
+      "name": "40_raphael · 拉斐尔：和谐组织与自然联系",
+      "guide": "engines/huashu/references/风格配方/40_raphael.md",
+      "source": "engines/huashu/scripts/engine/scenes/40_raphael.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "40_raphael",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/41_michelangelo",
+      "backend": "huashu",
+      "name": "41_michelangelo · 米开朗基罗：雕塑性与姿态张力",
+      "guide": "engines/huashu/references/风格配方/41_michelangelo.md",
+      "source": "engines/huashu/scripts/engine/scenes/41_michelangelo.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "41_michelangelo",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/42_guardi",
+      "backend": "huashu",
+      "name": "42_guardi · 瓜尔迪：空气、碎光与松动边缘",
+      "guide": "engines/huashu/references/风格配方/42_guardi.md",
+      "source": "engines/huashu/scripts/engine/scenes/42_guardi.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "42_guardi",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/43_lorenzetti",
+      "backend": "huashu",
+      "name": "43_lorenzetti · 安布罗焦·洛伦采蒂：可阅读的社会空间",
+      "guide": "engines/huashu/references/风格配方/43_lorenzetti.md",
+      "source": "engines/huashu/scripts/engine/scenes/43_lorenzetti.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "43_lorenzetti",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/44_cortona",
+      "backend": "huashu",
+      "name": "44_cortona · 彼得罗·达·科尔托纳：巴洛克体量与流动群组",
+      "guide": "engines/huashu/references/风格配方/44_cortona.md",
+      "source": "engines/huashu/scripts/engine/scenes/44_cortona.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "44_cortona",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/45_renoir",
+      "backend": "huashu",
+      "name": "45_renoir · 雷诺阿：暖冷交织与有温度的人物",
+      "guide": "engines/huashu/references/风格配方/45_renoir.md",
+      "source": "engines/huashu/scripts/engine/scenes/45_renoir.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "45_renoir",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/46_pissarro",
+      "backend": "huashu",
+      "name": "46_pissarro · 毕沙罗：生活流动与环境中的人物",
+      "guide": "engines/huashu/references/风格配方/46_pissarro.md",
+      "source": "engines/huashu/scripts/engine/scenes/46_pissarro.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "46_pissarro",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/47_sisley",
+      "backend": "huashu",
+      "name": "47_sisley · 西斯莱：空气、天气与连贯风景",
+      "guide": "engines/huashu/references/风格配方/47_sisley.md",
+      "source": "engines/huashu/scripts/engine/scenes/47_sisley.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "47_sisley",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/48_gauguin",
+      "backend": "huashu",
+      "name": "48_gauguin · 高更：平面、轮廓与象征色",
+      "guide": "engines/huashu/references/风格配方/48_gauguin.md",
+      "source": "engines/huashu/scripts/engine/scenes/48_gauguin.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "48_gauguin",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/49_chagall",
+      "backend": "huashu",
+      "name": "49_chagall · 夏加尔：记忆空间与情感色彩",
+      "guide": "engines/huashu/references/风格配方/49_chagall.md",
+      "source": "engines/huashu/scripts/engine/scenes/49_chagall.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "49_chagall",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/50_ma_yuan",
+      "backend": "huashu",
+      "name": "50_ma_yuan · 马远：偏置重心、留白与精练笔墨",
+      "guide": "engines/huashu/references/风格配方/50_ma_yuan.md",
+      "source": "engines/huashu/scripts/engine/scenes/50_ma_yuan.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "50_ma_yuan",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/51_persian_miniature",
+      "backend": "huashu",
+      "name": "51_persian_miniature · 波斯细密画：层叠空间与精密叙事",
+      "guide": "engines/huashu/references/风格配方/51_persian_miniature.md",
+      "source": "engines/huashu/scripts/engine/scenes/51_persian_miniature.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "51_persian_miniature",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/52_south_park",
+      "backend": "huashu",
+      "name": "52_south_park · 南方公园：数字剪纸与有限表演",
+      "guide": "engines/huashu/references/风格配方/52_south_park.md",
+      "source": "engines/huashu/scripts/engine/scenes/52_south_park.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "52_south_park",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/53_pixar",
+      "backend": "huashu",
+      "name": "53_pixar · 皮克斯：形体、材质与表演的风格家族",
+      "guide": "engines/huashu/references/风格配方/53_pixar.md",
+      "source": "engines/huashu/scripts/engine/scenes/53_pixar.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "53_pixar",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "huashu/55_dunhuang",
+      "backend": "huashu",
+      "name": "55_dunhuang · 敦煌壁画（北朝）：干泥壁上的矿物色与横飞的线",
+      "guide": "engines/huashu/references/风格配方/55_dunhuang.md",
+      "source": "engines/huashu/scripts/engine/scenes/55_dunhuang.js",
+      "upstreamStatus": "research",
+      "verification": "not-run",
+      "preview": {
+        "kind": "huashu-scene",
+        "scene": "55_dunhuang",
+        "film": "style_studies"
+      },
+      "availability": "unverified"
+    },
+    {
+      "id": "lemo/archive-lighttable",
+      "backend": "lemo",
+      "name": "Archive Light Table — Style Prompt",
+      "guide": "engines/lemo/styles/archive-lighttable/STYLE.md",
+      "source": "engines/lemo/styles/archive-lighttable/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/archive-lighttable/demo/sources/sru_cph.3b12982.xml",
+        "styles/archive-lighttable/demo/sources/sru_cph.3b18080.xml",
+        "styles/archive-lighttable/demo/sources/sru_ppprs.00610.xml",
+        "styles/archive-lighttable/demo/sources/sru_ppprs.00626.xml",
+        "styles/archive-lighttable/demo/sources/sru_ppprs.00629.xml",
+        "styles/archive-lighttable/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/archive-lighttable/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/art-deco",
+      "backend": "lemo",
+      "name": "Art Deco — Style Prompt",
+      "guide": "engines/lemo/styles/art-deco/STYLE.md",
+      "source": "engines/lemo/styles/art-deco/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/art-deco/demo/stills/frame_v2_lobby.jpg",
+        "styles/art-deco/demo/stills/frame_v2_roof.jpg",
+        "styles/art-deco/demo/stills/kit_v2.jpg",
+        "styles/art-deco/demo/stills/modelsheet_v2.jpg",
+        "styles/art-deco/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/art-deco/demo"
+      },
+      "missingFontCount": 4,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/ascii-crt",
+      "backend": "lemo",
+      "name": "ASCII / CRT Terminal: Style Prompt",
+      "guide": "engines/lemo/styles/ascii-crt/STYLE.md",
+      "source": "engines/lemo/styles/ascii-crt/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/ascii-crt/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/ascii-crt/demo"
+      },
+      "missingFontCount": 1,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/backrooms",
+      "backend": "lemo",
+      "name": "Liminal Found Footage — Style Prompt",
+      "guide": "engines/lemo/styles/backrooms/STYLE.md",
+      "source": "engines/lemo/styles/backrooms/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/backrooms/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/backrooms/demo"
+      },
+      "missingFontCount": 7,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/blueprint",
+      "backend": "lemo",
+      "name": "Blueprint — Style Prompt",
+      "guide": "engines/lemo/styles/blueprint/STYLE.md",
+      "source": "engines/lemo/styles/blueprint/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/blueprint/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/blueprint/demo"
+      },
+      "missingFontCount": 5,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/brick-toy",
+      "backend": "lemo",
+      "name": "Brick Toy — Style Prompt",
+      "guide": "engines/lemo/styles/brick-toy/STYLE.md",
+      "source": "engines/lemo/styles/brick-toy/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/brick-toy/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/brick-toy/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/briefing-board",
+      "backend": "lemo",
+      "name": "Engineering Briefing Board — Style Prompt",
+      "guide": "engines/lemo/styles/briefing-board/STYLE.md",
+      "source": "engines/lemo/styles/briefing-board/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/briefing-board/demo/.gitignore",
+        "styles/briefing-board/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/briefing-board/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/caption-news",
+      "backend": "lemo",
+      "name": "Caption News — Style Prompt",
+      "guide": "engines/lemo/styles/caption-news/STYLE.md",
+      "source": "engines/lemo/styles/caption-news/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/caption-news/demo/SOURCES.jsonl",
+        "styles/caption-news/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/caption-news/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/cel-anime-80s",
+      "backend": "lemo",
+      "name": "80s Cel Anime — Style Prompt",
+      "guide": "engines/lemo/styles/cel-anime-80s/STYLE.md",
+      "source": "engines/lemo/styles/cel-anime-80s/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/cel-anime-80s/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/cel-anime-80s/demo"
+      },
+      "missingFontCount": 7,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/city-symphony",
+      "backend": "lemo",
+      "name": "Time-lapse Symphony — Style Prompt",
+      "guide": "engines/lemo/styles/city-symphony/STYLE.md",
+      "source": "engines/lemo/styles/city-symphony/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/city-symphony/demo/SOURCES.jsonl",
+        "styles/city-symphony/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/city-symphony/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/countdown",
+      "backend": "lemo",
+      "name": "Live Countdown Split-screen — Style Prompt",
+      "guide": "engines/lemo/styles/countdown/STYLE.md",
+      "source": "engines/lemo/styles/countdown/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/countdown/demo/SOURCES.jsonl",
+        "styles/countdown/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/countdown/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/crayon-book",
+      "backend": "lemo",
+      "name": "Crayon Picture Book — Style Prompt",
+      "guide": "engines/lemo/styles/crayon-book/STYLE.md",
+      "source": "engines/lemo/styles/crayon-book/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/crayon-book/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/crayon-book/demo"
+      },
+      "missingFontCount": 7,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/dark-keynote",
+      "backend": "lemo",
+      "name": "Dark Tech Keynote — Style Prompt",
+      "guide": "engines/lemo/styles/dark-keynote/STYLE.md",
+      "source": "engines/lemo/styles/dark-keynote/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/dark-keynote/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/dark-keynote/demo"
+      },
+      "missingFontCount": 3,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/data-physical",
+      "backend": "lemo",
+      "name": "Data Physicalization — Style Prompt",
+      "guide": "engines/lemo/styles/data-physical/STYLE.md",
+      "source": "engines/lemo/styles/data-physical/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/data-physical/demo/data/world_solar_capacity_irena2026.csv",
+        "styles/data-physical/demo/data/world_wind_capacity_irena2026.csv",
+        "styles/data-physical/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/data-physical/demo"
+      },
+      "missingFontCount": 9,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/dataviz",
+      "backend": "lemo",
+      "name": "Data Storytelling — Style Prompt",
+      "guide": "engines/lemo/styles/dataviz/STYLE.md",
+      "source": "engines/lemo/styles/dataviz/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/dataviz/demo/data/GLB.Ts+dSST.csv",
+        "styles/dataviz/demo/stills/engine_demo.jpg",
+        "styles/dataviz/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/dataviz/demo"
+      },
+      "missingFontCount": 5,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/engraving",
+      "backend": "lemo",
+      "name": "Copperplate Engraving — Style Prompt",
+      "guide": "engines/lemo/styles/engraving/STYLE.md",
+      "source": "engines/lemo/styles/engraving/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/engraving/demo/music/.gitignore",
+        "styles/engraving/demo/stills/engine_example.jpg",
+        "styles/engraving/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/engraving/demo"
+      },
+      "missingFontCount": 3,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/game-show",
+      "backend": "lemo",
+      "name": "Game Show Flat — Style Prompt",
+      "guide": "engines/lemo/styles/game-show/STYLE.md",
+      "source": "engines/lemo/styles/game-show/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/game-show/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/game-show/demo"
+      },
+      "missingFontCount": 396,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/glass-product",
+      "backend": "lemo",
+      "name": "Glass Product Render — Style Prompt",
+      "guide": "engines/lemo/styles/glass-product/STYLE.md",
+      "source": "engines/lemo/styles/glass-product/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/glass-product/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/glass-product/demo"
+      },
+      "missingFontCount": 1,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/halftone-dossier",
+      "backend": "lemo",
+      "name": "Halftone Dossier — Style Prompt",
+      "guide": "engines/lemo/styles/halftone-dossier/STYLE.md",
+      "source": "engines/lemo/styles/halftone-dossier/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/halftone-dossier/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/halftone-dossier/demo"
+      },
+      "missingFontCount": 393,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/hd-2d",
+      "backend": "lemo",
+      "name": "HD-2D — Style Prompt",
+      "guide": "engines/lemo/styles/hd-2d/STYLE.md",
+      "source": "engines/lemo/styles/hd-2d/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/hd-2d/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/hd-2d/demo"
+      },
+      "missingFontCount": 5,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/hologram-hud",
+      "backend": "lemo",
+      "name": "Sci-fi Hologram HUD — Style Prompt",
+      "guide": "engines/lemo/styles/hologram-hud/STYLE.md",
+      "source": "engines/lemo/styles/hologram-hud/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/hologram-hud/demo/stills/alt_lockup.jpg",
+        "styles/hologram-hud/demo/stills/alt_signature.jpg",
+        "styles/hologram-hud/demo/stills/alt_title.jpg",
+        "styles/hologram-hud/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/hologram-hud/demo"
+      },
+      "missingFontCount": 5,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/impasto",
+      "backend": "lemo",
+      "name": "Impasto · Palette Knife — Style Prompt",
+      "guide": "engines/lemo/styles/impasto/STYLE.md",
+      "source": "engines/lemo/styles/impasto/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/impasto/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/impasto/demo"
+      },
+      "missingFontCount": 2,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/ink-wash",
+      "backend": "lemo",
+      "name": "Chinese Ink Wash — Style Prompt",
+      "guide": "engines/lemo/styles/ink-wash/STYLE.md",
+      "source": "engines/lemo/styles/ink-wash/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/ink-wash/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/ink-wash/demo"
+      },
+      "missingFontCount": 6,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/iso-infographic",
+      "backend": "lemo",
+      "name": "Isometric Infographic — Style Prompt",
+      "guide": "engines/lemo/styles/iso-infographic/STYLE.md",
+      "source": "engines/lemo/styles/iso-infographic/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/iso-infographic/demo/stills/engine_shape.jpg",
+        "styles/iso-infographic/demo/stills/frame_v2_hands.jpg",
+        "styles/iso-infographic/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/iso-infographic/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/kino-montage",
+      "backend": "lemo",
+      "name": "Constructivist Montage — Style Prompt",
+      "guide": "engines/lemo/styles/kino-montage/STYLE.md",
+      "source": "engines/lemo/styles/kino-montage/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/kino-montage/demo/SOURCES.jsonl",
+        "styles/kino-montage/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/kino-montage/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/lidar-survey",
+      "backend": "lemo",
+      "name": "LiDAR Survey — Style Prompt",
+      "guide": "engines/lemo/styles/lidar-survey/STYLE.md",
+      "source": "engines/lemo/styles/lidar-survey/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/lidar-survey/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/lidar-survey/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/living-screencast",
+      "backend": "lemo",
+      "name": "Living Screencast — Style Prompt",
+      "guide": "engines/lemo/styles/living-screencast/STYLE.md",
+      "source": "engines/lemo/styles/living-screencast/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/living-screencast/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/living-screencast/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/lowpoly-island",
+      "backend": "lemo",
+      "name": "Low-poly Isometric Island — Style Prompt",
+      "guide": "engines/lemo/styles/lowpoly-island/STYLE.md",
+      "source": "engines/lemo/styles/lowpoly-island/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/lowpoly-island/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/lowpoly-island/demo"
+      },
+      "missingFontCount": 2,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/microgame",
+      "backend": "lemo",
+      "name": "Microgame Frenzy — Style Prompt",
+      "guide": "engines/lemo/styles/microgame/STYLE.md",
+      "source": "engines/lemo/styles/microgame/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/microgame/demo/stills/modelsheet_v2.jpg",
+        "styles/microgame/demo/stills/modelsheet_v2_styles.jpg",
+        "styles/microgame/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/microgame/demo"
+      },
+      "missingFontCount": 8,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/microscope",
+      "backend": "lemo",
+      "name": "Microscope Story — Style Prompt",
+      "guide": "engines/lemo/styles/microscope/STYLE.md",
+      "source": "engines/lemo/styles/microscope/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/microscope/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/microscope/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/midcentury-toon",
+      "backend": "lemo",
+      "name": "Mid-century Cartoon — Style Prompt",
+      "guide": "engines/lemo/styles/midcentury-toon/STYLE.md",
+      "source": "engines/lemo/styles/midcentury-toon/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/midcentury-toon/demo/stills/alt_1_hook.jpg",
+        "styles/midcentury-toon/demo/stills/alt_2_step.jpg",
+        "styles/midcentury-toon/demo/stills/alt_3_payoff.jpg",
+        "styles/midcentury-toon/demo/stills/alt_4_lockup.jpg",
+        "styles/midcentury-toon/demo/stills/modelsheet_v2.jpg",
+        "styles/midcentury-toon/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/midcentury-toon/demo"
+      },
+      "missingFontCount": 4,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/news-package",
+      "backend": "lemo",
+      "name": "Broadcast News Package — Style Prompt",
+      "guide": "engines/lemo/styles/news-package/STYLE.md",
+      "source": "engines/lemo/styles/news-package/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/news-package/demo/assets/plates/plate_datacenter.jpg",
+        "styles/news-package/demo/assets/plates/plate_wafer.jpg",
+        "styles/news-package/demo/data/kospi_daily.csv",
+        "styles/news-package/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/news-package/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/newsreel",
+      "backend": "lemo",
+      "name": "1920s Newsreel — Style Prompt",
+      "guide": "engines/lemo/styles/newsreel/STYLE.md",
+      "source": "engines/lemo/styles/newsreel/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/newsreel/demo/.gitignore",
+        "styles/newsreel/demo/SOURCES.jsonl",
+        "styles/newsreel/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/newsreel/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/one-line",
+      "backend": "lemo",
+      "name": "One-line Drawing — Style Prompt",
+      "guide": "engines/lemo/styles/one-line/STYLE.md",
+      "source": "engines/lemo/styles/one-line/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/one-line/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/one-line/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/paper-lantern",
+      "backend": "lemo",
+      "name": "Paper-cut Lightbox — Style Prompt",
+      "guide": "engines/lemo/styles/paper-lantern/STYLE.md",
+      "source": "engines/lemo/styles/paper-lantern/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/paper-lantern/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/paper-lantern/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/paper-popup",
+      "backend": "lemo",
+      "name": "Paper Pop-up Book — Style Prompt",
+      "guide": "engines/lemo/styles/paper-popup/STYLE.md",
+      "source": "engines/lemo/styles/paper-popup/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/paper-popup/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/paper-popup/demo"
+      },
+      "missingFontCount": 8,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/papercut-red",
+      "backend": "lemo",
+      "name": "Red Paper-cut — Style Prompt",
+      "guide": "engines/lemo/styles/papercut-red/STYLE.md",
+      "source": "engines/lemo/styles/papercut-red/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/papercut-red/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/papercut-red/demo"
+      },
+      "missingFontCount": 2,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/pictogram-motion",
+      "backend": "lemo",
+      "name": "Pictogram Motion — Style Prompt",
+      "guide": "engines/lemo/styles/pictogram-motion/STYLE.md",
+      "source": "engines/lemo/styles/pictogram-motion/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/pictogram-motion/demo/music/export_timeline.cjs",
+        "styles/pictogram-motion/demo/srt.cjs",
+        "styles/pictogram-motion/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/pictogram-motion/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/pixel-rpg",
+      "backend": "lemo",
+      "name": "16-bit Pixel RPG — Style Prompt",
+      "guide": "engines/lemo/styles/pixel-rpg/STYLE.md",
+      "source": "engines/lemo/styles/pixel-rpg/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/pixel-rpg/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/pixel-rpg/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/risograph",
+      "backend": "lemo",
+      "name": "Risograph Print — Style Prompt",
+      "guide": "engines/lemo/styles/risograph/STYLE.md",
+      "source": "engines/lemo/styles/risograph/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/risograph/demo/stills/modelsheet_v2.jpg",
+        "styles/risograph/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/risograph/demo"
+      },
+      "missingFontCount": 2,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/rubber-hose",
+      "backend": "lemo",
+      "name": "1930s Rubber Hose Cartoon — Style Prompt",
+      "guide": "engines/lemo/styles/rubber-hose/STYLE.md",
+      "source": "engines/lemo/styles/rubber-hose/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/rubber-hose/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/rubber-hose/demo"
+      },
+      "missingFontCount": 3,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/satellite-briefing",
+      "backend": "lemo",
+      "name": "Satellite Briefing — Style Prompt",
+      "guide": "engines/lemo/styles/satellite-briefing/STYLE.md",
+      "source": "engines/lemo/styles/satellite-briefing/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/satellite-briefing/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/satellite-briefing/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/scifi-toon",
+      "backend": "lemo",
+      "name": "Sci-Fi Sitcom Toon — Style Prompt",
+      "guide": "engines/lemo/styles/scifi-toon/STYLE.md",
+      "source": "engines/lemo/styles/scifi-toon/demo",
+      "upstreamStatus": "implemented",
+      "verification": "motion-render-verified",
+      "omittedDemoAssets": [
+        "styles/scifi-toon/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/scifi-toon/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/shadow-puppet",
+      "backend": "lemo",
+      "name": "Shadow Puppetry — Style Prompt",
+      "guide": "engines/lemo/styles/shadow-puppet/STYLE.md",
+      "source": "engines/lemo/styles/shadow-puppet/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/shadow-puppet/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/shadow-puppet/demo"
+      },
+      "missingFontCount": 5,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/silent-film",
+      "backend": "lemo",
+      "name": "1920s Silent Film — Style Prompt",
+      "guide": "engines/lemo/styles/silent-film/STYLE.md",
+      "source": "engines/lemo/styles/silent-film/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/silent-film/demo/stills/frame_cards.jpg",
+        "styles/silent-film/demo/stills/frame_redraw.jpg",
+        "styles/silent-film/demo/stills/frame_v2_tender.jpg",
+        "styles/silent-film/demo/stills/modelsheet_v2.jpg",
+        "styles/silent-film/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/silent-film/demo"
+      },
+      "missingFontCount": 7,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/silkscreen-poster",
+      "backend": "lemo",
+      "name": "Silkscreen Travel Poster — Style Prompt",
+      "guide": "engines/lemo/styles/silkscreen-poster/STYLE.md",
+      "source": "engines/lemo/styles/silkscreen-poster/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/silkscreen-poster/demo/stills/alt_1_title.jpg",
+        "styles/silkscreen-poster/demo/stills/alt_2_band.jpg",
+        "styles/silkscreen-poster/demo/stills/alt_3_ascent_night.jpg",
+        "styles/silkscreen-poster/demo/stills/alt_4_wall.jpg",
+        "styles/silkscreen-poster/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/silkscreen-poster/demo"
+      },
+      "missingFontCount": 3,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/spy-titles",
+      "backend": "lemo",
+      "name": "60s Spy Title Sequence — Style Prompt",
+      "guide": "engines/lemo/styles/spy-titles/STYLE.md",
+      "source": "engines/lemo/styles/spy-titles/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/spy-titles/demo/stills/modelsheet.jpg",
+        "styles/spy-titles/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/spy-titles/demo"
+      },
+      "missingFontCount": 2,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/stained-glass",
+      "backend": "lemo",
+      "name": "Stained Glass — Style Prompt",
+      "guide": "engines/lemo/styles/stained-glass/STYLE.md",
+      "source": "engines/lemo/styles/stained-glass/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/stained-glass/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/stained-glass/demo"
+      },
+      "missingFontCount": 4,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/swiss-motion",
+      "backend": "lemo",
+      "name": "Swiss Motion Graphics — Style Prompt",
+      "guide": "engines/lemo/styles/swiss-motion/STYLE.md",
+      "source": "engines/lemo/styles/swiss-motion/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/swiss-motion/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/swiss-motion/demo"
+      },
+      "missingFontCount": 3,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/teardown",
+      "backend": "lemo",
+      "name": "Exploded Teardown — Style Prompt",
+      "guide": "engines/lemo/styles/teardown/STYLE.md",
+      "source": "engines/lemo/styles/teardown/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/teardown/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/teardown/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/telestrator",
+      "backend": "lemo",
+      "name": "Sports Telestrator — Style Prompt",
+      "guide": "engines/lemo/styles/telestrator/STYLE.md",
+      "source": "engines/lemo/styles/telestrator/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/telestrator/demo/SOURCES.jsonl",
+        "styles/telestrator/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/telestrator/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/tilt-shift",
+      "backend": "lemo",
+      "name": "Tilt-Shift Miniature — Style Prompt",
+      "guide": "engines/lemo/styles/tilt-shift/STYLE.md",
+      "source": "engines/lemo/styles/tilt-shift/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/tilt-shift/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/tilt-shift/demo"
+      },
+      "missingFontCount": 2,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/ukiyoe",
+      "backend": "lemo",
+      "name": "Ukiyo-e — Style Prompt",
+      "guide": "engines/lemo/styles/ukiyoe/STYLE.md",
+      "source": "engines/lemo/styles/ukiyoe/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/ukiyoe/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/ukiyoe/demo"
+      },
+      "missingFontCount": 4,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/urban-sketch",
+      "backend": "lemo",
+      "name": "Urban Sketch · Pen & Wash — Style Prompt",
+      "guide": "engines/lemo/styles/urban-sketch/STYLE.md",
+      "source": "engines/lemo/styles/urban-sketch/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/urban-sketch/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/urban-sketch/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/visual-investigation",
+      "backend": "lemo",
+      "name": "Visual Investigation — Style Prompt",
+      "guide": "engines/lemo/styles/visual-investigation/STYLE.md",
+      "source": "engines/lemo/styles/visual-investigation/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/visual-investigation/demo/.gitignore",
+        "styles/visual-investigation/demo/SOURCES.jsonl",
+        "styles/visual-investigation/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/visual-investigation/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/watercolor",
+      "backend": "lemo",
+      "name": "Watercolor Brush — Style Prompt",
+      "guide": "engines/lemo/styles/watercolor/STYLE.md",
+      "source": "engines/lemo/styles/watercolor/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/watercolor/demo/stills/styleframe.jpg",
+        "styles/watercolor/demo/vendor/topojson-client.min.cjs"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/watercolor/demo"
+      },
+      "missingFontCount": 20,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/white-model",
+      "backend": "lemo",
+      "name": "Projection on White Model — Style Prompt",
+      "guide": "engines/lemo/styles/white-model/STYLE.md",
+      "source": "engines/lemo/styles/white-model/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/white-model/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/white-model/demo"
+      },
+      "missingFontCount": 5,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/whiteboard",
+      "backend": "lemo",
+      "name": "Whiteboard Explainer — Style Prompt",
+      "guide": "engines/lemo/styles/whiteboard/STYLE.md",
+      "source": "engines/lemo/styles/whiteboard/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/whiteboard/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/whiteboard/demo"
+      },
+      "missingFontCount": 0,
+      "availability": "needs-assets"
+    },
+    {
+      "id": "lemo/woodcut",
+      "backend": "lemo",
+      "name": "Woodcut Print — Style Prompt",
+      "guide": "engines/lemo/styles/woodcut/STYLE.md",
+      "source": "engines/lemo/styles/woodcut/demo",
+      "upstreamStatus": "implemented",
+      "verification": "not-run",
+      "omittedDemoAssets": [
+        "styles/woodcut/demo/stills/engine_example.jpg",
+        "styles/woodcut/demo/stills/frame_filter.jpg",
+        "styles/woodcut/demo/stills/styleframe.jpg"
+      ],
+      "preview": {
+        "kind": "lemo-page",
+        "directory": "styles/woodcut/demo"
+      },
+      "missingFontCount": 3,
+      "availability": "needs-assets"
+    }
+  ]
+}

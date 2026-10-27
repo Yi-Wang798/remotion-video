@@ -58,7 +58,9 @@
     "remotion": "4.0.538",
     "remotion-bits": "0.2.1",
     "react": "18.3.1",
-    "manim": "0.22.0"
+    "manim": "0.22.0",
+    "playwright-core": "1.63.0",
+    "three": "0.170.0"
   },
   "writing_sources": [
     {
@@ -91,16 +93,22 @@
       "use": "optional local motion reference; components not bundled"
     }
   ],
-  "motion_method_references": [
+  "local_engines": [
     {
+      "backend": "huashu",
       "url": "https://github.com/alchaincyf/huashu-art-motion",
       "commit": "8a0d7d72ca65fcce6f8ba82c4a6c8dfe35b8422c",
-      "use": "method reference only; no upstream assets or source bundled"
+      "path": "engines/huashu",
+      "inventory": "engines/huashu/BUNDLE.json",
+      "use": "Bundled original drawing libraries, style recipes and demo source; migrate technique to a newly authored subject."
     },
     {
+      "backend": "lemo",
       "url": "https://github.com/lemomo-ai/lemo-opuscar",
       "commit": "413a6bd6d78ebd3bdd5abaec9538a26867f890df",
-      "use": "method reference only; no upstream assets or source bundled"
+      "path": "engines/lemo",
+      "inventory": "engines/lemo/BUNDLE.json",
+      "use": "Bundled original drawing libraries, style recipes and demo source; migrate technique to a newly authored subject."
     }
   ]
 }

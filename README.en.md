@@ -1,102 +1,91 @@
 # Remotion Video
 
-Design a reason to keep watching, then build the images, movement and sound.
+Build animation with local drawing code and assets, then use Remotion for editing, sound and captions.
 
-Build data summaries, charts and simple diagrams directly. Character stories and microscopic worlds start by testing the difficult action, then preparing the poses, parts and layers it needs. ImageGen can establish artwork and character identity; procedural drawing can handle continuous deformation. Manim can handle mathematical and geometric scenes; Remotion assembles the clips, captions, narration and other shots.
+The plugin includes Huashu and Lemo drawing libraries, style guides and scene source. Reuse their implementations of strokes, contours and materials while designing a new cast and sequence for your subject. Use built-in image generation where the artwork needs it. Data briefs, charts and simple diagrams can be built directly.
 
 [中文](README.md)
 
-## What it does
+## Local styles
 
-- Plans an opening, visual progression and payoff for the purpose: data brief, explanation, story, demonstration or atmosphere.
-- Checks a rough sequence before detailed work. Simple videos use ordered layout frames; complex videos use a timed animatic to find weak or repetitive passages early.
+The catalog contains **36 implemented Huashu styles, 17 research recipes and 59 Lemo styles** at pinned commits. These files ship with the plugin; making a video does not require another GitHub search.
 
-- Prepares connected model sheets, expressions, poses, backgrounds and layers for the action. Composition frames guide the design; controllable parts and drawing code make it move. Explicit image-generation requests stay in the plan.
-- Designs vivid focal colors, warm/cool contrast, gradients, translucency and material lighting across the sequence. Characters stay recognizable as views and settings change. Requested brand colors and restrained styles are preserved.
-- Includes pose interpolation, two-bone rigs, curved paths, organic contours, sprite pivots and shared camera coordinates. Sound cues use the picture timeline. Two runnable material studies cover soft volume and cut paper; Remotion Bits and optional Shotcraft provide further examples.
-- Reviews actual renders. Simple videos get a complete preview and key frames; complex shots get segment reviews during production. Dependency tracking keeps revisions focused on affected shots and adjacent cuts.
-- Records data sources, periods, units and currencies, and checks differences and percentage changes.
-- Applies Humanizer and Humanizer ZH to remove filler. Captions, useful labels and brief titles are the default; page counters, invented series headers and repeated footers are not added automatically.
+Each entry records its source, upstream status, asset gaps and wrapper verification. Some original demos need additional fonts, textures or models. The catalog lists known gaps. See the [render evidence](engines/verification.json) and [local backend guide](skills/remotion-video/references/local-style-backends.md).
 
-## Install
+```text
+node scripts/styles.mjs list --backend huashu
+node scripts/styles.mjs show huashu/09_postimp
+node scripts/styles.mjs preview huashu/09_postimp --out <absolute-new-file.mp4> --seconds 3
+```
 
-Add this repository as a Codex plugin marketplace, then install `remotion-video`. For a local checkout:
+`preview` runs the original upstream scene to show its drawing technique. For a new film, `create` copies the real engine and selected source references into a project where you author the cast, composition and story.
+
+```text
+node scripts/styles.mjs create --style huashu/09_postimp --project <new-absolute-directory>
+node scripts/project.mjs init --project <same-directory> --kind illustration --artwork procedural
+node scripts/styles.mjs render --project <same-directory> --out <absolute-new-clip.mp4> --seconds 8
+```
+
+Implement the new scene before rendering. Bring accepted native clips into Remotion for editing, narration, sound and captions. Portrait work needs its own composition; the output aspect ratio must match the design stage.
+
+## Install and prepare
+
+Add this repository in Codex and install `remotion-video`. A local checkout can also be registered as a marketplace:
 
 ```text
 codex plugin marketplace add <repository-directory>
 codex plugin add remotion-video@remotion-video-marketplace
 ```
 
-With Node.js installed, prepare the runtime from the repository directory:
+With Node.js, Chrome or Edge, and ffmpeg installed, prepare a separate runtime:
 
 ```text
-node scripts/setup.mjs --runtime <absolute-runtime-directory>
+node scripts/setup.mjs --runtime <absolute-runtime-directory> --with styles
 node scripts/video.mjs doctor
+node scripts/styles.mjs doctor --verify
 ```
 
-Keep the runtime and video projects in their own directories so plugin upgrades are straightforward. Use matching project dependencies: copy `runtime/package.json` and its lock file into a project, then run `npm ci`. Rendering uses Chrome; set `browserExecutable` in the local `runtime.local.json` if needed. Pins are recorded in [UPSTREAM.json](UPSTREAM.json).
+If the Remotion runtime is already prepared, run `node scripts/styles-setup.mjs` to add native engine dependencies. This installs pinned npm packages once and reuses them afterward. The native browser renderer blocks external requests and reports missing resource paths. Runtime files, projects and outputs live separately from the plugin.
 
-For optional guides and Manim:
+Remotion projects use the dependencies in `runtime/package.json` and its lock file. Optional Manim and shot references can be prepared with:
 
 ```text
 node scripts/setup.mjs --with manim,shotcraft
 node scripts/video.mjs manim setup
-node scripts/video.mjs manim doctor
 ```
 
-Manim runs in an isolated Python environment and needs Python 3.11 or newer. Formula scenes may also use LaTeX. Ordinary Remotion charts and videos need Node.js and a browser.
+Manim uses an isolated Python environment; formula scenes may need LaTeX. Source and version pins are recorded in [UPSTREAM.json](UPSTREAM.json).
 
-## Make a video
+## Production and review
 
-Tell Codex the subject, audience and available data or artwork. You can delegate style and duration:
+Tell Codex the subject, audience and available material. You can delegate style and duration.
 
-> Make a clean 20-second animation from these quarterly figures. Focus on revenue growth.
+> Use the local styles to explain how a bacteriophage kills a bacterium, with cute characters and connected movement.
 
-> Explain how a bacteriophage kills a bacterium, with cute characters and connected motion. Choose the duration.
+> Make a 20-second animation from these quarterly figures, focusing on revenue changes.
 
-To initialize a plan manually:
+For complex animation, plan the visual progression and test the signature action before expanding the film. Choose procedural drawing, connected generated assets or a mix based on the treatment. Inspect the rough animation before detailed production. Simple data videos need layout frames and a complete preview. Design color, lighting and material for the subject; audience text consists of captions, useful labels and brief titles.
+
+New version 4 plans support native engine clips alongside Remotion and Manim. Illustrated work uses a timed animatic and segment reviews. Explicit image-generation requests stay in the plan. Existing version 1–3 plans keep their prior checks.
 
 ```text
 node scripts/project.mjs init --project <project> --kind data --profile briefing
-node scripts/project.mjs init --project <another-project> --kind illustration
-```
-
-New projects use version 4 plans. Choose the visual form with `--visual illustrated|schematic|data|geometry|footage|typography`. Illustrated films default to generated keyframes, a timed animatic and segment reviews; use `--artwork existing` for supplied art or `--artwork procedural` for continuous code-drawn illustration. Add `--require-imagegen` when the brief requests generation. Simple data and diagrams remain direct. Choose expression with `--profile`; other modes can adjust `--workflow`, `--review` and `--preview`. Existing version 1–3 plans keep their prior checks. See [production routing](skills/remotion-video/references/routing.md) and [shot design](skills/remotion-video/references/creative-direction.md).
-
-## Test the action
-
-Build the difficult passage before expanding the film:
-
-```text
-node scripts/motion-kit.mjs install --project <project>
-node scripts/review.mjs --project <project> --composition <id> --shot <shot-id> --study
-node scripts/sound-cues.mjs <project>/timeline.json --out <project>/public/cues.wav
-node scripts/analyze-motion.mjs <preview.mp4> --out <project>/reviews/motion-analysis.json
-```
-
-The study produces a motion clip and frames at 0.2-second intervals. The analyzer reads actual video pixels and highlights near-still or mostly global-motion intervals for inspection. See [motion tools and craft](skills/remotion-video/references/motion-craft.md).
-
-## Examples and review
-
-- [Data brief](examples/data-brief): a direct-code bar chart and growth comparison using example data.
-- [Geometric motion](examples/manim-orbit): a Manim trajectory clip assembled with a Remotion title.
-- [Button story](examples/button-story): character motion built from two connected design images.
-- [Contact and release](examples/mechanism-motion): continuous approach, attached reach, membrane response, opening, release and arrival, with two materials and synchronized effects.
-
-```text
 node scripts/project.mjs design --project <project>
-node scripts/review.mjs --project <project> --composition <rough-or-final-id> --design
+node scripts/review.mjs --project <project> --composition <id> --design
 node scripts/project.mjs check-design --project <project>
 node scripts/review.mjs --project <project> --composition <id> --all
-node scripts/review.mjs --project <project> --composition <id> --shot <shot-id>
-node scripts/project.mjs affected --project <project>
 node scripts/project.mjs check-final --project <project>
 node scripts/video.mjs export --project <project> src/index.tsx <id> renders/final.mp4
 node --test tests/*.test.mjs
 ```
 
-`design` highlights repeated or dominant compositions for inspection. `export` checks current design and final review records before rendering the finished video. After generating previews and frames, the authoring agent inspects them and records findings alongside the video source. Design review checks the planned opening, progression and pace; the complete pass records shot-level observations on development, artwork match, color, overlays, sound and continuity. Explicit shot dependencies keep local rechecks focused. See [motion and review](skills/remotion-video/references/motion-and-review.md).
+After generating previews and frames, the authoring agent inspects them and records findings. Complex scenes get segment checks during production, followed by a complete pass for text, sound and continuity. Source or asset changes invalidate the affected reviews, which must be refreshed before export. See [motion and review](skills/remotion-video/references/motion-and-review.md).
 
-## Credits
+## Examples and credits
 
-This project combines Remotion and Remotion Bits with methods from Manim, video-shotcraft, the Humanizer projects and local design skills. Authors, pinned sources, uses and licenses are listed in [NOTICE.md](NOTICE.md) and [UPSTREAM.json](UPSTREAM.json). Original scripts and documentation use the [MIT license](LICENSE).
+- [Painted river](examples/native-river): an original fish-and-water study using Huashu's actual flow-field stroke library.
+- [Data brief](examples/data-brief): a bar chart and growth comparison with example data.
+- [Geometric motion](examples/manim-orbit): Manim trajectories assembled in Remotion.
+- [Contact and release](examples/mechanism-motion): attached joints, deformation and shared sound events.
+
+Drawing engines come from [huashu-art-motion](https://github.com/alchaincyf/huashu-art-motion) and [lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar), with author, license, font and data notices preserved. Uses and pinned sources for Remotion, Remotion Bits, Manim and video-shotcraft are listed in [NOTICE.md](NOTICE.md). Original scripts and documentation use the [MIT license](LICENSE).

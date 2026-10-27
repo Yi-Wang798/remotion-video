@@ -1,6 +1,6 @@
 # Build the action before the whole film
 
-Use this reference when a film needs character performance, mechanisms, organic motion or a distinctive material. The bundled kit is original code; the directing approach draws on the upstream projects credited in `NOTICE.md`. It does not install their engines or copy their sample characters.
+Use this reference when a film needs character performance, mechanisms, organic motion or a distinctive material. For a distinctive code-rendered art style, first use the bundled upstream drawing libraries and selected scene source through [local-style-backends.md](local-style-backends.md). The small original motion kit below supplies geometry helpers when needed; it is not the main art renderer for every subject.
 
 ## Choose what must be controllable
 

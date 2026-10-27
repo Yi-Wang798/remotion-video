@@ -1,7 +1,7 @@
 {
   "name": "remotion-video",
-  "version": "3.3.0",
-  "description": "Reusable motion primitives, layered artwork, sound cues, Remotion animation and actual-video motion inspection.",
+  "version": "4.0.0",
+  "description": "Local Huashu and Lemo drawing engines, style source, Remotion finishing and actual-render reviews.",
   "skills": "./skills/",
   "keywords": [
     "video",
@@ -16,7 +16,7 @@
   "interface": {
     "displayName": "Remotion Video",
     "shortDescription": "先设计观看过程，再预演、制作和检查视频",
-    "longDescription": "为插画科普与角色故事生成关联关键画面，设计鲜明配色、光影材质和连贯动作；简单数据视频直接制作。检查动态预演、分段画面与成片后导出。",
+    "longDescription": "按题材设计镜头，直接调用本地花叔与 Lemo 绘制代码，或使用关联生图素材。试拍动作、检查分段画面，再用 Remotion 合成声音与字幕。简单数据视频可直接制作。",
     "category": "Design",
     "capabilities": [
       "Interactive",

@@ -102,7 +102,8 @@ export function validatePlan(project,plan,{final=false}={}){
   if(workflowFor(plan)==='designed'&&!s.referenceIds?.length&&!isProcedural(plan))issues.push(`Shot ${s.id}: no visual reference selected`);
   for(const id of s.referenceIds||[])if(!ids.has(id))issues.push(`Shot ${s.id}: unknown reference ${id}`);
   for(const id of s.metricIds||[])if(!metricIds.has(id))issues.push(`Shot ${s.id}: unknown metric ${id}`);
-  if(s.engine&&!['remotion','manim'].includes(s.engine))issues.push(`Shot ${s.id}: unknown engine`);
+  if(s.engine&&!['remotion','manim','huashu','lemo'].includes(s.engine))issues.push(`Shot ${s.id}: unknown engine`);
+  if(['huashu','lemo'].includes(s.engine)&&!s.styleId?.startsWith(s.engine+'/'))issues.push(`Shot ${s.id}: native engine needs its matching styleId`);
   for(const file of [...(plan.sharedDependencies||[]),...(s.dependencies||[])])validFile(file,`Shot ${s.id} dependency`);
   for(const file of s.assetFiles||[])validFile(file,`Shot ${s.id} artwork asset`);
   if(reviewLevelFor(plan)==='segments'){

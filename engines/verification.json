@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "release": "4.0.0",
+  "checkedAt": "2026-10-27",
+  "scope": "Wrapper integration and sampled frame inspection. These are not final-film reviews or a claim that all catalog styles have been rendered.",
+  "tests": {
+    "unitAndRegression": 61,
+    "realBrowser": 3,
+    "offlineFrames": "Two styles rendered without external requests and returned identical pixels after seeking back to the same time."
+  },
+  "records": [
+    {
+      "scope": "upstream-benchmark",
+      "style": "huashu/09_postimp",
+      "upstreamCommit": "8a0d7d72ca65fcce6f8ba82c4a6c8dfe35b8422c",
+      "width": 960,
+      "height": 540,
+      "seconds": 3,
+      "fps": 24,
+      "sha256": "63d2fa702a25e4c73d4774e0bfd7b90780c6f3f68addcfcede82f49737400a2c",
+      "externalRequestsBlocked": [],
+      "warnings": [],
+      "artifact": "huashu-final.mp4",
+      "start": 0,
+      "decode": "pass",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 960,
+            "height": 540,
+            "avg_frame_rate": "24/1",
+            "nb_frames": "72",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "inspection": "sampled-frames-inspected"
+    },
+    {
+      "scope": "upstream-benchmark",
+      "style": "lemo/scifi-toon",
+      "upstreamCommit": "413a6bd6d78ebd3bdd5abaec9538a26867f890df",
+      "start": 12,
+      "width": 960,
+      "height": 540,
+      "seconds": 3,
+      "fps": 24,
+      "sha256": "847266d0c08c5d130d1a735bacf3661785c1fccb20fdbbfd52a21de52356efb8",
+      "externalRequestsBlocked": [],
+      "warnings": [],
+      "artifact": "lemo-woff2.mp4",
+      "decode": "pass",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 960,
+            "height": 540,
+            "avg_frame_rate": "24/1",
+            "nb_frames": "72",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "3.000000"
+        }
+      },
+      "inspection": "sampled-frames-inspected"
+    },
+    {
+      "scope": "native-project-render",
+      "style": "huashu/09_postimp",
+      "upstreamCommit": "8a0d7d72ca65fcce6f8ba82c4a6c8dfe35b8422c",
+      "width": 960,
+      "height": 540,
+      "seconds": 8,
+      "fps": 24,
+      "sha256": "8f41aaa71fcdf2e86f35b1d6e8feaa35ce90580e5972d40b5dba15812ff889ce",
+      "externalRequestsBlocked": [],
+      "warnings": [],
+      "artifact": "river-final.mp4",
+      "start": 0,
+      "decode": "pass",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 960,
+            "height": 540,
+            "avg_frame_rate": "24/1",
+            "nb_frames": "192",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "8.000000"
+        }
+      },
+      "inspection": "sampled-frames-inspected"
+    },
+    {
+      "scope": "remotion-native-clip-integration",
+      "style": "huashu/09_postimp",
+      "artifact": "preview.mp4",
+      "sha256": "3da0ad5605a7ddc007138b5ac9d6bcf6d384e73df64d46fe1b21bfa489bf9e4a",
+      "start": 0,
+      "decode": "pass",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 960,
+            "height": 540,
+            "avg_frame_rate": "24/1",
+            "nb_frames": "192",
+            "side_data_list": [
+              {}
+            ]
+          }
+        ],
+        "format": {
+          "duration": "8.000000"
+        }
+      },
+      "inspection": "render-and-decode-tested"
+    },
+    {
+      "scope": "upstream-benchmark",
+      "style": "huashu/37_rick_morty",
+      "artifact": "huashu-svg.png",
+      "sha256": "f6d0a125ab8c4fcb1d6724da1895b4aad0b1e3606ee5c1d799ec3cdb1c741e08",
+      "start": 3,
+      "inspection": "single-frame-inspected",
+      "verification": "still-render-verified"
+    }
+  ],
+  "observations": [
+    "Huashu post-impressionist strokes, palette, character poses and swirling window render with no browser errors; its demo counter is disabled.",
+    "Lemo Sci-Fi Toon retained constant contour width, bright fills and portal/landing development in sampled frames. Demo signs remain in this upstream benchmark only.",
+    "The original river scene uses actual upstream flow strokes and color sampling. Eight sampled frames show a continuous fish trajectory, attached moving tail and rising bubble. No narration or full-film listening review was performed.",
+    "The original native river clip completed an eight-second Remotion OffthreadVideo render and full media decode."
+  ]
+}

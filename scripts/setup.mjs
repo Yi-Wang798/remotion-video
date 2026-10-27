@@ -22,7 +22,7 @@ try{
  }
  const upstream=JSON.parse(fs.readFileSync(path.join(root,'UPSTREAM.json'),'utf8'));
  const withAt=args.indexOf('--with'),groups=new Set(['core',...(withAt<0?[]:(args[withAt+1]||'').split(','))]);
- for(const group of groups)if(!['core','manim','shotcraft'].includes(group))throw new Error('Unknown guide group: '+group);
+ for(const group of groups)if(!['core','manim','shotcraft','styles'].includes(group))throw new Error('Unknown guide group: '+group);
  for(const source of upstream.sources.filter(s=>groups.has(s.group||'core'))){
   const target=path.join(root,'vendor',source.localSkill);
   const stamp=path.join(target,'.source.json');
@@ -41,5 +41,6 @@ try{
  }
  const previous=runtimeConfig();
  fs.writeFileSync(path.join(root,'runtime.local.json'),JSON.stringify({...previous,path:runtime},null,2)+'\n');
- console.log(JSON.stringify({runtime,dependencies:ready?'reused':'installed',guides:[...groups]},null,2));
+ if(groups.has('styles'))run(process.execPath,[path.join(root,'scripts/styles-setup.mjs')],root);
+ console.log(JSON.stringify({runtime,dependencies:ready?'reused':'installed',guides:[...groups].filter(g=>g!=='styles'),styles:groups.has('styles')},null,2));
 }catch(e){console.error(e.message);process.exitCode=1;}

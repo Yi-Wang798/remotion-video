@@ -5,13 +5,13 @@ description: Create or edit videos with audience-led visual storytelling, rough 
 
 # Remotion Video
 
-Resolve plugin paths two levels above this file. Follow the user's brief and preserve existing edits. When creative choices are delegated, make them and finish the requested video. Use this entrypoint for production stages and review requirements; use vendor guides for APIs and selected techniques. Adapt their genre-specific pacing and delivery defaults to the current brief.
+Resolve plugin paths two levels above this file. Follow the user's brief and preserve existing edits. When creative choices are delegated, make them and finish the requested video. Use this entrypoint for production stages and review requirements; use vendor guides for APIs and selected techniques. Bundled upstream skill files are source references, not additional orchestration: keep this workflow, the current brief and its authorization. Do not run their clone/install steps when local source already exists. Adapt their genre-specific pacing and delivery defaults to the current brief.
 
 ## Plan the viewing experience
 
 Read [creative-direction.md](references/creative-direction.md) for every new video and substantial redesign. Establish the audience, useful or emotional promise, opening, progression and payoff. Choose an expression profile appropriate to the purpose. Plan what viewers will see change, discover, compare or feel; connect shots through that progression.
 
-Read [routing.md](references/routing.md) and [production-design.md](references/production-design.md). Choose the visual treatment from the brief before choosing the engine. For character, environment and microscopic storytelling, decide which parts must move before making assets. Use connected ImageGen designs and separated parts where illustration needs them; use a tested procedural drawing style for controllable geometry and continuous shape changes. Read [motion-craft.md](references/motion-craft.md). Simple schematic/data/geometry/typography work can remain direct. A science subject alone does not make a film a schematic. Preserve explicit image-generation requests in the plan. Initialize `video-plan.json` with `scripts/project.mjs init --project <absolute-directory> --kind <kind>`; new plans use version 4.
+Read [routing.md](references/routing.md) and [production-design.md](references/production-design.md). Choose the visual treatment from the brief before choosing the engine. For character, environment and microscopic storytelling, decide which parts must move before making assets. Use connected ImageGen designs and separated parts where illustration needs them; use a tested procedural drawing style for controllable geometry and continuous shape changes. For an artistic code treatment, read [local-style-backends.md](references/local-style-backends.md), select the actual local drawing source and prove it on the new subject. Read [motion-craft.md](references/motion-craft.md). Simple schematic/data/geometry/typography work can remain direct. A science subject alone does not make a film a schematic. Preserve explicit image-generation requests in the plan. Initialize `video-plan.json` with `scripts/project.mjs init --project <absolute-directory> --kind <kind>`; new plans use version 4.
 
 ## Develop and preview
 
@@ -22,7 +22,7 @@ Read [routing.md](references/routing.md) and [production-design.md](references/p
 
 ## Produce and finish
 
-Build from the reviewed motion study and sequence using deterministic frame-based motion. The bundled motion kit supplies attached limbs, pose tracks, paths, organic contours, sprite pivots, camera coordinates and shared sound events. Adapt these to the action rather than simulating activity with generic particle loops. Read [motion-and-review.md](references/motion-and-review.md). Simple projects get a complete preview and key frames; complex scenes get segment reviews during production. Inspect actual renders for geometry, identity, movement, spacing, captions and cuts. Repair visible problems and recheck the affected scope.
+Build from the reviewed motion study and sequence using deterministic frame-based motion. Use the selected native style renderer for its strokes, contours, shading and material. The small motion kit supplies optional attached limbs, pose tracks, paths, organic contours, sprite pivots, camera coordinates and shared sound events. Adapt these to the action rather than simulating activity with generic particle loops. Read [motion-and-review.md](references/motion-and-review.md). Simple projects get a complete preview and key frames; complex scenes get segment reviews during production. Inspect actual renders for geometry, identity, movement, spacing, captions and cuts. Repair visible problems and recheck the affected scope.
 
 Use `scripts/analyze-motion.mjs` on illustrated motion previews to locate near-still or mainly global-motion intervals, then inspect those intervals with sound; the report remains advisory. Make one assembled pass for engagement, text, narration and visual continuity. Check the rendered artwork against selected keyframes, color/light, action development and all overlays. Apply [writing.md](references/writing.md). Default to captions and necessary labels or brief titles. Add no unrequested page counters, series headers, repeated title footers or decorative small print. Record actual non-caption text in shot `overlays`; inspect the render for text omitted from the plan. Authoring notes belong in project files.
 
@@ -32,6 +32,7 @@ Export the requested video and preserve editable source and selected assets. `ex
 
 ## Tools
 
+- `scripts/styles.mjs list/show` reads the bundled Huashu and Lemo source locally; no per-video GitHub lookup. `scripts/styles-setup.mjs` prepares the separate pinned native runtime once. `preview` tests original upstream code; `create` makes a project for a new subject; `render` exports its native clip.
 - `scripts/setup.mjs` prepares pinned Remotion/Bits and their guides. Read relevant API references under `vendor/remotion-best-practices/`.
 - For Bits, use `find_remotion_bits` then `fetch_remotion_bit`, or `scripts/video.mjs bits find/fetch ...`. Adapt the useful example to the shot's purpose.
 - `scripts/setup.mjs --with manim,shotcraft` fetches optional guides. Install the optional Manim runtime with `scripts/video.mjs manim setup`.

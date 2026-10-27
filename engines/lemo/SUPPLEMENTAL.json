@@ -1,0 +1,45 @@
+{
+  "description": "Fonts referenced by the upstream scifi-toon CSS but absent from its Git tree. Downloaded once and bundled locally.",
+  "files": {
+    "styles/scifi-toon/demo/fonts/baloo2.woff2": {
+      "bytes": 33188,
+      "sha256": "26fb4610d4bc976d2584ca15e66c11465dbc1f267a10dca668fcb3080dfe59c1",
+      "url": "https://fonts.gstatic.com/s/baloo2/v23/wXKrE3kTposypRyd51jcAA.woff2"
+    },
+    "licenses/baloo2-OFL.txt": {
+      "bytes": 4384,
+      "sha256": "ad09b05dc8bc678c9daf7c4c5f7ef1f55e5726127f4330b2e98e40b9dffcb860",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/baloo2/OFL.txt"
+    },
+    "styles/scifi-toon/demo/fonts/titanone.woff2": {
+      "bytes": 10752,
+      "sha256": "2f15f138af309ad659b62246999cccc2da21759ec8619d7e6ea759e8eb5a7a53",
+      "url": "https://fonts.gstatic.com/s/titanone/v17/mFTzWbsGxbbS_J5cQcjClDgm.woff2"
+    },
+    "licenses/titanone-OFL.txt": {
+      "bytes": 4418,
+      "sha256": "61be7c29f4835e2be7243db12213d75d53ff028f29f4b493212a1688b1d3a1ba",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/titanone/OFL.txt"
+    },
+    "styles/scifi-toon/demo/fonts/vt323.woff2": {
+      "bytes": 17936,
+      "sha256": "8ddbebcc1048154132e1d78eb9b1f7850bca1b7d857035ccf1cb4318ebc615b6",
+      "url": "https://fonts.gstatic.com/s/vt323/v18/pxiKyp0ihIEF2isfFJU.woff2"
+    },
+    "licenses/vt323-OFL.txt": {
+      "bytes": 4367,
+      "sha256": "27d9af34210253e7ca1251fbace86c6f65b40031d6ce1a75493a1b2093631298",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/vt323/OFL.txt"
+    },
+    "styles/scifi-toon/demo/fonts/bungee.woff2": {
+      "bytes": 14344,
+      "sha256": "126eec706b7931682dbcf6c6efc274132c603f181fbf912678e6cfeb341e721b",
+      "url": "https://fonts.gstatic.com/s/bungee/v17/N0bU2SZBIuF2PU_0DXR1.woff2"
+    },
+    "licenses/bungee-OFL.txt": {
+      "bytes": 4473,
+      "sha256": "d5787a50dde5be6c6daecab9ed459939b1bc37cff0d0e00257eaf1ec2cf4c16c",
+      "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/bungee/OFL.txt"
+    }
+  }
+}
