@@ -1,6 +1,6 @@
 runtime.json
 runtime.local.json
-vendor/
+/vendor/
 node_modules/
 .cache/
 .runtime/

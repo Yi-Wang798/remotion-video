@@ -1,5 +1,10 @@
 # Changes
 
+## 4.0.1
+
+- Fixed packaging of nested upstream vendor libraries and their license notices; the vendor ignore rule now applies only to the root guide cache.
+- Added a repository inventory assertion so every pinned engine and supplemental file must be tracked before release.
+
 ## 4.0.0
 
 - Bundled pinned Huashu and Lemo drawing libraries, style guides and actual scene source locally, with byte inventories and original licenses.

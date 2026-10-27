@@ -17,6 +17,14 @@ test('all redistributed source and fonts match the pinned package inventory',()=
  const reports=verifyBundles();assert.equal(reports.length,2);assert.ok(reports.every(r=>r.files>300&&/^[a-f0-9]{40}$/.test(r.commit)));
  const base=fileURLToPath(new URL('../engines/lemo/',import.meta.url)),supplement=JSON.parse(fs.readFileSync(path.join(base,'SUPPLEMENTAL.json'),'utf8'));
  for(const file of Object.keys(supplement.files).filter(f=>f.endsWith('.woff2')))assert.equal(fs.readFileSync(path.join(base,file)).subarray(0,4).toString(),'wOF2');
+ const repository=fileURLToPath(new URL('../',import.meta.url));
+ if(fs.existsSync(path.join(repository,'.git'))){
+  const inventory=spawnSync('git',['ls-files','-z'],{cwd:repository,encoding:'utf8'});assert.equal(inventory.status,0);const tracked=new Set(inventory.stdout.split('\0'));
+  for(const backend of Object.values(catalog().backends))for(const name of ['BUNDLE.json','SUPPLEMENTAL.json']){
+   const manifest=path.join(repository,backend.root,name);if(!fs.existsSync(manifest))continue;
+   for(const file of Object.keys(JSON.parse(fs.readFileSync(manifest,'utf8')).files))assert.ok(tracked.has(backend.root+'/'+file),'Pinned file excluded from Git: '+backend.root+'/'+file);
+  }
+ }
 });
 test('package paths cannot escape and unknown styles fail before creating a project',()=>{
  assert.throws(()=>inside(os.tmpdir(),'../private'));assert.throws(()=>selectedStyle('invented/oil'));const project=path.join(os.tmpdir(),'style-missing-'+Date.now());assert.throws(()=>createNativeProject('invented/oil',project));assert.equal(fs.existsSync(project),false);

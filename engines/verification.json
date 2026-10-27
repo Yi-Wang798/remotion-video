@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "release": "4.0.0",
+  "release": "4.0.1",
   "checkedAt": "2026-10-27",
   "scope": "Wrapper integration and sampled frame inspection. These are not final-film reviews or a claim that all catalog styles have been rendered.",
   "tests": {

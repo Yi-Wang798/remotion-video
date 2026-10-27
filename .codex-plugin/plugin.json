@@ -1,6 +1,6 @@
 {
   "name": "remotion-video",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Local Huashu and Lemo drawing engines, style source, Remotion finishing and actual-render reviews.",
   "skills": "./skills/",
   "keywords": [
